@@ -12,3 +12,66 @@
     font-size: 16px;
     
 }
+.my-footer{
+    background-color: gray;
+}
+.login{
+    margin-top: 100px;
+    margin-right: 50px;
+}
+.colleft{
+    background-color: white;
+    align-items: center;
+}
+.colright{
+    background-color:darkred;
+    color: darkorange;
+}
+.title-login{
+    font-size: 32px;
+    color: #870B5A;
+}
+.title-login2{
+    font-size:32px;
+    color: darkorange
+}
+.campo{
+    margin-bottom: 30px;
+}
+.campo input[type="email"], .campo input[type="password"]{
+    padding: 6px 46px;
+    border: 1px solid darkorange;
+    border-radius: 16px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    display: block;
+}
+.campo label{
+    color: darkorange;
+    font-size: 20px;
+}
+.link-registo{
+    color: darkorange;
+    margin-bottom: 10px;
+}
+.botao{
+    font-size: 20px;
+    background: darkorange;
+    border: 0px;
+    border-radius: 16px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    color:#ffffff;
+    padding: 4px 24px;
+    position: absolute;
+    top: 80%;
+    Right: 10%;
+    margin-left: -90%;
+
+}
+.botao:hover{
+    background: #ccbbff;
+    box-shadow: inset 2px 2px 2px rgba(0,0,0,0.2);
+    text-shadow: none;
+}
+.botao, select{
+    cursor: pointer;
+}
