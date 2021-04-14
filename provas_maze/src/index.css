@@ -1,6 +1,8 @@
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
 .my-navbar{
     background-color: darkred;
-    position: absolute;
 }
 .title-navbar{
     color: darkorange;
@@ -27,18 +29,19 @@
     background-color:darkred;
     color: darkorange;
 }
-.title-login{
+.titulo{
     font-size: 32px;
     color: #870B5A;
 }
-.title-login2{
+.titulo2{
     font-size:32px;
     color: darkorange
 }
 .campo{
     margin-bottom: 30px;
 }
-.campo input[type="email"], .campo input[type="password"]{
+
+.campo input[type="email"], .campo input[type="password"], .campo input[type="text"], .campo textarea, .campo select{
     padding: 6px 46px;
     border: 1px solid darkorange;
     border-radius: 16px;
