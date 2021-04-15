@@ -15,7 +15,7 @@ function Login(){
                         <br></br>
                     <div className="campo">
                         <label>Email: </label>
-                        <input  type="email" name="email" />
+                        <input class="col-sm-9"  type="email" name="email" />
                     </div>
                     <div className="campo">
                         <label>Senha: </label>

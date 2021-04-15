@@ -5,6 +5,7 @@ import {Switch, Route } from 'react-router-dom'
 import Login from './pages/login'
 import PaginaPrincipal from './pages/paginaprincipal'
 import RegistoUtilizador from './pages/registar-utilizador'
+import ValidarUtilizador from './pages/validar-utilizador-admin'
 
 
 export default () => {
@@ -13,6 +14,7 @@ export default () => {
                 <Route exact path="/registar-utilizador-pages/:email?" component={RegistoUtilizador}/>
                 <Route exact path="/" component={Login}/> 
                 <Route exact path="/pages" component={PaginaPrincipal}/>
+                <Route exact path="/validar-utilizador-pages" component={ValidarUtilizador}/>
             </Switch>
     )
 }

@@ -10,7 +10,7 @@ class RegistoUtilizador extends React.Component{
     render(){
         return(  
         <form>
-            <div class="card border-danger mb-3">
+            <div class="card border-danger mb-3 my-card">
                 <div class="card-header titulo">Registar:
                     <div class="card-body">
                     <div className="row">
@@ -32,7 +32,7 @@ class RegistoUtilizador extends React.Component{
                         <div class="form-group row campo">
                                 <label for="exampleInputEmail1">Senha de acesso:</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></input>
+                                <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></input>
                             </div>
                         </div>
                         <div className="row">
