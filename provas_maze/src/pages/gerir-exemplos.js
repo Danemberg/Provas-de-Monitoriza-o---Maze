@@ -6,13 +6,16 @@ import { Link } from 'react-router-dom'
 
 
 
-class ValidarUtilizador extends React.Component{
+class GerirExemplos extends React.Component{
     render(){
         return(
             <div className="container-xl info-tabela">
                 <div className="titulo">
-                Validar utilizadores:
+                Gerir Exemplos:
                 </div>
+                <div class="col-sm-6">
+                        
+                    </div>
                 <div className="table-responsive">
                     <div className="table-wrapper">
                         <table className="table table-striped table-hover">
@@ -20,8 +23,9 @@ class ValidarUtilizador extends React.Component{
                                 <tr>
                                     <th>
                                     </th>
-                                    <th className="item-tabela">Nome</th>
-                                    <th className="item-tabela">Tipo</th>
+                                    <th className="item-tabela">Ano</th>
+                                    <a href="CriarExemplos" class="btn btn-success">
+                                    <i class="material-icons">&#xE147;</i> <span>Adicionar Exemplo</span></a>
                                 </tr>
                             </thead>
                             <tbody>
@@ -32,15 +36,12 @@ class ValidarUtilizador extends React.Component{
                                             <label for="selectAll"></label>
                                         </span>
                                     </td>
-                                    <td>Antonio Moreira</td>
-                                    <td>Docente</td>
+                                    <td>1ºano/2ºano</td>
                                     <td>
-
-                                        <button className="botao-visualizar">Visualizar</button>  
                                         <a href="" className="edit">
-                                        <i class="material-icons">check</i></a>
+                                        <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                         <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
-                                        <i class="material-icons">clear</i></a>
+                                        <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -50,14 +51,12 @@ class ValidarUtilizador extends React.Component{
                                             <label for="selectAll"></label>
                                         </span>
                                     </td>
-                                    <td>Joana Carneiro</td>
-                                    <td>Psicóloga</td>
+                                    <td>3ºano/4ºano</td>
                                     <td>
-                                        <button className="botao-visualizar">Visualizar</button>  
                                         <a href="" className="edit">
-                                        <i class="material-icons">check</i></a>
+                                        <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                         <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
-                                        <i class="material-icons">clear</i></a>
+                                        <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
                                 </td>
                                 </tr>
                                 <tr>
@@ -68,48 +67,12 @@ class ValidarUtilizador extends React.Component{
                                         </span>
                                            
                                     </td>
-                                    <td>João Santos de Oliveira</td>
-                                    <td>Docente</td>
+                                    <td>5ºano</td>
                                     <td>
-                                        <button className="botao-visualizar">Visualizar</button>  
                                         <a href="" className="edit">
-                                        <i class="material-icons">check</i></a>
+                                        <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                         <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
-                                        <i class="material-icons">clear</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span className="custom-checkbox">
-                                            <input type="checkbox" id="selectAll"></input>
-                                            <label for="selectAll"></label>
-                                        </span>
-                                    </td>
-                                    <td>Ana Maria Carvalho</td>
-                                    <td>Docente</td>
-                                    <td>
-                                        <button className="botao-visualizar">Visualizar</button>  
-                                        <a href="" className="edit">
-                                        <i class="material-icons">check</i></a>
-                                        <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
-                                        <i class="material-icons">clear</i></a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span className="custom-checkbox">
-                                            <input type="checkbox" id="selectAll"></input>
-                                            <label for="selectAll"></label>
-                                        </span>
-                                    </td>
-                                    <td>Rui Alberto Ferreira</td>
-                                    <td>Docente</td>
-                                    <td>
-                                        <button className="botao-visualizar">Visualizar</button>  
-                                        <a href="" className="edit">
-                                        <i class="material-icons">check</i></a>
-                                        <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
-                                        <i class="material-icons">clear</i></a>
+                                        <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
                                     </td>
                                 </tr>
                             </tbody>
@@ -133,4 +96,4 @@ class ValidarUtilizador extends React.Component{
     }
 }
 
-export default withRouter (ValidarUtilizador);
+export default withRouter (GerirExemplos);

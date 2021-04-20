@@ -10,6 +10,7 @@ function App() {
   return (
     <HashRouter>
     <div className="container">
+      <Navbar/>
       <Rotas/>
     </div>    
     </HashRouter>

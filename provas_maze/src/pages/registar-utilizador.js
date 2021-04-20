@@ -1,5 +1,4 @@
 import React from 'react'
-import RegistoService from '../app/RegistoService'
 import {withRouter} from 'react-router-dom'
 
 

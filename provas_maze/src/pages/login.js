@@ -1,6 +1,7 @@
 import React from 'react';
 import Logo from '../images/LogoMBCL.png';
 import '../index.css';
+import { Link } from 'react-router-dom'
 
 function Login(){
         return(
@@ -23,7 +24,7 @@ function Login(){
                     </div>
                 
                 <div>
-                    <a className="link-registo" href="#">Registar-se</a>
+                    <Link className="link-registo" to="/registar-utilizador">Registar-se</Link>
                     <button type="button" class="botao">Entrar</button>
                 </div>
                 </div>

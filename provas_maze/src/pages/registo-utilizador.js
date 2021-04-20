@@ -1,5 +1,4 @@
 import React from 'react'
-import RegistoService from '../app/RegistoService'
 import {withRouter} from 'react-router-dom'
 
 
@@ -71,6 +70,7 @@ class RegistoUtilizador extends React.Component{
                                 </div>
                             </div>
                         </div>
+                        <br></br>
                         <div class="form-group row campo">
                                 <label for="exampleTextarea">Observações:</label>
                             <div class="col-md-6">

@@ -24,6 +24,9 @@ body{
     position: fixed;
     right: 10px;
 }
+.item-navbar:hover{
+    color:darkorange
+}
 
 .login{
     margin-top: 100px;
@@ -48,6 +51,11 @@ body{
 .campo{
     margin-bottom: 30px;
 }
+.info-tabela{
+    font-size: 18px;
+    margin-top: 70px;
+    position: fixed;
+}
 
 .campo input[type="email"], .campo input[type="password"], .campo input[type="text"], .campo textarea, .campo select{
     padding: 6px 46px;
@@ -64,6 +72,9 @@ body{
     color: darkorange;
     margin-bottom: 10px;
 }
+.link-registo:hover{
+    color: darkorange;
+}
 .botao{
     font-size: 20px;
     background: darkorange;
@@ -78,12 +89,34 @@ body{
     margin-left: -90%;
 
 }
+.botao1{
+    font-size: 20px;
+    background: darkorange;
+    border: 0px;
+    border-radius: 16px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    color:#ffffff;
+    padding: 4px 24px;
+    position: absolute;
+    top: 90%;
+    Right: 10%;
+    margin-left: -90%;
+
+}
+.botao1:hover{
+    background: #ccbbff;
+    box-shadow: inset 2px 2px 2px rgba(0,0,0,0.2);
+    text-shadow: none;
+}
+.botao1 select{
+    cursor: pointer;
+}
 .botao:hover{
     background: #ccbbff;
     box-shadow: inset 2px 2px 2px rgba(0,0,0,0.2);
     text-shadow: none;
 }
-.botao, select{
+.botao select{
     cursor: pointer;
 }
 .botao-visualizar{
@@ -93,7 +126,6 @@ body{
     border-radius: 16px;
     color:darkorange;
     padding: 4px 24px;
-    position: absolute;
 }
 .my-footer{
     background-color: gray;
@@ -125,12 +157,19 @@ body{
     border-radius: 2px;
 
 }
+
 .table-wrapper {
     background: #fff;
     padding: 20px 25px;
     border-radius: 3px;
     min-width: 1000px;
     box-shadow: 0 1px 1px rgba(0,0,0,.05);
+}
+.table-wrapper1{
+    background: #fff;
+    padding: 20px 25px;
+    border-radius: 3px;
+
 }
 .table-title {
     color:#870B5A;
@@ -190,7 +229,7 @@ table.table td i {
     font-size: 19px;
 }
 .item-tabela{
-    color: darkorange;
+    color: #870B5A;
 }
 .pagination a{
     color:darkorange;
@@ -206,5 +245,25 @@ table.table td i {
 .pagination a.active{
     background-color: darkred;
     color:darkorange
-
+}
+.menu-pp{
+    margin-top: 150px;
+    position: fixed;
+    right: 80px;
+}
+input[type="checkbox"]:checked + label {
+    color: #870B5A;
+ 
+}
+.icones{
+    color: green;
+    height: 20px;
+}
+.cabecalho-prova{
+    font-size: 18px;
+    margin-top: 70px;
+    width: 900px;
+}
+.titulo-prova{
+    margin-left: 20px;
 }
