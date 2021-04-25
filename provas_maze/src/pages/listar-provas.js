@@ -40,7 +40,7 @@ class ListarProvas extends React.Component{
                                     <td>15/03/2021</td>
                                     <td>Turma A</td>
                                     <td>
-                                        <button className="botao-visualizar">Visualizar</button>  
+                                        <Link to="/visualizar-prova" type="button" className=" btn botao-visualizar">Visualizar</Link>  
                                     </td>
                                 </tr>
                                 <tr>
@@ -54,7 +54,7 @@ class ListarProvas extends React.Component{
                                     <td>20/03/2021</td>
                                     <td>Turma B</td>
                                     <td>
-                                        <button className="botao-visualizar">Visualizar</button>  
+                                        <Link to="/visualizar-prova" type="button" className=" btn botao-visualizar">Visualizar</Link>  
                                     </td>
                                 </tr>
                                 <tr>
@@ -69,7 +69,7 @@ class ListarProvas extends React.Component{
                                     <td>22/03/2021</td>
                                     <td>Turma C</td>
                                     <td>
-                                        <button className="botao-visualizar">Visualizar</button>  
+                                        <Link to="/visualizar-prova" type="button" className=" btn botao-visualizar">Visualizar</Link>   
                                     </td>
                                 </tr>
                             </tbody>

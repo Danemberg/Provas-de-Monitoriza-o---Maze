@@ -24,8 +24,11 @@ class GerirExemplos extends React.Component{
                                     <th>
                                     </th>
                                     <th className="item-tabela">Ano</th>
-                                    <a href="CriarExemplos" class="btn btn-success">
-                                    <i class="material-icons">&#xE147;</i> <span>Adicionar Exemplo</span></a>
+                                    <th>
+                                    <Link to="/criar-exemplos" class="btn btn-success">
+                                    <Link to="/criar-exemplos" class="material-icons icone-add">&#xE147;</Link> <span>Adicionar</span></Link>     
+                                    </th>
+                                   
                                 </tr>
                             </thead>
                             <tbody>
@@ -38,8 +41,8 @@ class GerirExemplos extends React.Component{
                                     </td>
                                     <td>1ºano/2ºano</td>
                                     <td>
-                                        <a href="" className="edit">
-                                        <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                        <Link to="/editar-exemplos" className="edit">
+                                        <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></Link>
                                         <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
                                         <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
                                     </td>
@@ -53,8 +56,8 @@ class GerirExemplos extends React.Component{
                                     </td>
                                     <td>3ºano/4ºano</td>
                                     <td>
-                                        <a href="" className="edit">
-                                        <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                        <Link to="/editar-exemplos" className="edit">
+                                        <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></Link>
                                         <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
                                         <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
                                 </td>
@@ -69,8 +72,8 @@ class GerirExemplos extends React.Component{
                                     </td>
                                     <td>5ºano</td>
                                     <td>
-                                        <a href="" className="edit">
-                                        <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                        <Link to="/editar-exemplos" className="edit">
+                                        <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></Link>
                                         <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
                                         <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
                                     </td>

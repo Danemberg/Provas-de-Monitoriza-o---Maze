@@ -1,6 +1,6 @@
 import React from 'react'
 import {withRouter} from 'react-router-dom'
-
+import { Link } from 'react-router-dom'
 
 class CriarExemplos extends React.Component{
 
@@ -31,7 +31,7 @@ class CriarExemplos extends React.Component{
                                     </div>
                                 </div>
                                 <div>
-                                    <button type="button" class="botao1">Criar</button>
+                                    <Link to="/gerir-exemplos" type="button" class="btn botao1">Criar</Link>
                                 </div> 
                         </div> 
                     </div> 

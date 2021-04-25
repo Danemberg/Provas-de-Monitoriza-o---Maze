@@ -12,6 +12,8 @@ class GerirProvas extends React.Component{
             <div className="container-xl info-tabela">
                 <div className="titulo">
                 Gerir Provas:
+                <Link to="/instrucao-prova" className="edit">
+                <i href="/instrucao-prova" class="material-icons info-icone">info</i></Link>
                 </div>
                 <div class="col-sm-6">
                         
@@ -26,8 +28,10 @@ class GerirProvas extends React.Component{
                                     <th className="item-tabela">Título</th>
                                     <th className="item-tabela">Data</th>
                                     <th className="item-tabela">Ano</th>
-                                    <a href="CriarExemplos" class="btn btn-success">
-                                    <i class="material-icons">&#xE147;</i> <span>Adicionar Prova</span></a>
+                                    <th>
+                                    <Link to="/criar-provas" class="btn btn-success"></Link>
+                                    <Link to="/criar-provas" class="material-icons icone-add">&#xE147;<span>Adicionar Provas</span></Link>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -42,8 +46,8 @@ class GerirProvas extends React.Component{
                                     <td>15/03/2021</td>
                                     <td>1ºano/2ºano</td>
                                     <td>
-                                        <a href="" className="edit">
-                                        <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                        <Link to="/editar-provas" className="edit">
+                                        <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></Link>
                                         <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
                                         <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
                                     </td>
@@ -59,8 +63,8 @@ class GerirProvas extends React.Component{
                                     <td>20/03/2021</td>
                                     <td>3ºano/4ºano</td>
                                     <td>
-                                        <a href="" className="edit">
-                                        <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                        <Link to="/editar-provas" className="edit">
+                                        <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></Link>
                                         <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
                                         <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
                                 </td>
@@ -77,8 +81,8 @@ class GerirProvas extends React.Component{
                                     <td>22/03/2021</td>
                                     <td>5ºano</td>
                                     <td>
-                                        <a href="" className="edit">
-                                        <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                        <Link to="/editar-provas" className="edit">
+                                        <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></Link>
                                         <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
                                         <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
                                     </td>

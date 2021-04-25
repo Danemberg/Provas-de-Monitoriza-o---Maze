@@ -1,5 +1,6 @@
 import React from 'react'
 import {withRouter} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 
@@ -23,7 +24,7 @@ class EditarTextos extends React.Component{
                       </div>
                       <div className="col-sm">
                         <div class="form-group row campo">
-                                <label for="exampleInputPassword1">Autor:</label>
+                                <label for="exampleInputPassword1">Autor/a:</label>
                             <div class="col-sm">
                                 <input type="text" class="form-control " id="exampleInputPassword1"></input>
                             </div>
@@ -55,7 +56,7 @@ class EditarTextos extends React.Component{
                                         </div>
                                     </div>
                                 </div>
-                                <button type="button" class="botao1">Salvar</button>
+                                <Link to="/gerir-textos" type="button" class="btn botao1">Salvar</Link>
                             </div>
                         </div>
                     </div>

@@ -24,11 +24,13 @@ class GerirTextos extends React.Component{
                                     <th>
                                     </th>
                                     <th className="item-tabela">Título</th>
-                                    <th className="item-tabela">Autor</th>
+                                    <th className="item-tabela">Autor/a</th>
                                     <th className="item-tabela">Editora do manual</th>
                                     <th className="item-tabela">Ano</th>
-                                    <a href="CriarExemplos" class="btn btn-success">
-                                    <i class="material-icons">&#xE147;</i> <span>Adicionar Texto</span></a>
+                                    <th>
+                                    <Link to="/criar-textos" class="btn btn-success"></Link>
+                                    <Link to="/criar-textos" class="material-icons icone-add">&#xE147;<span>Adicionar Textos</span></Link>
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -44,8 +46,8 @@ class GerirTextos extends React.Component{
                                     <td></td>
                                     <td>1ºano/2ºano</td>
                                     <td>
-                                        <a href="" className="edit">
-                                        <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                        <Link to="/editar-textos" className="edit">
+                                        <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></Link>
                                         <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
                                         <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
                                     </td>
@@ -62,8 +64,8 @@ class GerirTextos extends React.Component{
                                     <td></td>
                                     <td>3ºano/4ºano</td>
                                     <td>
-                                        <a href="" className="edit">
-                                        <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                        <Link to="/editar-textos" className="edit">
+                                        <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></Link>
                                         <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
                                         <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
                                 </td>
@@ -81,8 +83,8 @@ class GerirTextos extends React.Component{
                                     <td></td>
                                     <td>5ºano</td>
                                     <td>
-                                        <a href="" className="edit">
-                                        <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                        <Link to="/editar-textos" className="edit">
+                                        <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></Link>
                                         <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
                                         <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
                                     </td>

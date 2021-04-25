@@ -2,6 +2,7 @@ import React from 'react';
 import Logo from '../images/LogoMBCL.png';
 import '../index.css';
 import { Link } from 'react-router-dom'
+import paginaprincipal from './paginaprincipal';
 
 function Login(){
         return(
@@ -25,7 +26,7 @@ function Login(){
                 
                 <div>
                     <Link className="link-registo" to="/registar-utilizador">Registar-se</Link>
-                    <button type="button" class="botao">Entrar</button>
+                    <Link type="button" to="/pagina-principal" className=" btn botao">Entrar</Link>
                 </div>
                 </div>
                 </div>

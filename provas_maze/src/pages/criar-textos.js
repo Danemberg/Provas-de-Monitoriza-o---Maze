@@ -1,6 +1,6 @@
 import React from 'react'
 import {withRouter} from 'react-router-dom'
-
+import { Link } from 'react-router-dom'
 
 
 
@@ -23,7 +23,7 @@ class CriarTextos extends React.Component{
                       </div>
                       <div className="col-sm">
                         <div class="form-group row campo">
-                                <label for="exampleInputPassword1">Autor:</label>
+                                <label for="exampleInputPassword1">Autor/a:</label>
                             <div class="col-sm">
                                 <input type="text" class="form-control " id="exampleInputPassword1"></input>
                             </div>
@@ -48,14 +48,14 @@ class CriarTextos extends React.Component{
                                         <label for="exampleSelect1">Ano:</label>
                                         <div class="col-sm-5">
                                             <select class="form-control" id="exampleSelect1">
-                                            <option>1º/2ºano</option>
-                                            <option>3º/4ºano</option>
-                                            <option>5ºano</option>
+                                            <option>2.ºano</option>
+                                            <option>3.ºano</option>
+                                            <option>4.ºano</option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
-                                <button type="button" class="botao1">Criar</button>
+                                <Link to="/gerir-textos" type="button" class="btn botao1">Criar</Link>
                             </div>
                         </div>
                     </div>

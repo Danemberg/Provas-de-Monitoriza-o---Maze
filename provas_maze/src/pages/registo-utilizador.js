@@ -1,6 +1,6 @@
 import React from 'react'
 import {withRouter} from 'react-router-dom'
-
+import { Link } from 'react-router-dom'
 
 
 
@@ -78,7 +78,7 @@ class RegistoUtilizador extends React.Component{
                             </div>
                         </div>
                         <div>
-                            <button type="button" class="botao">Salvar</button>
+                            <Link to="/paginaprincipal-adm" type="button" class="btn botao">Salvar</Link>
                         </div> 
                     </div> 
                 </div> 

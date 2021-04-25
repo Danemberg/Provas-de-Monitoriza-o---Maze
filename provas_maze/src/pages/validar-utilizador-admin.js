@@ -36,11 +36,11 @@ class ValidarUtilizador extends React.Component{
                                     <td>Docente</td>
                                     <td>
 
-                                        <button className="botao-visualizar">Visualizar</button>  
-                                        <a href="" className="edit">
-                                        <i class="material-icons">check</i></a>
+                                        <Link type="button" to="/registar-utilizador/:email?" className=" btn botao-visualizar">Visualizar</Link> 
+                                        <a href="" className="confirmar">
+                                        <i className="material-icons">check</i></a>
                                         <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
-                                        <i class="material-icons">clear</i></a>
+                                        <i className="material-icons">clear</i></a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -53,8 +53,8 @@ class ValidarUtilizador extends React.Component{
                                     <td>Joana Carneiro</td>
                                     <td>Psicóloga</td>
                                     <td>
-                                        <button className="botao-visualizar">Visualizar</button>  
-                                        <a href="" className="edit">
+                                        <Link type="button" to="/registar-utilizador/:email?" className=" btn botao-visualizar">Visualizar</Link>
+                                        <a href="" className="confirmar">
                                         <i class="material-icons">check</i></a>
                                         <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
                                         <i class="material-icons">clear</i></a>
@@ -71,8 +71,8 @@ class ValidarUtilizador extends React.Component{
                                     <td>João Santos de Oliveira</td>
                                     <td>Docente</td>
                                     <td>
-                                        <button className="botao-visualizar">Visualizar</button>  
-                                        <a href="" className="edit">
+                                        <Link type="button" to="/registar-utilizador/:email?" className=" btn botao-visualizar">Visualizar</Link>
+                                        <a href="" className="confirmar">
                                         <i class="material-icons">check</i></a>
                                         <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
                                         <i class="material-icons">clear</i></a>
@@ -88,8 +88,8 @@ class ValidarUtilizador extends React.Component{
                                     <td>Ana Maria Carvalho</td>
                                     <td>Docente</td>
                                     <td>
-                                        <button className="botao-visualizar">Visualizar</button>  
-                                        <a href="" className="edit">
+                                        <Link type="button" to="/registar-utilizador/:email?" className=" btn botao-visualizar">Visualizar</Link>
+                                        <a href="" className="confirmar">
                                         <i class="material-icons">check</i></a>
                                         <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
                                         <i class="material-icons">clear</i></a>
@@ -105,8 +105,8 @@ class ValidarUtilizador extends React.Component{
                                     <td>Rui Alberto Ferreira</td>
                                     <td>Docente</td>
                                     <td>
-                                        <button className="botao-visualizar">Visualizar</button>  
-                                        <a href="" className="edit">
+                                        <Link type="button" to="/registar-utilizador/:email?" className=" btn botao-visualizar">Visualizar</Link> 
+                                        <a href="" className="confirmar">
                                         <i class="material-icons">check</i></a>
                                         <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
                                         <i class="material-icons">clear</i></a>

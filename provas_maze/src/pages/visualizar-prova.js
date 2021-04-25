@@ -11,12 +11,13 @@ class VisualizarProva extends React.Component{
     render(){
         return(
             <div className="container-xl cabecalho-prova">
-             <img className="navbar-left" src={Logo} height="30" width="50" />
-              Provas de Monitorização com base no Currículo - Maze 
+            
                 <div className="table-responsive">
+                <img className="navbar-left" src={Logo} height="30" width="50" />
+                     Provas de Monitorização com base no Currículo - Maze 
                     <div className="table-wrapper1">
                         <table className="table table-striped table-hover">
-                        Nome:____________________________________________________________________Idade:________Data:___________  
+                        Código:_____________Nome:________________________________________________________Idade:________Data:___________  
                         </table>
                     </div>
                 </div>

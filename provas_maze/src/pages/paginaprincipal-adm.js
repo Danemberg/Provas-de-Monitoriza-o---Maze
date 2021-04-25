@@ -1,11 +1,11 @@
 import React from 'react';
-import {Dropdown} from 'react-bootstrap';
 import '../index.css';
 import {withRouter} from 'react-router-dom'
+import {Dropdown} from 'react-bootstrap';
 import { Link } from 'react-router-dom'
 import Imagem from '../images/imagem_pagina_principal.png'
 
-class PaginaPrincipal extends React.Component{
+class PaginaPrincipalAdm extends React.Component{
     render(){
         return(
             <div>
@@ -20,20 +20,11 @@ class PaginaPrincipal extends React.Component{
                 Bragança
                 <Dropdown className="menu-pp">
                     <Dropdown.Toggle variant="success" id="dropdown-basic" className="menu-pp">
-                        Texto
+                        Opções
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                        <Dropdown.Item href="#/gerir-textos">Gerir Textos</Dropdown.Item>
-                        <Dropdown.Item href="#/listar-textos">Listar Textos</Dropdown.Item>
-                    </Dropdown.Menu>
-                </Dropdown>
-                <Dropdown className="menu-pp1">
-                    <Dropdown.Toggle variant="success" id="dropdown-basic" className="menu-pp1">
-                        Prova
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                        <Dropdown.Item href="#/gerir-textos">Gerir Provas</Dropdown.Item>
-                        <Dropdown.Item href="#/listar-textos">Listar Provas</Dropdown.Item>
+                        <Dropdown.Item href="#/validar-utilizador">Validar acesso</Dropdown.Item>
+                        <Dropdown.Item href="#/gerir-exemplos">Gerir exemplo para provas</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
             </div>
@@ -42,4 +33,4 @@ class PaginaPrincipal extends React.Component{
     }
 }
 
-export default withRouter (PaginaPrincipal);
+export default withRouter (PaginaPrincipalAdm);

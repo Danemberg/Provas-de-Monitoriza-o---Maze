@@ -24,7 +24,7 @@ class ListarTextos extends React.Component{
                                     <th>
                                     </th>
                                     <th className="item-tabela">Título</th>
-                                    <th className="item-tabela">Autor</th>
+                                    <th className="item-tabela">Autor/a:</th>
                                     <th className="item-tabela">Editora do manual</th>
                                     <th className="item-tabela">Ano</th>
                                 </tr>
@@ -42,7 +42,7 @@ class ListarTextos extends React.Component{
                                     <td></td>
                                     <td>3ºano</td>
                                     <td>
-                                        <button className="botao-visualizar">Visualizar</button>  
+                                        <Link to="/visualizar-texto" type="button" className=" btn botao-visualizar">Visualizar</Link>   
                                     </td>
                                 </tr>
                                 <tr>
@@ -57,7 +57,7 @@ class ListarTextos extends React.Component{
                                     <td></td>
                                     <td>5ºano</td>
                                     <td>
-                                        <button className="botao-visualizar">Visualizar</button>  
+                                        <Link to="/visualizar-texto" type="button" className=" btn botao-visualizar">Visualizar</Link>    
                                     </td>
                                 </tr>
                                 <tr>
@@ -73,7 +73,7 @@ class ListarTextos extends React.Component{
                                     <td></td>
                                     <td>5ºano</td>
                                     <td>
-                                        <button className="botao-visualizar">Visualizar</button>  
+                                        <Link to="/visualizar-texto" type="button" className=" btn botao-visualizar">Visualizar</Link>   
                                     </td>
                                 </tr>
                             </tbody>

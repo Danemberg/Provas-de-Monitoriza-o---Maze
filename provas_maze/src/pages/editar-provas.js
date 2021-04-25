@@ -1,5 +1,6 @@
 import React from 'react'
 import {withRouter} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 
@@ -108,7 +109,7 @@ class EditarProvas extends React.Component{
                                 </div>
                             </div> 
                             <div>
-                                <button type="button" class="botao1">Salvar</button>
+                                <Link to="/gerir-provas" type="button" class="btn botao1">Salvar</Link>
                             </div>  
                         </div>
                     </div>

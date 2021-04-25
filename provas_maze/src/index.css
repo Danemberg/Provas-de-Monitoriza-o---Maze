@@ -121,12 +121,19 @@ body{
 }
 .botao-visualizar{
     font-size: 12px;
-    background: darkred;
     border: 0px;
     border-radius: 16px;
     color:darkorange;
+    background-color: darkred ;
     padding: 4px 24px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
 }
+.botao-visualizar:hover{
+    background: #ccbbff;
+    box-shadow: inset 2px 2px 2px rgba(0,0,0,0.2);
+    text-shadow: none;
+}
+
 .my-footer{
     background-color: gray;
     position: fixed;
@@ -155,20 +162,6 @@ body{
     margin: 30px 0;
     border: 2px solid darkred;
     border-radius: 2px;
-
-}
-
-.table-wrapper {
-    background: #fff;
-    padding: 20px 25px;
-    border-radius: 3px;
-    min-width: 1000px;
-    box-shadow: 0 1px 1px rgba(0,0,0,.05);
-}
-.table-wrapper1{
-    background: #fff;
-    padding: 20px 25px;
-    border-radius: 3px;
 
 }
 .table-title {
@@ -211,19 +204,22 @@ table.table td:last-child i {
 }
 table.table td a {
     font-weight: bold;
-    color: darkred;
     display: inline-block;
     text-decoration: none;
     outline: none !important;
 }
-table.table td a:hover {
-    color: #2196F3;
-}
+
 table.table td a.edit {
     color: darkorange;
 }
 table.table td a.delete {
     color: darkred;
+}
+table.table td a.confirmar{
+    color:green
+}
+.confirmar:hover{
+    color:green
 }
 table.table td i {
     font-size: 19px;
@@ -259,6 +255,12 @@ input[type="checkbox"]:checked + label {
     color: green;
     height: 20px;
 }
+.icone-add{
+    color: white;
+}
+.icone-add:hover{
+    color: white;
+}
 .cabecalho-prova{
     font-size: 18px;
     margin-top: 70px;
@@ -267,3 +269,37 @@ input[type="checkbox"]:checked + label {
 .titulo-prova{
     margin-left: 20px;
 }
+.info-icone{
+    color: #870B5A;
+    position: absolute;
+    right: 10px;
+    margin-top: 15px;
+}
+.imagem-pp{
+    margin-top: 100px;
+    left:5px
+}
+.menu-pp{
+    bottom:60%;
+    Right: 30%;
+    position: fixed;
+    border: 0px;
+    border-radius: 16px;
+    padding: 4px 24px;
+    margin-left: -90%;
+    background-color:darkred;
+    color: darkorange
+}
+.menu-pp1{
+    bottom:60%;
+    Right: 20%;
+    position: fixed;
+    border: 0px;
+    border-radius: 16px;
+    padding: 4px 24px;
+    margin-left: -90%;
+    background-color:#870B5A;
+    color:darkred
+}
+
+
