@@ -285,10 +285,10 @@ input[type="checkbox"]:checked + label {
     position: fixed;
     border: 0px;
     border-radius: 16px;
-    padding: 4px 24px;
+    padding: 8px 36px;
     margin-left: -90%;
-    background-color:darkred;
-    color: darkorange
+    background-color:gray;
+    color: white
 }
 .menu-pp1{
     bottom:60%;
@@ -296,10 +296,24 @@ input[type="checkbox"]:checked + label {
     position: fixed;
     border: 0px;
     border-radius: 16px;
-    padding: 4px 24px;
+    padding: 8px 36px;
     margin-left: -90%;
     background-color:#870B5A;
-    color:darkred
+    color: white
+}
+.menu-pp2{
+    bottom:60%;
+    Right: 20%;
+    position: fixed;
+    border: 0px;
+    border-radius: 16px;
+    padding: 8px 36px;
+    margin-left: -90%;
+    background-color:darkorange;
+    color: white
 }
 
+.dropdown-item:hover {
+      background-color:darkorange;
 
+}

@@ -18,13 +18,13 @@ class PaginaPrincipalAdm extends React.Component{
                 Instituto Politécnico de Bragança
                 <br></br>
                 Bragança
-                <Dropdown className="menu-pp">
-                    <Dropdown.Toggle variant="success" id="dropdown-basic" className="menu-pp">
+                <Dropdown>
+                    <Dropdown.Toggle variant="menu-pp" id="dropdown-basic" className="menu-pp2">
                         Opções
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                        <Dropdown.Item href="#/validar-utilizador">Validar acesso</Dropdown.Item>
-                        <Dropdown.Item href="#/gerir-exemplos">Gerir exemplo para provas</Dropdown.Item>
+                        <Dropdown.Item as="item" href="#/gerir-textos">Validar acesso</Dropdown.Item>
+                        <Dropdown.Item href="#/listar-textos">Gerir exemplo para provas</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
             </div>
