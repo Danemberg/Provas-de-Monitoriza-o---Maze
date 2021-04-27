@@ -18,24 +18,25 @@ class PaginaPrincipal extends React.Component{
                 Instituto Politécnico de Bragança
                 <br></br>
                 Bragança
-                <Dropdown className="menu-pp">
-                    <Dropdown.Toggle variant="success" id="dropdown-basic" className="menu-pp">
+                <Dropdown>
+                    <Dropdown.Toggle variant="menu-pp" id="dropdown-basic" className="menu-pp">
                         Texto
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                        <Dropdown.Item href="#/gerir-textos">Gerir Textos</Dropdown.Item>
+                        <Dropdown.Item as="item" href="#/gerir-textos">Gerir Textos</Dropdown.Item>
                         <Dropdown.Item href="#/listar-textos">Listar Textos</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
-                <Dropdown className="menu-pp1">
-                    <Dropdown.Toggle variant="success" id="dropdown-basic" className="menu-pp1">
+                <Dropdown>
+                    <Dropdown.Toggle variant="menu-pp1" id="dropdown-basic" className="menu-pp1">
                         Prova
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                        <Dropdown.Item href="#/gerir-textos">Gerir Provas</Dropdown.Item>
-                        <Dropdown.Item href="#/listar-textos">Listar Provas</Dropdown.Item>
+                        <Dropdown.Item href="#/gerir-provas">Gerir Provas</Dropdown.Item>
+                        <Dropdown.Item href="#/listar-provas">Listar Provas</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
+                
             </div>
         )   
        
