@@ -227,6 +227,9 @@ table.table td i {
 .item-tabela{
     color: #870B5A;
 }
+.botao-tabela{
+    width: 135px;
+}
 .pagination a{
     color:darkorange;
     border-radius: 5px;
@@ -256,9 +259,6 @@ input[type="checkbox"]:checked + label {
     height: 20px;
 }
 .icone-add{
-    color: white;
-}
-.icone-add:hover{
     color: white;
 }
 .cabecalho-prova{
@@ -316,4 +316,7 @@ input[type="checkbox"]:checked + label {
 .dropdown-item:hover {
       background-color:darkorange;
 
+}
+.ab{
+    color: darkred;
 }

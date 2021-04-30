@@ -23,7 +23,7 @@ class PaginaPrincipal extends React.Component{
                         Texto
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                        <Dropdown.Item as="item" href="#/gerir-textos">Gerir Textos</Dropdown.Item>
+                        <Dropdown.Item href="#/gerir-textos">Gerir Textos</Dropdown.Item>
                         <Dropdown.Item href="#/listar-textos">Listar Textos</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>

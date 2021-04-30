@@ -23,8 +23,8 @@ class PaginaPrincipalAdm extends React.Component{
                         Opções
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                        <Dropdown.Item as="item" href="#/gerir-textos">Validar acesso</Dropdown.Item>
-                        <Dropdown.Item href="#/listar-textos">Gerir exemplo para provas</Dropdown.Item>
+                        <Dropdown.Item href="#/validar-utilizador">Validar acesso</Dropdown.Item>
+                        <Dropdown.Item href="#/gerir-exemplos">Gerir exemplo para provas</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
             </div>

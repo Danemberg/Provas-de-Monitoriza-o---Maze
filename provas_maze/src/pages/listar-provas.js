@@ -31,10 +31,7 @@ class ListarProvas extends React.Component{
                             <tbody>
                                 <tr>
                                     <td>
-                                        <span className="custom-checkbox">
-                                            <input type="checkbox" id="selectAll"></input>
-                                            <label for="selectAll"></label>
-                                        </span>
+                           
                                     </td>
                                     <td>Prova 1</td>
                                     <td>15/03/2021</td>
@@ -45,10 +42,7 @@ class ListarProvas extends React.Component{
                                 </tr>
                                 <tr>
                                     <td>
-                                        <span className="custom-checkbox">
-                                            <input type="checkbox" id="selectAll"></input>
-                                            <label for="selectAll"></label>
-                                        </span>
+                                      
                                     </td>
                                     <td>Prova 2</td>
                                     <td>20/03/2021</td>
@@ -59,15 +53,11 @@ class ListarProvas extends React.Component{
                                 </tr>
                                 <tr>
                                     <td>
-                                        <span className="custom-checkbox">
-                                            <input type="checkbox" id="selectAll"></input>
-                                            <label for="selectAll"></label>
-                                        </span>
                                            
                                     </td>
                                     <td>Prova 3</td>
                                     <td>22/03/2021</td>
-                                    <td>Turma C</td>
+                                    <td>Turma</td>
                                     <td>
                                         <Link to="/visualizar-prova" type="button" className=" btn botao-visualizar">Visualizar</Link>   
                                     </td>

@@ -29,18 +29,15 @@ class GerirProvas extends React.Component{
                                     <th className="item-tabela">Data</th>
                                     <th className="item-tabela">Ano</th>
                                     <th>
-                                    <Link to="/criar-provas" class="btn btn-success"></Link>
-                                    <Link to="/criar-provas" class="material-icons icone-add">&#xE147;<span>Adicionar Provas</span></Link>
+                                    <Link to="/criar-exemplos" className="btn btn-success botao-tabela ">
+                                    <i class="material-icons icone-add">&#xE147;</i> <span>Adicionar</span></Link>    
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>
-                                        <span className="custom-checkbox">
-                                            <input type="checkbox" id="selectAll"></input>
-                                            <label for="selectAll"></label>
-                                        </span>
+                                        
                                     </td>
                                     <td>Prova 1</td>
                                     <td>15/03/2021</td>
@@ -54,10 +51,7 @@ class GerirProvas extends React.Component{
                                 </tr>
                                 <tr>
                                     <td>
-                                        <span className="custom-checkbox">
-                                            <input type="checkbox" id="selectAll"></input>
-                                            <label for="selectAll"></label>
-                                        </span>
+                                     
                                     </td>
                                     <td>Prova 2</td>
                                     <td>20/03/2021</td>
@@ -71,11 +65,7 @@ class GerirProvas extends React.Component{
                                 </tr>
                                 <tr>
                                     <td>
-                                        <span className="custom-checkbox">
-                                            <input type="checkbox" id="selectAll"></input>
-                                            <label for="selectAll"></label>
-                                        </span>
-                                           
+                                     
                                     </td>
                                     <td>Prova 3</td>
                                     <td>22/03/2021</td>

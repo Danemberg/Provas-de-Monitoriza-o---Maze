@@ -32,10 +32,7 @@ class ListarTextos extends React.Component{
                             <tbody>
                                 <tr>
                                     <td>
-                                        <span className="custom-checkbox">
-                                            <input type="checkbox" id="selectAll"></input>
-                                            <label for="selectAll"></label>
-                                        </span>
+                           
                                     </td>
                                     <td>Prova 1</td>
                                     <td>Antonio Fernandes</td>
@@ -47,10 +44,7 @@ class ListarTextos extends React.Component{
                                 </tr>
                                 <tr>
                                     <td>
-                                        <span className="custom-checkbox">
-                                            <input type="checkbox" id="selectAll"></input>
-                                            <label for="selectAll"></label>
-                                        </span>
+                                       
                                     </td>
                                     <td>Prova 2</td>
                                     <td>Carolina Nogueira</td>
@@ -62,11 +56,7 @@ class ListarTextos extends React.Component{
                                 </tr>
                                 <tr>
                                     <td>
-                                        <span className="custom-checkbox">
-                                            <input type="checkbox" id="selectAll"></input>
-                                            <label for="selectAll"></label>
-                                        </span>
-                                           
+                                      
                                     </td>
                                     <td>Prova 3</td>
                                     <td>Fernando Costa</td>

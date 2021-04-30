@@ -22,20 +22,20 @@ class ValidarUtilizador extends React.Component{
                                     </th>
                                     <th className="item-tabela">Nome</th>
                                     <th className="item-tabela">Tipo</th>
+                                    <th></th>
+                                    <th></th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>
-                                        <span className="custom-checkbox">
-                                            <input type="checkbox" id="selectAll"></input>
-                                            <label for="selectAll"></label>
-                                        </span>
                                     </td>
                                     <td>Antonio Moreira</td>
                                     <td>Docente</td>
+                                    <td></td>
+                                    <td></td>
                                     <td>
-
                                         <Link type="button" to="/registar-utilizador/:email?" className=" btn botao-visualizar">Visualizar</Link> 
                                         <a href="" className="confirmar">
                                         <i className="material-icons">check</i></a>
@@ -45,13 +45,12 @@ class ValidarUtilizador extends React.Component{
                                 </tr>
                                 <tr>
                                     <td>
-                                        <span className="custom-checkbox">
-                                            <input type="checkbox" id="selectAll"></input>
-                                            <label for="selectAll"></label>
-                                        </span>
+                                       
                                     </td>
                                     <td>Joana Carneiro</td>
                                     <td>Psicóloga</td>
+                                    <td></td>
+                                    <td></td>
                                     <td>
                                         <Link type="button" to="/registar-utilizador/:email?" className=" btn botao-visualizar">Visualizar</Link>
                                         <a href="" className="confirmar">
@@ -62,14 +61,12 @@ class ValidarUtilizador extends React.Component{
                                 </tr>
                                 <tr>
                                     <td>
-                                        <span className="custom-checkbox">
-                                            <input type="checkbox" id="selectAll"></input>
-                                            <label for="selectAll"></label>
-                                        </span>
-                                           
+                                  
                                     </td>
                                     <td>João Santos de Oliveira</td>
                                     <td>Docente</td>
+                                    <td></td>
+                                    <td></td>
                                     <td>
                                         <Link type="button" to="/registar-utilizador/:email?" className=" btn botao-visualizar">Visualizar</Link>
                                         <a href="" className="confirmar">
@@ -80,13 +77,12 @@ class ValidarUtilizador extends React.Component{
                                 </tr>
                                 <tr>
                                     <td>
-                                        <span className="custom-checkbox">
-                                            <input type="checkbox" id="selectAll"></input>
-                                            <label for="selectAll"></label>
-                                        </span>
+                                      
                                     </td>
                                     <td>Ana Maria Carvalho</td>
                                     <td>Docente</td>
+                                    <td></td>
+                                    <td></td>
                                     <td>
                                         <Link type="button" to="/registar-utilizador/:email?" className=" btn botao-visualizar">Visualizar</Link>
                                         <a href="" className="confirmar">
@@ -97,13 +93,12 @@ class ValidarUtilizador extends React.Component{
                                 </tr>
                                 <tr>
                                     <td>
-                                        <span className="custom-checkbox">
-                                            <input type="checkbox" id="selectAll"></input>
-                                            <label for="selectAll"></label>
-                                        </span>
+                                       
                                     </td>
                                     <td>Rui Alberto Ferreira</td>
                                     <td>Docente</td>
+                                    <td></td>
+                                    <td></td>
                                     <td>
                                         <Link type="button" to="/registar-utilizador/:email?" className=" btn botao-visualizar">Visualizar</Link> 
                                         <a href="" className="confirmar">
