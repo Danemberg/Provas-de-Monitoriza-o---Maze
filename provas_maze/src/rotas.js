@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {Switch, Route, Link} from 'react-router-dom'
+import {Switch, Route, BrowserRouter, Redirect} from 'react-router-dom'
 
 import Login from './pages/login'
 import PaginaPrincipal from './pages/paginaprincipal'
@@ -22,7 +22,6 @@ import EditarTextos from './pages/editar-textos'
 import ListarTextos from './pages/listar-textos'
 import VisualizarTexto from './pages/visualizar-texto'
 import PaginaPrincipalAdm from './pages/paginaprincipal-adm'
-import Navbar from './components/navbar'
 import Footer from './components/footer'
 
 
@@ -30,32 +29,8 @@ import Footer from './components/footer'
 export default () => {
     return( //exact significa true; exact={false}
         <div>
-       <Navbar>
-            <a href="/pagina-principal"></a>
-            <a href="/registar-utilizador"></a>
-            <a href="/validar-utilizador"></a>
-            <a href="/registar-utilizador/:email?"></a>
-            <a href="/gerir-exemplos"></a>
-            <a href="/criar-exemplos"></a>
-            <a href="/editar-exemplos"></a>
-            <a href="/gerir-provas"></a>
-            <a href="/instrucao-prova"></a>
-            <a href="/listar-provas"></a>
-            <a href="/criar-provas"></a>
-            <a href="/editar-provas"></a>
-            <a href="/visualizar-prova"></a>
-            <a href="/gerir-textos"></a>
-            <a href="/criar-textos"></a>
-            <a href="/editar-textos"></a>
-            <a href="/listar-textos"></a>
-            <a href="/visualizar-texto"></a>
-            <a href="/paginaprincipal-adm"></a>
-        </Navbar>
-
-        <Footer>
-        <a href="/pagina-principal"></a>
-        <a href="/paginaprincipal-adm"></a>
-        </Footer>
+      
+        <Footer/>
         <main>
             <Switch>
                 <Route exact path="/" component={Login}/> 
