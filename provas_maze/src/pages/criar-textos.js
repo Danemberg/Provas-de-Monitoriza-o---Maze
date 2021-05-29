@@ -1,55 +1,27 @@
-import React , {alert} from 'react'
-import {withRouter, Link} from 'react-router-dom'
+import React , {useState,alert} from 'react'
+import {Link, useHistory} from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
+import axios from 'axios';
 
-
-class CriarTextos extends React.Component{
-   state={
-       titulo: "",
-       autor: "",
-       editora_manual: "",
-       ano: "",
-       conteudo: ""
-   };
-   async insertTextos() {
-    var data = {
-      titulo: this.state.titulo,
-      autor: this.state.autor,
-      editora_manual: this.state.editora_manual,
-      ano: this.state.ano,
-      conteudo: this.state.conteudo,
-    };
-    console.log(data);
-    var formBody = [];
-    for (var property in data) {
-      var encodedKey = encodeURIComponent(property);
-      var encodedValue = encodeURIComponent(data[property]);
-      formBody.push(encodedKey + "=" + encodedValue);
-    }
-    formBody = formBody.join("&");
-    console.log("---------");
-    console.log(formBody);
-    try {
-      let response = await fetch(
-        `http://192.168.1.84/projeto-maze/web/rest/texto`,
-        {
-          method: "POST",
-          headers: {
-             "Accept": 'application/json',
-            "Content-Type": "application/json",
-          },
-          body: formBody,
-        }
-      );
-      if (response.status >= 200 && response.status < 300) {
-        alert("Texto criado com sucesso!!!");
-      }
-    } catch (errors) {
-      alert(errors);
-    }
+const CriarTextos = () => {
+  let history = useHistory()
+  const [textos, setTexto] = useState({
+    titulo: "",
+    autor: "",
+    editora_manual: "",
+    ano: "",
+    conteudo:""
+  })
+ 
+  const{titulo, autor, editora_manual, ano, conteudo} = textos;
+  const onInputChange = e =>{
+   setTexto({...textos,[e.target.titulo]: e.target.value})
   }
-
-    render(){
+  const onSubmit = async e =>{
+    e.preventDefault()
+    await axios.post("http://192.168.1.84/projeto-maze/web/rest/texto", textos);
+    history.push("/gerir-textos")
+  };
         return(  
         <div>
             <nav className="navbar navbar-expand-lg my-navbar">     
@@ -67,61 +39,60 @@ class CriarTextos extends React.Component{
                         </ul>  
                     </div>
                 </nav>
-            <div class="card border-danger mb-3 my-card">
-                <div class="card-header titulo">Criar texto:
-                    <div class="card-body">
+            <div className="card border-danger mb-3 my-card">
+                <div className="card-header titulo">Criar texto:
+                    <div className="card-body">
                     <div className="row">
                       <div className="col-sm">
-                        <div class="form-group row campo">
+                        <div className="form-group row campo">
                                 <label for="exampleInputPassword1">Titulo:</label>
-                            <div class="col-sm">
-                                <input type="text" class="form-control " id="exampleInputPassword1"  onChangeText={(text) => {
-                                this.setState({ titulo: text });
-                                }}/>
+                            <div className="col-sm">
+                                <input type="text" className="form-control " name="titulo"
+                                 value={titulo}
+                                 onChange={e => onInputChange(e)}/>
                             </div>
                         </div>
                       </div>
                       <div className="col-sm">
-                        <div class="form-group row campo">
+                        <div onSubmit={e =>onSubmit(e)} className="form-group row campo">
                                 <label for="exampleInputPassword1">Autor/a:</label>
-                            <div class="col-sm">
-                                <input type="text" class="form-control " id="exampleInputPassword1"  onChangeText={(text) => {
-                                this.setState({ autor: text });
-                                }}/>
+                            <div className="col-sm">
+                                <input type="text" className="form-control " name="autor"
+                              value={autor}
+                              onChange={e => onInputChange(e)}/>
                             </div>
                         </div>
                       </div>
                     </div>
                         <div className="row-sm">
-                            <div class="form-group row campo">
+                            <div className="form-group row campo">
                                     <label for="exampleInputPassword1">Editora do manual:</label>
-                                <div class="col-sm-5">
-                                    <input type="text" class="form-control " id="exampleInputPassword1"  onChangeText={(text) => {
-                                    this.setState({ editora_manual: text });
-                                    }}/>
+                                <div className="col-sm-5">
+                                    <input type="text" className="form-control " name="editora"
+                                    value={editora_manual}
+                                    onChange={e => onInputChange(e)}/>
                                 </div>
                             </div>
-                            <div class="form-group row campo">
+                            <div className="form-group row campo">
                                         <label for="exampleTextarea">Insira o texto:</label>
-                                    <div class="col-lg-10">
-                                        <textarea class="form-control" id="exampleTextarea" rows="8"  onChangeText={(text) => {
-                                        this.setState({ conteudo: text });
-                                        }}/>
+                                    <div className="col-lg-10">
+                                        <textarea className="form-control" name="conteudo" rows="8"  
+                                       value={conteudo}
+                                       onChange={e => onInputChange(e)}/>
                                     </div>
                                 </div>
                                 <div className="col-sm-6">
-                                    <div class="form-group row campo">
+                                    <div className="form-group row campo">
                                         <label for="exampleSelect1">Ano:</label>
-                                        <div class="col-sm-5">
-                                            <select class="form-control" id="exampleSelect1">
-                                            <option>2.ºano</option>
-                                            <option>3.ºano</option>
-                                            <option>4.ºano</option>
+                                        <div className="col-sm-5">
+                                            <select className="form-control" name="ano">
+                                            <option value={ano}
+                                            onChange={e => onInputChange(e)}></option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
-                                <Link  type="button" class="btn botao1" onPress={() => this.insertTextos()}>Criar</Link>
+                                <Link to="/gerir-textos" type="button" className="btn botao1">Criar</Link>
                             </div>
                         </div>
                     </div>
@@ -129,7 +100,6 @@ class CriarTextos extends React.Component{
         </div>
         )
     }
-}
 
 
-export default withRouter (CriarTextos);
+export default CriarTextos;

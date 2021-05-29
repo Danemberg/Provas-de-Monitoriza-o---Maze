@@ -1,13 +1,26 @@
-import React from 'react';
+import React, {useEffect,useState} from 'react';
 import '../index.css';
 import {withRouter} from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
+import axios from 'axios';
 
 
-
-class GerirProvas extends React.Component{
-    render(){
+function GerirProvas(){
+    const [provas, setProva] = useState([]);
+    
+      useEffect(()=>{
+           loadProvas();
+      }, []);
+      const loadProvas = async () =>{
+          const result = await axios.get("http://192.168.1.84/projeto-maze/web/rest/prova");
+          console.log(result);
+          setProva(result.data)
+      }
+      const deleteProva = async id =>{
+        await axios.delete(`http://192.168.1.84/projeto-maze/web/rest/prova/${id}`)
+        loadProvas();
+      }
         return(
             <div>
                 <nav className="navbar navbar-expand-lg my-navbar">     
@@ -51,48 +64,21 @@ class GerirProvas extends React.Component{
                                     </tr>
                                 </thead>
                                 <tbody>
+                                {
+                                provas.map((prova, index) =>(
                                     <tr>
-                                        <td>
-                                            
-                                        </td>
-                                        <td>Prova 1</td>
-                                        <td>15/03/2021</td>
-                                        <td>1ºano/2ºano</td>
+                                        <th scope="row">{index + 1}</th>
+                                        <td>{prova.titulo}</td>
+                                        <td>{prova.data_de_realizacao}</td>
+                                        <td>{prova.ano}</td>
                                         <td>
                                             <Link to="/editar-provas" className="edit">
                                             <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></Link>
-                                            <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
-                                            <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+                                            <Link onClick={()=> deleteProva(prova.id)} href="#deleteEmployeeModal" className="delete" data-toggle="modal">
+                                            <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></Link>  
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                        
-                                        </td>
-                                        <td>Prova 2</td>
-                                        <td>20/03/2021</td>
-                                        <td>3ºano/4ºano</td>
-                                        <td>
-                                            <Link to="/editar-provas" className="edit">
-                                            <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></Link>
-                                            <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
-                                            <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
-                                    </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                        
-                                        </td>
-                                        <td>Prova 3</td>
-                                        <td>22/03/2021</td>
-                                        <td>5ºano</td>
-                                        <td>
-                                            <Link to="/editar-provas" className="edit">
-                                            <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></Link>
-                                            <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
-                                            <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
-                                        </td>
-                                    </tr>
+                                        </tr>   
+                                    ))}  
                                 </tbody>
                             </table>
                             <div className="clearfix">
@@ -113,6 +99,5 @@ class GerirProvas extends React.Component{
         )
        
     }
-}
 
-export default withRouter (GerirProvas);
+export default GerirProvas;

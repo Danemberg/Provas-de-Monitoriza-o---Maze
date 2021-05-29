@@ -15,7 +15,7 @@ function ListarProvas(){
       const loadProvas = async () =>{
           const result = await axios.get("http://192.168.1.84/projeto-maze/web/rest/prova");
           console.log(result);
-          setProva(result.data)
+          setProva(result.data.reverse())
       }
 
         return(
@@ -62,7 +62,7 @@ function ListarProvas(){
                                         <td>{prova.titulo}</td>
                                         <td>{prova.data_de_realizacao}</td>
                                         <td>{prova.ano}</td>
-                                        <td><Link to="/visualizar-texto" type="button" className=" btn botao-visualizar">Visualizar</Link></td> 
+                                        <td><Link to={`visualizar-prova/${prova.id}`} type="button" className=" btn botao-visualizar">Visualizar</Link></td> 
                                     </tr>
                               ))}   
                                     

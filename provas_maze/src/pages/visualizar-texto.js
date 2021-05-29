@@ -1,14 +1,22 @@
-import React from 'react';
+import React, {useEffect,useState} from 'react';
 import '../index.css';
-import {withRouter} from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
+import axios from 'axios';
 
 
-
-
-class VisualizarTexto extends React.Component{
-    render(){
+function VisualizarTexto(){
+    const [textos, setTexto] = useState([]);
+    
+      useEffect(()=>{
+           loadTextos();
+      }, []);
+      const loadTextos = async () =>{
+          const result = await axios.get("http://192.168.1.84/projeto-maze/web/rest/texto");
+          console.log(result);
+          setTexto(result.data)
+      }
+   
         return(
             <div>
                 <nav className="navbar navbar-expand-lg my-navbar">     
@@ -26,10 +34,13 @@ class VisualizarTexto extends React.Component{
                             </ul>  
                         </div>
                     </nav>
+                    <li>       
+                                    {textos.conteudo}                       
+                    </li>
             </div>
         )
        
     }
-}
 
-export default withRouter (VisualizarTexto);
+
+export default VisualizarTexto;

@@ -1,14 +1,39 @@
-import React from 'react'
-import {withRouter} from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import React , {useState,alert, useEffect} from 'react'
+import {Link, useHistory, useParams} from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
+import axios from 'axios';
 
+const EditarTextos = () => {
+    let history = useHistory()
+    const {id} = useParams();
+    const [textos, setTexto] = useState({
+      titulo: "",
+      autor: "",
+      editora_manual: "",
+      ano: "",
+      conteudo:""
+    })
+   
+    const{titulo, autor, editora_manual, ano, conteudo} = textos;
+    const onInputChange = e =>{
+     setTexto({...textos,[e.target.titulo]: e.target.value});
+    };
 
-
-class EditarTextos extends React.Component{
-
-    render(){
-        return(  
+    useEffect(() => {
+        loadTextos();
+    }, []);
+    
+    const onSubmit = async e =>{
+      e.preventDefault()
+      await axios.put(`http://192.168.1.84/projeto-maze/web/rest/texto/${id}`, textos);
+      history.push("/gerir-textos")
+    };
+    
+    const loadTextos = async () =>{
+        const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/texto/${id}`)
+        setTexto(result.data);
+    }
+    return(  
         <div>
             <nav className="navbar navbar-expand-lg my-navbar">     
                     <div className="collapse navbar-collapse">
@@ -25,53 +50,60 @@ class EditarTextos extends React.Component{
                         </ul>  
                     </div>
                 </nav>
-            <div class="card border-danger mb-3 my-card">
-                <div class="card-header titulo">Editar texto:
-                    <div class="card-body">
+            <div className="card border-danger mb-3 my-card">
+                <div className="card-header titulo">Editar texto:
+                    <div className="card-body">
                     <div className="row">
                       <div className="col-sm">
-                        <div class="form-group row campo">
+                        <div className="form-group row campo">
                                 <label for="exampleInputPassword1">Titulo:</label>
-                            <div class="col-sm">
-                                <input type="text" class="form-control " id="exampleInputPassword1"></input>
+                            <div className="col-sm">
+                                <input type="text" className="form-control " name="titulo"
+                                 value={titulo}
+                                 onChange={e => onInputChange(e)}/>
                             </div>
                         </div>
                       </div>
                       <div className="col-sm">
-                        <div class="form-group row campo">
+                        <div onSubmit={e =>onSubmit(e)} className="form-group row campo">
                                 <label for="exampleInputPassword1">Autor/a:</label>
-                            <div class="col-sm">
-                                <input type="text" class="form-control " id="exampleInputPassword1"></input>
+                            <div className="col-sm">
+                                <input type="text" className="form-control " name="autor"
+                              value={autor}
+                              onChange={e => onInputChange(e)}/>
                             </div>
                         </div>
                       </div>
                     </div>
                         <div className="row-sm">
-                            <div class="form-group row campo">
+                            <div className="form-group row campo">
                                     <label for="exampleInputPassword1">Editora do manual:</label>
-                                <div class="col-sm-5">
-                                    <input type="text" class="form-control " id="exampleInputPassword1"></input>
+                                <div className="col-sm-5">
+                                    <input type="text" className="form-control " name="editora"
+                                    value={editora_manual}
+                                    onChange={e => onInputChange(e)}/>
                                 </div>
                             </div>
-                            <div class="form-group row campo">
+                            <div className="form-group row campo">
                                         <label for="exampleTextarea">Insira o texto:</label>
-                                    <div class="col-lg-10">
-                                        <textarea class="form-control" id="exampleTextarea" rows="8"></textarea>
+                                    <div className="col-lg-10">
+                                        <textarea className="form-control" name="conteudo" rows="8"  
+                                       value={conteudo}
+                                       onChange={e => onInputChange(e)}/>
                                     </div>
                                 </div>
                                 <div className="col-sm-6">
-                                    <div class="form-group row campo">
+                                    <div className="form-group row campo">
                                         <label for="exampleSelect1">Ano:</label>
-                                        <div class="col-sm-5">
-                                            <select class="form-control" id="exampleSelect1">
-                                            <option>1º/2ºano</option>
-                                            <option>3º/4ºano</option>
-                                            <option>5ºano</option>
+                                        <div className="col-sm-5">
+                                            <select className="form-control" name="ano">
+                                            <option value={ano}
+                                            onChange={e => onInputChange(e)}></option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
-                                <Link to="/gerir-textos" type="button" class="btn botao1">Salvar</Link>
+                                <Link to="/gerir-textos" type="button" className="btn botao1">Criar</Link>
                             </div>
                         </div>
                     </div>
@@ -79,7 +111,7 @@ class EditarTextos extends React.Component{
         </div>
         )
     }
-}
 
 
-export default withRouter (EditarTextos);
+
+export default EditarTextos;

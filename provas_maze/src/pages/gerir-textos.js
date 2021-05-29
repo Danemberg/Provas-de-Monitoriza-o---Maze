@@ -1,13 +1,26 @@
-import React from 'react';
+import React, {useEffect,useState} from 'react';
 import '../index.css';
 import {withRouter} from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
+import axios from 'axios';
 
 
-
-class GerirTextos extends React.Component{
-    render(){
+function GerirTextos(){
+    const [textos, setTexto] = useState([]);
+    
+      useEffect(()=>{
+           loadTextos();
+      }, []);
+      const loadTextos = async () =>{
+          const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/texto`);
+          console.log(result);
+          setTexto(result.data)
+      }
+      const deleteTexto = async id =>{
+        await axios.delete(`http://192.168.1.84/projeto-maze/web/rest/texto/${id}`)
+        loadTextos();
+      }
         return(
             <div>
                  <nav className="navbar navbar-expand-lg my-navbar">     
@@ -29,7 +42,7 @@ class GerirTextos extends React.Component{
                     <div className="titulo">
                     Gerir Textos:
                     </div>
-                    <div class="col-sm-6">
+                    <div className="col-sm-6">
                             
                         </div>
                     <div className="table-responsive">
@@ -45,57 +58,27 @@ class GerirTextos extends React.Component{
                                         <th className="item-tabela">Ano</th>
                                         <th>
                                         <Link to="/criar-textos" className="btn btn-success botao-tabela ">
-                                        <i class="material-icons icone-add">&#xE147;</i> <span>Adicionar</span></Link>    
+                                        <i className="material-icons icone-add">&#xE147;</i> <span>Adicionar</span></Link>    
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                {
+                                textos.map((texto, index) =>(
                                     <tr>
+                                        <th scope="row">{index + 1}</th>
+                                        <td>{texto.titulo}</td>
+                                        <td>{texto.autor}</td>
+                                        <td>{texto.editora_manual}</td>
+                                        <td>{texto.ano}</td> 
                                         <td>
-                                            
-                                        </td>
-                                        <td>Prova 1</td>
-                                        <td>15/03/2021</td>
-                                        <td></td>
-                                        <td>1ºano/2ºano</td>
-                                        <td>
-                                            <Link to="/editar-textos" className="edit">
+                                            <Link to={`editar-textos/${texto.id}`} className="edit">
                                             <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></Link>
-                                            <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
-                                            <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+                                            <Link onClick={()=> deleteTexto(texto.id)} href="#deleteEmployeeModal" className="delete" data-toggle="modal">
+                                            <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></Link>
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            
-                                        </td>
-                                        <td>Prova 2</td>
-                                        <td>20/03/2021</td>
-                                        <td></td>
-                                        <td>3ºano/4ºano</td>
-                                        <td>
-                                            <Link to="/editar-textos" className="edit">
-                                            <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></Link>
-                                            <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
-                                            <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
-                                    </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                        
-                                            
-                                        </td>
-                                        <td>Prova 3</td>
-                                        <td>22/03/2021</td>
-                                        <td></td>
-                                        <td>5ºano</td>
-                                        <td>
-                                            <Link to="/editar-textos" className="edit">
-                                            <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></Link>
-                                            <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
-                                            <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
-                                        </td>
-                                    </tr>
+                                        </tr>   
+                                                ))}  
                                 </tbody>
                             </table>
                             <div className="clearfix">
@@ -116,6 +99,6 @@ class GerirTextos extends React.Component{
         )
        
     }
-}
 
-export default withRouter (GerirTextos);
+
+export default GerirTextos;

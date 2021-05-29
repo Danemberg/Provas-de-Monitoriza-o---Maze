@@ -37,7 +37,7 @@ class VisualizarProva extends React.Component{
                             </table>
                         </div>
                     </div>
-                    <button className="botao-visualizar">PDF</button>  
+              
             </div>
         </div>
         )

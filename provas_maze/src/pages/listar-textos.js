@@ -14,7 +14,7 @@ function ListarTextos(){
    const loadTextos = async () =>{
        const result = await axios.get("http://192.168.1.84/projeto-maze/web/rest/texto");
        console.log(result);
-       setTexto(result.data)
+       setTexto(result.data.reverse())
    }
 
         return(
@@ -63,7 +63,7 @@ function ListarTextos(){
                                         <td>{texto.autor}</td>
                                         <td>{texto.editora_manual}</td>
                                         <td>{texto.ano}</td> 
-                                        <td><Link to="/visualizar-texto" type="button" className=" btn botao-visualizar">Visualizar</Link></td>       
+                                        <td><Link to={`visualizar-texto/${texto.id}`} type="button" className=" btn botao-visualizar">Visualizar</Link></td>       
                                         </tr>   
                                                 ))}  
                                 </tbody>

@@ -1,12 +1,26 @@
-import React from 'react'
-import {withRouter} from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import React , {useState,alert} from 'react'
+import {Link, useHistory} from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
+import axios from 'axios';
 
 
-class CriarProvas extends React.Component{
-
-    render(){
+const CriarProvas = () => {
+    let history = useHistory()
+    const [provas, setProva] = useState({
+      titulo: "",
+      data_de_realizacao: "",
+      ano: ""
+    })
+   
+    const{titulo, data_de_realizacao, ano} = provas;
+    const onInputChange = e =>{
+     setProva({...provas,[e.target.titulo]: e.target.value})
+    }
+    const onSubmit = async e =>{
+      e.preventDefault()
+      await axios.post("http://192.168.1.84/projeto-maze/web/rest/prova", provas);
+      history.push("/gerir-provas")
+    };
         return(  
         <div>
             <nav className="navbar navbar-expand-lg my-navbar">     
@@ -32,7 +46,9 @@ class CriarProvas extends React.Component{
                         <div class="form-group row campo">
                                 <label for="exampleInputPassword1">Titulo:</label>
                             <div class="col-sm">
-                                <input type="text" class="form-control " id="exampleInputPassword1"></input>
+                                <input type="text" class="form-control " id="exampleInputPassword1" 
+                                value={titulo}
+                                onChange={e => onInputChange(e)}></input>
                             </div>
                         </div>
                       </div>
@@ -40,16 +56,17 @@ class CriarProvas extends React.Component{
                         <div class="form-group row campo">
                                 <label for="exampleInputPassword1">Data:</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control " id="exampleInputPassword1"></input>
+                                <input type="text" class="form-control " id="exampleInputPassword1"
+                                value={data_de_realizacao}
+                                onChange={e => onInputChange(e)}></input>
                             </div>
                             <div className="col-sm ">
                                     <div class="form-group row campo">
                                         <label for="exampleSelect1">Ano:</label>
                                         <div class="col-sm">
                                             <select class="form-control" id="exampleSelect1">
-                                            <option>1º/2ºano</option>
-                                            <option>3º/4ºano</option>
-                                            <option>5ºano</option>
+                                            <option value={ano}
+                                            onChange={e => onInputChange(e)}></option>
                                             </select>
                                         </div>
                                     </div>
@@ -64,10 +81,6 @@ class CriarProvas extends React.Component{
                                         <div class="col-sm-9">
                                             <select class="form-control" id="exampleSelect1">
                                             <option>Exemplo</option>
-                                            <option>Exemplo</option>
-                                            <option>Exemplo</option>
-                                            <option>Exemplo</option>
-                                            <option>Exemplo</option>
                                             </select>
                                         </div>
                                     </div>
@@ -81,10 +94,6 @@ class CriarProvas extends React.Component{
                                             <div class="col-sm-9">
                                                 <select class="form-control" id="exampleSelect1">
                                                 <option>Texto</option>
-                                                <option>Texto</option>
-                                                <option>Texto</option>
-                                                <option>Texto</option>
-                                                <option>Texto</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -97,10 +106,6 @@ class CriarProvas extends React.Component{
                                         <div class="col-sm-9">
                                             <select class="form-control" id="exampleSelect1">
                                             <option>Texto</option>
-                                            <option>Texto</option>
-                                            <option>Texto</option>
-                                            <option>Texto</option>
-                                            <option>Texto</option>
                                             </select>
                                         </div>
                                     </div>
@@ -112,10 +117,6 @@ class CriarProvas extends React.Component{
                                         <label for="exampleSelect1">Texto 3:</label>
                                         <div class="col-sm-9">
                                             <select class="form-control" id="exampleSelect1">
-                                            <option>Texto</option>
-                                            <option>Texto</option>
-                                            <option>Texto</option>
-                                            <option>Texto</option>
                                             <option>Texto</option>
                                             </select>
                                         </div>
@@ -133,7 +134,7 @@ class CriarProvas extends React.Component{
       
         )
     }
-}
 
 
-export default withRouter (CriarProvas);
+
+export default CriarProvas;
