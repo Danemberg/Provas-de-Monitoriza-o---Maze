@@ -4,7 +4,50 @@ import { Link } from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
 
 class CriarExemplos extends React.Component{
-
+    state={
+        titulo: "",
+        autor: "",
+        editora_manual: "",
+        ano: "",
+        conteudo: ""
+    };
+    async insertTextos() {
+     var data = {
+       titulo: this.state.titulo,
+       autor: this.state.autor,
+       editora_manual: this.state.editora_manual,
+       ano: this.state.ano,
+       conteudo: this.state.conteudo,
+     };
+     console.log(data);
+     var formBody = [];
+     for (var property in data) {
+       var encodedKey = encodeURIComponent(property);
+       var encodedValue = encodeURIComponent(data[property]);
+       formBody.push(encodedKey + "=" + encodedValue);
+     }
+     formBody = formBody.join("&");
+     console.log("---------");
+     console.log(formBody);
+     try {
+       let response = await fetch(
+         `http://192.168.1.84/projeto-maze/web/rest/texto`,
+         {
+           method: "POST",
+           headers: {
+              "Accept": 'application/json',
+             "Content-Type": "application/json",
+           },
+           body: formBody,
+         }
+       );
+       if (response.status >= 200 && response.status < 300) {
+         alert("Texto criado com sucesso!!!");
+       }
+     } catch (errors) {
+       alert(errors);
+     }
+   }
     render(){
         return(  
         <div>

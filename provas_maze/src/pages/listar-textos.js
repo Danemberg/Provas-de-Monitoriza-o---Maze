@@ -1,13 +1,22 @@
-import React from 'react';
+import React, {useEffect,useState} from 'react';
 import '../index.css';
-import {withRouter} from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
+import axios from 'axios';
 
 
+function ListarTextos(){
+ const [textos, setTexto] = useState([]);
+ 
+   useEffect(()=>{
+        loadTextos();
+   }, []);
+   const loadTextos = async () =>{
+       const result = await axios.get("http://192.168.1.84/projeto-maze/web/rest/texto");
+       console.log(result);
+       setTexto(result.data)
+   }
 
-class ListarTextos extends React.Component{
-    render(){
         return(
             <div>
                 <nav className="navbar navbar-expand-lg my-navbar">     
@@ -29,7 +38,7 @@ class ListarTextos extends React.Component{
                     <div className="titulo">
                     Histórico de Textos:
                     </div>
-                    <div class="col-sm-6">
+                    <div className="col-sm-6">
                             
                         </div>
                     <div className="table-responsive">
@@ -39,49 +48,24 @@ class ListarTextos extends React.Component{
                                     <tr>
                                         <th>
                                         </th>
-                                        <th className="item-tabela">Título</th>
-                                        <th className="item-tabela">Autor/a:</th>
-                                        <th className="item-tabela">Editora do manual</th>
-                                        <th className="item-tabela">Ano</th>
+                                        <th scope="col" className="item-tabela">Título</th>
+                                        <th scope="col" className="item-tabela">Autor/a:</th>
+                                        <th scope="col" className="item-tabela">Editora do manual</th>
+                                        <th scope="col" className="item-tabela">Ano</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                {
+                                textos.map((texto, index) =>(
                                     <tr>
-                                        <td>
-                            
-                                        </td>
-                                        <td>Prova 1</td>
-                                        <td>Antonio Fernandes</td>
-                                        <td></td>
-                                        <td>3ºano</td>
-                                        <td>
-                                            <Link to="/visualizar-texto" type="button" className=" btn botao-visualizar">Visualizar</Link>   
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                        
-                                        </td>
-                                        <td>Prova 2</td>
-                                        <td>Carolina Nogueira</td>
-                                        <td></td>
-                                        <td>5ºano</td>
-                                        <td>
-                                            <Link to="/visualizar-texto" type="button" className=" btn botao-visualizar">Visualizar</Link>    
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                        
-                                        </td>
-                                        <td>Prova 3</td>
-                                        <td>Fernando Costa</td>
-                                        <td></td>
-                                        <td>5ºano</td>
-                                        <td>
-                                            <Link to="/visualizar-texto" type="button" className=" btn botao-visualizar">Visualizar</Link>   
-                                        </td>
-                                    </tr>
+                                        <th scope="row">{index + 1}</th>
+                                        <td>{texto.titulo}</td>
+                                        <td>{texto.autor}</td>
+                                        <td>{texto.editora_manual}</td>
+                                        <td>{texto.ano}</td> 
+                                        <td><Link to="/visualizar-texto" type="button" className=" btn botao-visualizar">Visualizar</Link></td>       
+                                        </tr>   
+                                                ))}  
                                 </tbody>
                             </table>
                             <div className="clearfix">
@@ -102,6 +86,5 @@ class ListarTextos extends React.Component{
         )
        
     }
-}
 
-export default withRouter (ListarTextos);
+export default ListarTextos;

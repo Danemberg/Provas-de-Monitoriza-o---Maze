@@ -1,13 +1,23 @@
-import React from 'react';
+import React, {useEffect,useState} from 'react';
 import '../index.css';
-import {withRouter} from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
+import axios from 'axios';
 
 
 
-class ListarProvas extends React.Component{
-    render(){
+function ListarProvas(){
+    const [provas, setProva] = useState([]);
+    
+      useEffect(()=>{
+           loadProvas();
+      }, []);
+      const loadProvas = async () =>{
+          const result = await axios.get("http://192.168.1.84/projeto-maze/web/rest/prova");
+          console.log(result);
+          setProva(result.data)
+      }
+
         return(
             <div>
                 <nav className="navbar navbar-expand-lg my-navbar">     
@@ -29,7 +39,7 @@ class ListarProvas extends React.Component{
                     <div className="titulo">
                     Histórico de Provas:
                     </div>
-                    <div class="col-sm-6">
+                    <div className="col-sm-6">
                             
                         </div>
                     <div className="table-responsive">
@@ -45,39 +55,17 @@ class ListarProvas extends React.Component{
                                     </tr>
                                 </thead>
                                 <tbody>
+                                {
+                                provas.map((prova, index) =>(
                                     <tr>
-                                        <td>
-                            
-                                        </td>
-                                        <td>Prova 1</td>
-                                        <td>15/03/2021</td>
-                                        <td>Turma A</td>
-                                        <td>
-                                            <Link to="/visualizar-prova" type="button" className=" btn botao-visualizar">Visualizar</Link>  
-                                        </td>
+                                        <th scope="row">{index + 1}</th>
+                                        <td>{prova.titulo}</td>
+                                        <td>{prova.data_de_realizacao}</td>
+                                        <td>{prova.ano}</td>
+                                        <td><Link to="/visualizar-texto" type="button" className=" btn botao-visualizar">Visualizar</Link></td> 
                                     </tr>
-                                    <tr>
-                                        <td>
-                                        
-                                        </td>
-                                        <td>Prova 2</td>
-                                        <td>20/03/2021</td>
-                                        <td>Turma B</td>
-                                        <td>
-                                            <Link to="/visualizar-prova" type="button" className=" btn botao-visualizar">Visualizar</Link>  
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            
-                                        </td>
-                                        <td>Prova 3</td>
-                                        <td>22/03/2021</td>
-                                        <td>Turma</td>
-                                        <td>
-                                            <Link to="/visualizar-prova" type="button" className=" btn botao-visualizar">Visualizar</Link>   
-                                        </td>
-                                    </tr>
+                              ))}   
+                                    
                                 </tbody>
                             </table>
                             <div className="clearfix">
@@ -98,6 +86,6 @@ class ListarProvas extends React.Component{
         )
        
     }
-}
 
-export default withRouter (ListarProvas);
+
+export default ListarProvas
