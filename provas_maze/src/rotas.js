@@ -10,6 +10,8 @@ import RegistoUtilizador from './pages/registo-utilizador'
 import GerirExemplos from './pages/gerir-exemplos'
 import CriarExemplos from './pages/criar-exemplos'
 import EditarExemplos from './pages/editar-exemplos'
+import ListarExemplos from './pages/listar-exemplos'
+import VisualizarExemplo from './pages/visualizar-exemplo'
 import GerirProvas from './pages/gerir-provas'
 import Instrucoes from './pages/instrucao-prova'
 import ListarProvas from './pages/listar-provas'
@@ -41,6 +43,8 @@ export default () => {
                 <Route exact path="/gerir-exemplos" component={GerirExemplos}/> 
                 <Route exact path="/criar-exemplos" component={CriarExemplos}/> 
                 <Route exact path="/editar-exemplos" component={EditarExemplos}/>
+                <Route exact path="/listar-exemplos" component={ListarExemplos}/>
+                <Route exact path="/visualizar-exemplo" component={VisualizarExemplo}/> 
                 <Route exact path="/gerir-provas" component={GerirProvas}/> 
                 <Route exact path="/instrucao-prova" component={Instrucoes}/> 
                 <Route exact path="/listar-provas" component={ListarProvas}/> 

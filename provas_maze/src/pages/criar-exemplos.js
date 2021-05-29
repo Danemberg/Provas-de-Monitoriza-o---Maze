@@ -1,56 +1,28 @@
-import React from 'react'
-import {withRouter} from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import React , {useState,alert} from 'react'
+import {Link, useHistory} from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
-
-class CriarExemplos extends React.Component{
-    state={
-        titulo: "",
-        autor: "",
-        editora_manual: "",
-        ano: "",
-        conteudo: ""
-    };
-    async insertTextos() {
-     var data = {
-       titulo: this.state.titulo,
-       autor: this.state.autor,
-       editora_manual: this.state.editora_manual,
-       ano: this.state.ano,
-       conteudo: this.state.conteudo,
-     };
-     console.log(data);
-     var formBody = [];
-     for (var property in data) {
-       var encodedKey = encodeURIComponent(property);
-       var encodedValue = encodeURIComponent(data[property]);
-       formBody.push(encodedKey + "=" + encodedValue);
-     }
-     formBody = formBody.join("&");
-     console.log("---------");
-     console.log(formBody);
-     try {
-       let response = await fetch(
-         `http://192.168.1.84/projeto-maze/web/rest/texto`,
-         {
-           method: "POST",
-           headers: {
-              "Accept": 'application/json',
-             "Content-Type": "application/json",
-           },
-           body: formBody,
-         }
-       );
-       if (response.status >= 200 && response.status < 300) {
-         alert("Texto criado com sucesso!!!");
+import axios from 'axios';
+   
+   
+   const CriarExemplos = () => {
+       let history = useHistory()
+       const [exemplos, setExemplo] = useState({
+         titulo: "",
+         conteudo: "",
+         ano: ""
+       })
+      
+       const{titulo, conteudo, ano} = exemplos;
+       const onInputChange = e =>{
+        setExemplo({...exemplos,[e.target.titulo]: e.target.value})
        }
-     } catch (errors) {
-       alert(errors);
-     }
-   }
-    render(){
+       const onSubmit = async e =>{
+         e.preventDefault()
+         await axios.post("http://192.168.1.84/projeto-maze/web/rest/exemplo", exemplos);
+         history.push("/gerir-exemplos")
+       };
         return(  
-        <div>
+       <div>
             <nav className="navbar navbar-expand-lg my-navbar">     
                         <div className="collapse navbar-collapse">
                             <ul className="navbar-nav mr-auto">
@@ -69,11 +41,23 @@ class CriarExemplos extends React.Component{
             <div class="card border-danger mb-3 my-card">
                     <div class="card-header titulo">Criar exemplos para provas:
                         <div class="card-body">
+                        <div className="col-sm-6">
+                        <div class="form-group row campo">
+                                <label for="exampleInputPassword1">Titulo:</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control " id="exampleInputPassword1" 
+                                value={titulo}
+                                onChange={e => onInputChange(e)}></input>
+                            </div>
+                        </div>
+                      </div>
                             <div className="col">
                                 <div class="form-group row campo">
                                         <label for="exampleTextarea">Insira um exemplo:</label>
                                     <div class="col-lg-10">
-                                        <textarea class="form-control" id="exampleTextarea" rows="12"></textarea>
+                                        <textarea class="form-control" id="exampleTextarea" rows="10"
+                                        value={conteudo}
+                                        onChange={e => onInputChange(e)}></textarea>
                                     </div>
                                 </div>
                                 <br></br>
@@ -81,16 +65,15 @@ class CriarExemplos extends React.Component{
                                     <div class="form-group row campo">
                                         <label for="exampleSelect1">Ano:</label>
                                         <div class="col-sm-9">
-                                            <select class="form-control" id="exampleSelect1">
-                                            <option>1º/2ºano</option>
-                                            <option>3º/4ºano</option>
-                                            <option>5ºano</option>
+                                        <select class="form-control" id="exampleSelect1">
+                                            <option  value={ano}
+                                            onChange={e => onInputChange(e)}></option>
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                                 <div>
-                                    <Link to="/gerir-exemplos" type="button" class="btn botao1">Criar</Link>
+                                    <Link to="/gerir-exemplos" type="button" class="btn botao1">Gerar</Link>
                                 </div> 
                         </div> 
                     </div> 
@@ -100,7 +83,6 @@ class CriarExemplos extends React.Component{
    
         )
     }
-}
 
 
-export default withRouter (CriarExemplos);
+export default CriarExemplos;

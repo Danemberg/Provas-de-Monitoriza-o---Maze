@@ -134,7 +134,7 @@ const EditarProvas = () => {
                                 </div>
                             </div> 
                             <div>
-                                <Link to="/gerir-provas" type="button" class="btn botao1">Gerar</Link>
+                                <Link to="/gerir-provas" type="button" class="btn botao1">Salvar</Link>
                             </div>  
                         </div>
                     </div>

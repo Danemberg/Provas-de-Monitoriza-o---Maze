@@ -1,13 +1,25 @@
-import React from 'react';
+import React, {useEffect,useState} from 'react';
 import '../index.css';
-import {withRouter} from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
+import axios from 'axios';
 
 
-
-class GerirExemplos extends React.Component{
-    render(){
+function GerirExemplos(){
+    const [exemplos, setExemplo] = useState([]);
+    
+      useEffect(()=>{
+           loadExemplos();
+      }, []);
+      const loadExemplos = async () =>{
+          const result = await axios.get("http://192.168.1.84/projeto-maze/web/rest/exemplo");
+          console.log(result);
+          setExemplo(result.data)
+      }
+      const deleteExemplo = async id =>{
+        await axios.delete(`http://192.168.1.84/projeto-maze/web/rest/exemplo/${id}`)
+        loadExemplos();
+      }
         return(
             <div>
                 <nav className="navbar navbar-expand-lg my-navbar">     
@@ -38,53 +50,32 @@ class GerirExemplos extends React.Component{
                             <table className="table table-striped table-hover">
                                 <thead>
                                     <tr>
-                                        <th>
+                                        <th></th>
+                                        <th className="item-tabela">Titulo
                                         </th>
                                         <th className="item-tabela">Ano</th>
                                         <th>
                                         <Link to="/criar-exemplos" className="btn btn-success botao-tabela ">
-                                        <i class="material-icons icone-add">&#xE147;</i> <span>Adicionar</span></Link>     
+                                        <i className="material-icons icone-add">&#xE147;</i> <span>Adicionar</span></Link>     
                                         </th>
                                     
                                     </tr>
                                 </thead>
                                 <tbody>
+                                {
+                                exemplos.map((exemplo, index) =>(
                                     <tr>
+                                        <th scope="row">{index + 1}</th>
+                                        <td>{exemplo.titulo}</td>
+                                        <td>{exemplo.ano}</td>
                                         <td>
-                                        
-                                        </td>
-                                        <td>1ºano/2ºano</td>
-                                        <td>
-                                            <Link to="/editar-exemplos" className="edit">
+                                            <Link to="/editar-provas" className="edit">
                                             <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></Link>
-                                            <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
-                                            <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
+                                            <Link onClick={()=> deleteExemplo(exemplo.id)} href="#deleteEmployeeModal" className="delete" data-toggle="modal">
+                                            <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></Link>  
                                         </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                        
-                                        </td>
-                                        <td>3ºano/4ºano</td>
-                                        <td>
-                                            <Link to="/editar-exemplos" className="edit">
-                                            <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></Link>
-                                            <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
-                                            <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
-                                    </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                        
-                                        </td>
-                                        <td>5ºano</td>
-                                        <td>
-                                            <Link to="/editar-exemplos" className="edit">
-                                            <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></Link>
-                                            <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
-                                            <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></a>
-                                        </td>
-                                    </tr>
+                                        </tr>   
+                                    ))}  
                                 </tbody>
                             </table>
                             <div className="clearfix">
@@ -105,6 +96,5 @@ class GerirExemplos extends React.Component{
         )
        
     }
-}
 
-export default withRouter (GerirExemplos);
+export default GerirExemplos;

@@ -92,7 +92,7 @@ const CriarTextos = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <Link to="/gerir-textos" type="button" className="btn botao1">Criar</Link>
+                                <Link to="/gerir-textos" type="button" className="btn botao1">Gerar</Link>
                             </div>
                         </div>
                     </div>

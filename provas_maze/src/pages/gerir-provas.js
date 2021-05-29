@@ -56,7 +56,7 @@ function GerirProvas(){
                                         </th>
                                         <th className="item-tabela">Título</th>
                                         <th className="item-tabela">Data</th>
-                                        <th className="item-tabela">Ano</th>
+                                        <th className="item-tabela">Turma</th>
                                         <th>
                                         <Link to="/criar-provas" className="btn btn-success botao-tabela ">
                                         <i class="material-icons icone-add">&#xE147;</i> <span>Adicionar</span></Link>    

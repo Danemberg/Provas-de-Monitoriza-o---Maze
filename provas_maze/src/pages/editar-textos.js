@@ -103,7 +103,7 @@ const EditarTextos = () => {
                                         </div>
                                     </div>
                                 </div>
-                                <Link to="/gerir-textos" type="button" className="btn botao1">Criar</Link>
+                                <Link to="/gerir-textos" type="button" className="btn botao1">Salvar</Link>
                             </div>
                         </div>
                     </div>
