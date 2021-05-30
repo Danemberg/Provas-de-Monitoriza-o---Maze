@@ -40,9 +40,22 @@ class PaginaPrincipalAdm extends React.Component{
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
                         <Dropdown.Item href="#/validar-utilizador">Validar acesso</Dropdown.Item>
-                        <Dropdown.Item href="#/gerir-exemplos">Gerir exemplo para provas</Dropdown.Item>
+                        <Dropdown.Item href="#/gerir-exemplos">Gerir exemplos</Dropdown.Item>
+                        <Dropdown.Item href="#/listar-exemplos">Listar exemplos</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
+                    <h1 className="titulo-texto">MBCL - Monitorização com Base no Currículo na leitura: 
+                        um estudo longitudinal sobre alunos em risco</h1>
+                        <br></br>
+                        <p className="texto-pp">
+                            Este projeto tem como finalidade monitorizar a aprendizagem da leitura de uma amostra representativa das crianças que no ano letivo 2017/2018 frequentam o 1º ano de escolaridade no concelho de Bragança.
+                            O projeto tem como objetivos:
+                            i) conhecer o nível de realização das crianças no final da educação pré-escolar relativamente à identificação do som e do nome das letras;
+                            ii) conhecer o nível de realização das mesmas crianças no outono, no inverno e na primavera dos 1.º, 2.º, 3.º e 4.º anos de escolaridade, relativamente à fluência e compreensão da leitura;
+                            iii) identificar alunos em risco na leitura;
+                            iv) identificar fatores de risco na leitura.
+                            Os resultados terão impacto social na medida em que permitirão conhecer trajetórias de aprendizagem da leitura na população e nos alunos em risco.
+                        </p>
             </div>
         )   
        

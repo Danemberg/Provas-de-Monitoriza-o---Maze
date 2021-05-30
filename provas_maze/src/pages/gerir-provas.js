@@ -72,7 +72,7 @@ function GerirProvas(){
                                         <td>{prova.data_de_realizacao}</td>
                                         <td>{prova.ano}</td>
                                         <td>
-                                            <Link to="/editar-provas" className="edit">
+                                            <Link to={`editar-provas/${prova.id}`} className="edit">
                                             <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></Link>
                                             <Link onClick={()=> deleteProva(prova.id)} href="#deleteEmployeeModal" className="delete" data-toggle="modal">
                                             <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></Link>  

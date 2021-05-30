@@ -48,6 +48,23 @@ body{
     font-size:32px;
     color: darkorange
 }
+.texto-pp{
+    top: 60%;
+    margin-left: 30%;
+    margin-right: 5%;
+    position: fixed;
+
+}
+.titulo-texto{
+    font-size: 18px;
+    color: darkred;
+    top: 50%;
+    margin-left: 30%;
+    margin-right: 5%;
+    position: fixed;
+}
+
+
 .campo{
     margin-bottom: 30px;
 }
@@ -245,11 +262,7 @@ table.table td i {
     background-color: darkred;
     color:darkorange
 }
-.menu-pp{
-    margin-top: 150px;
-    position: fixed;
-    right: 80px;
-}
+
 input[type="checkbox"]:checked + label {
     color: #870B5A;
  
@@ -280,7 +293,7 @@ input[type="checkbox"]:checked + label {
     left:5px
 }
 .menu-pp{
-    bottom:60%;
+    bottom:70%;
     Right: 30%;
     position: fixed;
     border: 0px;
@@ -291,7 +304,7 @@ input[type="checkbox"]:checked + label {
     color: white
 }
 .menu-pp1{
-    bottom:60%;
+    bottom:70%;
     Right: 20%;
     position: fixed;
     border: 0px;
@@ -302,7 +315,7 @@ input[type="checkbox"]:checked + label {
     color: white
 }
 .menu-pp2{
-    bottom:60%;
+    bottom:70%;
     Right: 20%;
     position: fixed;
     border: 0px;

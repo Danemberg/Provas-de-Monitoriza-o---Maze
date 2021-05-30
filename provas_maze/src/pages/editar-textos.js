@@ -1,4 +1,5 @@
 import React , {useState,alert, useEffect} from 'react'
+import '../index.css';
 import {Link, useHistory, useParams} from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
 import axios from 'axios';

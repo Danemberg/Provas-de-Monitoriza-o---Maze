@@ -1,6 +1,7 @@
 import React , {useState,alert, useEffect} from 'react'
 import {Link, useHistory, useParams} from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
+import '../index.css';
 import axios from 'axios';
 
    const EditarExemplos = () => {
