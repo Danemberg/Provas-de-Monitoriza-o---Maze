@@ -18,7 +18,7 @@ import axios from 'axios';
        }
        const onSubmit = async e =>{
          e.preventDefault()
-         await axios.post("http://192.168.1.84/projeto-maze/web/rest/exemplo", exemplos);
+         await axios.post("http://192.168.1.84/projeto-maze/web/rest/exemplos", exemplos);
          history.push("/gerir-exemplos")
        };
         return(  

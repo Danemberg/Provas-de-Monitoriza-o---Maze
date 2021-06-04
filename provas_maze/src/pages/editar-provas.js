@@ -24,12 +24,12 @@ const EditarProvas = () => {
     
     const onSubmit = async e =>{
       e.preventDefault()
-      await axios.put(`http://192.168.1.84/projeto-maze/web/rest/prova/${id}`, provas);
+      await axios.put(`http://192.168.1.84/projeto-maze/web/rest/provas/${id}`, provas);
       history.push("/gerir-provas")
     };
     
     const loadProvas = async () =>{
-        const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/prova/${id}`)
+        const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/provas/${id}`)
         setProva(result.data);
     }
     return(  

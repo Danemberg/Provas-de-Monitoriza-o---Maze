@@ -1,13 +1,29 @@
-import React from 'react';
-import '../index.css';
-import {withRouter} from 'react-router-dom'
+import React, {useEffect,useState}  from 'react';
 import {Dropdown} from 'react-bootstrap';
+import '../index.css';
 import { Link } from 'react-router-dom'
 import Imagem from '../images/imagem_pagina_principal.png'
 import Logo from '../images/LogoMBCL.png';
+import axios from 'axios';
 
-class PaginaPrincipalAdm extends React.Component{
-    render(){
+function PaginaPrincipalAdm(){
+    const [utilizadores, setUtilizador] = useState([]);
+    const [entidades, setEntidade] = useState([]);
+    
+      useEffect(()=>{
+           loadUtilizador();
+           loadEntidade();
+      }, []);
+      const loadUtilizador = async () =>{
+          const result = await axios.get("http://192.168.1.84/projeto-maze/web/rest/utilizador");
+          console.log(result);
+          setUtilizador(result.data.reverse())
+      }
+      const loadEntidade = async () =>{
+        const result = await axios.get("http://192.168.1.84/projeto-maze/web/rest/entidade");
+        console.log(result);
+        setEntidade(result.data.reverse())
+    }
         return(
             <div>
                 <nav className="navbar navbar-expand-lg my-navbar">     
@@ -26,14 +42,20 @@ class PaginaPrincipalAdm extends React.Component{
                     </div>
                 </nav>
                 <img className="imagem-pp" src={Imagem} height="300" width="300" />
-                <br></br>
-                Rodrigo Danemberg
-                <br></br>
-                rdanember@hotmail.com
-                <br></br>
-                Instituto Politécnico de Bragança
-                <br></br>
-                Bragança
+                {
+                    utilizadores.map((utilizador, index) =>(
+                        <div >    
+                            <p>{utilizador.nome}</p>
+                            <p>{utilizador.email}</p>
+                        </div>        
+                ))}
+                  {
+                    entidades.map((entidade, index) =>(
+                        <div >    
+                            <p>{entidade.nome}</p>
+                            <p>{entidade.concelho}</p>
+                        </div>        
+                ))}
                 <Dropdown>
                     <Dropdown.Toggle variant="menu-pp" id="dropdown-basic" className="menu-pp2">
                         Opções
@@ -60,6 +82,6 @@ class PaginaPrincipalAdm extends React.Component{
         )   
        
     }
-}
 
-export default withRouter (PaginaPrincipalAdm);
+
+export default  PaginaPrincipalAdm;

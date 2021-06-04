@@ -23,11 +23,11 @@ import axios from 'axios';
 
     const onSubmit = async e =>{
       e.preventDefault()
-      await axios.put(`http://192.168.1.84/projeto-maze/web/rest/exemplo/${id}`, exemplos);
+      await axios.put(`http://192.168.1.84/projeto-maze/web/rest/exemplos/${id}`, exemplos);
       history.push("/gerir-exemplos")
     };
     const loadExemplos = async () =>{
-        const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/exemplo/${id}`)
+        const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/exemplos/${id}`)
         setExemplo(result.data);
     }
         return(  

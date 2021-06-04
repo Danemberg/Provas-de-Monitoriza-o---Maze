@@ -12,7 +12,7 @@ function VisualizarTexto(){
            loadTextos();
       }, []);
       const loadTextos = async () =>{
-          const result = await axios.get("http://192.168.1.84/projeto-maze/web/rest/texto");
+          const result = await axios.get("http://192.168.1.84/projeto-maze/web/rest/textos");
           console.log(result);
           setTexto(result.data)
       }
@@ -34,9 +34,12 @@ function VisualizarTexto(){
                             </ul>  
                         </div>
                     </nav>
-                    <li>       
-                                    {textos.conteudo}                       
-                    </li>
+                    {
+                    textos.map((texto, index) =>(
+                        <div >    
+                            <p>{texto.conteudo}</p>
+                        </div>   
+                ))}
             </div>
         )
        

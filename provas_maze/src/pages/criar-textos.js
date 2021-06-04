@@ -19,7 +19,7 @@ const CriarTextos = () => {
   }
   const onSubmit = async e =>{
     e.preventDefault()
-    await axios.post("http://192.168.1.84/projeto-maze/web/rest/texto", textos);
+    await axios.post("http://192.168.1.84/projeto-maze/web/rest/textos", textos);
     history.push("/gerir-textos")
   };
         return(  

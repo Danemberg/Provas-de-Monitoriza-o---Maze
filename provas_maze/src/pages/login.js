@@ -17,7 +17,7 @@ function Login(){
     {
         console.warn(email,senha)
         let item={email,senha};
-        let result= await fetch("http://192.168.1.84/projeto-maze/web/rest/utilizador",{
+        let result= await fetch("http://192.168.1.84/projeto-maze/web/rest/utilizadors",{
             method:'POST',
             headers:{
                 "Content-Type": "application/json",

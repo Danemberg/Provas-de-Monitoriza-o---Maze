@@ -1,13 +1,23 @@
-import React from 'react';
+import React, {useEffect,useState} from 'react';
 import '../index.css';
 import {withRouter} from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
+import axios from 'axios';
 
 
 
-class ValidarUtilizador extends React.Component{
-    render(){
+function ValidarUtilizador(){
+    const [utilizadores, setUtilizador] = useState([]);
+ 
+      useEffect(()=>{
+           loadUtilizador();
+      }, []);
+      const loadUtilizador = async () =>{
+          const result = await axios.get("http://localhost/projeto-maze/web/rest/utilizador");
+          console.log(result);
+          setUtilizador(result.data.reverse())
+      }
         return(
             <div>
                 <nav className="navbar navbar-expand-lg my-navbar">     
@@ -37,92 +47,28 @@ class ValidarUtilizador extends React.Component{
                                         <th>
                                         </th>
                                         <th className="item-tabela">Nome</th>
-                                        <th className="item-tabela">Tipo</th>
+                                        <th className="item-tabela">Tipo de utilizador</th>
                                         <th></th>
                                         <th></th>
                                         
                                     </tr>
                                 </thead>
                                 <tbody>
+                                {
+                                utilizadores.map((utilizador, index) =>(
                                     <tr>
-                                        <td>
-                                        </td>
-                                        <td>Antonio Moreira</td>
-                                        <td>Docente</td>
-                                        <td></td>
-                                        <td></td>
+                                        <th scope="row">{index + 1}</th>
+                                        <td>{utilizador.nome}</td>
+                                        <td>{utilizador.tipo_de_utilizador}</td>
                                         <td>
                                             <Link type="button" to="/registar-utilizador/:email?" className=" btn botao-visualizar">Visualizar</Link> 
                                             <a href="" className="confirmar">
                                             <i className="material-icons">check</i></a>
                                             <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
                                             <i className="material-icons">clear</i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                        
-                                        </td>
-                                        <td>Joana Carneiro</td>
-                                        <td>Psicóloga</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <Link type="button" to="/registar-utilizador/:email?" className=" btn botao-visualizar">Visualizar</Link>
-                                            <a href="" className="confirmar">
-                                            <i class="material-icons">check</i></a>
-                                            <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
-                                            <i class="material-icons">clear</i></a>
-                                    </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                    
-                                        </td>
-                                        <td>João Santos de Oliveira</td>
-                                        <td>Docente</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <Link type="button" to="/registar-utilizador/:email?" className=" btn botao-visualizar">Visualizar</Link>
-                                            <a href="" className="confirmar">
-                                            <i class="material-icons">check</i></a>
-                                            <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
-                                            <i class="material-icons">clear</i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                        
-                                        </td>
-                                        <td>Ana Maria Carvalho</td>
-                                        <td>Docente</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <Link type="button" to="/registar-utilizador/:email?" className=" btn botao-visualizar">Visualizar</Link>
-                                            <a href="" className="confirmar">
-                                            <i class="material-icons">check</i></a>
-                                            <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
-                                            <i class="material-icons">clear</i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                        
-                                        </td>
-                                        <td>Rui Alberto Ferreira</td>
-                                        <td>Docente</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td>
-                                            <Link type="button" to="/registar-utilizador/:email?" className=" btn botao-visualizar">Visualizar</Link> 
-                                            <a href="" className="confirmar">
-                                            <i class="material-icons">check</i></a>
-                                            <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">
-                                            <i class="material-icons">clear</i></a>
-                                        </td>
-                                    </tr>
+                                        </td>  
+                                    </tr>  
+                                                ))}  
                                 </tbody>
                             </table>
                             <div className="clearfix">
@@ -143,6 +89,6 @@ class ValidarUtilizador extends React.Component{
         )
        
     }
-}
 
-export default withRouter (ValidarUtilizador);
+
+export default ValidarUtilizador;

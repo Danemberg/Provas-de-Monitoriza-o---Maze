@@ -18,7 +18,7 @@ const CriarProvas = () => {
     }
     const onSubmit = async e =>{
       e.preventDefault()
-      await axios.post("http://192.168.1.84/projeto-maze/web/rest/prova", provas);
+      await axios.post("http://192.168.1.84/projeto-maze/web/rest/provas", provas);
       history.push("/gerir-provas")
     };
         return(  

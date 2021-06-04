@@ -26,12 +26,12 @@ const EditarTextos = () => {
     
     const onSubmit = async e =>{
       e.preventDefault()
-      await axios.put(`http://192.168.1.84/projeto-maze/web/rest/texto/${id}`, textos);
+      await axios.put(`http://192.168.1.84/projeto-maze/web/rest/textos/${id}`, textos);
       history.push("/gerir-textos")
     };
     
     const loadTextos = async () =>{
-        const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/texto/${id}`)
+        const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/textos/${id}`)
         setTexto(result.data);
     }
     return(  

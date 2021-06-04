@@ -13,7 +13,7 @@ function ListarProvas(){
            loadProvas();
       }, []);
       const loadProvas = async () =>{
-          const result = await axios.get("http://192.168.1.84/projeto-maze/web/rest/prova");
+          const result = await axios.get("http://192.168.1.84/projeto-maze/web/rest/provas");
           console.log(result);
           setProva(result.data.reverse())
       }

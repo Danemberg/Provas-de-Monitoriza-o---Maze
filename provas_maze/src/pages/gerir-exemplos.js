@@ -12,12 +12,12 @@ function GerirExemplos(){
            loadExemplos();
       }, []);
       const loadExemplos = async () =>{
-          const result = await axios.get("http://192.168.1.84/projeto-maze/web/rest/exemplo");
+          const result = await axios.get("http://192.168.1.84/projeto-maze/web/rest/exemplos");
           console.log(result);
           setExemplo(result.data)
       }
       const deleteExemplo = async id =>{
-        await axios.delete(`http://192.168.1.84/projeto-maze/web/rest/exemplo/${id}`)
+        await axios.delete(`http://192.168.1.84/projeto-maze/web/rest/exemplos/${id}`)
         loadExemplos();
       }
         return(
