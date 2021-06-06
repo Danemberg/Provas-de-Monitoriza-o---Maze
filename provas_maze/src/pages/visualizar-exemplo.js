@@ -1,19 +1,28 @@
 import React, {useEffect,useState} from 'react';
 import '../index.css';
-import { Link } from 'react-router-dom'
+import {Link, useHistory, useParams} from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
 import axios from 'axios';
 
 
-function VisualizarExemplo(){
-    const [exemplos, setExemplo] = useState([]);
+const VisualizarExemplo = () =>{
+    let history = useHistory()
+    const {id} = useParams();
+    const [exemplos, setExemplo] = useState({
+        conteudo:""
+
+    });
     
+    const{conteudo} = exemplos;
+    const onInputChange = e =>{
+     setExemplo({...exemplos,[e.target.conteudo]: e.target.value});
+    };
+
       useEffect(()=>{
            loadExemplos();
       }, []);
       const loadExemplos = async () =>{
-          const result = await axios.get("http://192.168.1.84/projeto-maze/web/rest/exemplos");
-          console.log(result);
+          const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/exemplos/${id}`);
           setExemplo(result.data)
       }
    
@@ -34,9 +43,11 @@ function VisualizarExemplo(){
                             </ul>  
                         </div>
                     </nav>
-                    <li>       
-                                    {exemplos.conteudo}                       
-                    </li>
+                    
+            <ul className="texto">
+                <p>{conteudo}</p>
+            </ul>                          
+                    
             </div>
         )
        

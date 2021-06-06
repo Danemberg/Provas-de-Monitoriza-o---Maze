@@ -45,7 +45,7 @@ const CriarTextos = () => {
                     <div className="row">
                       <div className="col-sm">
                         <div className="form-group row campo">
-                                <label for="exampleInputPassword1">Titulo:</label>
+                                <label For="exampleInputPassword1">Titulo:</label>
                             <div className="col-sm">
                                 <input type="text" className="form-control " name="titulo"
                                  value={titulo}
@@ -55,7 +55,7 @@ const CriarTextos = () => {
                       </div>
                       <div className="col-sm">
                         <div onSubmit={e =>onSubmit(e)} className="form-group row campo">
-                                <label for="exampleInputPassword1">Autor/a:</label>
+                                <label>Autor/a:</label>
                             <div className="col-sm">
                                 <input type="text" className="form-control " name="autor"
                               value={autor}
@@ -66,15 +66,15 @@ const CriarTextos = () => {
                     </div>
                         <div className="row-sm">
                             <div className="form-group row campo">
-                                    <label for="exampleInputPassword1">Editora do manual:</label>
+                                    <label>Editora do manual:</label>
                                 <div className="col-sm-5">
-                                    <input type="text" className="form-control " name="editora"
+                                    <input type="text" className="form-control " name="editora_manual"
                                     value={editora_manual}
                                     onChange={e => onInputChange(e)}/>
                                 </div>
                             </div>
                             <div className="form-group row campo">
-                                        <label for="exampleTextarea">Insira o texto:</label>
+                                        <label>Insira o texto:</label>
                                     <div className="col-lg-10">
                                         <textarea className="form-control" name="conteudo" rows="8"  
                                        value={conteudo}
@@ -83,7 +83,7 @@ const CriarTextos = () => {
                                 </div>
                                 <div className="col-sm-6">
                                     <div className="form-group row campo">
-                                        <label for="exampleSelect1">Ano:</label>
+                                        <label>Ano:</label>
                                         <div className="col-sm-5">
                                             <select className="form-control" name="ano">
                                             <option value={ano}

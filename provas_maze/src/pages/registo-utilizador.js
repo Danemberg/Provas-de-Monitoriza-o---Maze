@@ -1,12 +1,39 @@
-import React from 'react'
-import {withRouter} from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import React , {useState,alert, useEffect} from 'react'
+import '../index.css';
+import {Link, useHistory, useParams} from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
+import axios from 'axios';
 
+const RegistoUtilizador = () => {
+    let history = useHistory()
+    const {id} = useParams();
+    const [utilizadores, setUtilizador] = useState({
+        nome: "",
+        email: "",
+        senha: "",
+        tipo_de_utilizador: "",
+        entidade_id: "",
+    })
+   
+    const{nome, email, senha, tipo_de_utilizador, entidade_id} = utilizadores;
+    const onInputChange = e =>{
+     setUtilizador({...utilizadores,[e.target.email]: e.target.value});
+    };
 
-class RegistoUtilizador extends React.Component{
-
-    render(){
+    useEffect(() => {
+        loadUtilizadores();
+    }, []);
+    
+    const onSubmit = async e =>{
+      e.preventDefault()
+      await axios.put(`http://192.168.1.84/projeto-maze/web/rest/utilizadors/${id}`, utilizadores);
+      history.push("/validar-utilizador-admin")
+    };
+    
+    const loadUtilizadores = async () =>{
+        const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/utilizadors/${id}`)
+        setUtilizador(result.data);
+    }
         return(  
         <div>
             <nav className="navbar navbar-expand-lg my-navbar">     
@@ -24,76 +51,76 @@ class RegistoUtilizador extends React.Component{
                         </ul>  
                     </div>
                 </nav>
-            <div class="card border-danger mb-3 my-card">
-                <div class="card-header titulo">Registo de utilizador:
-                    <div class="card-body">
+            <div className="card border-danger mb-3 my-card">
+                <div className="card-header titulo">Registo de utilizador:
+                    <div className="card-body">
                     <div className="row">
                       <div className="col-md-6">
-                        <div class="form-group row campo">
+                        <div className="form-group row campo">
                                 <label for="exampleInputPassword1">Nome:</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control " id="exampleInputPassword1"></input>
+                            <div className="col-sm-10">
+                                <input type="text" className="form-control " id="exampleInputPassword1" 
+                                 value={nome}
+                                 onChange={e => onInputChange(e)}/>
                             </div>
                         </div>
-                            <div class="form-group row campo">
+                            <div className="form-group row campo">
                                     <label for="exampleInputEmail1">Email:</label>
-                                <div class="col-sm-10">
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></input>
+                                <div className="col-sm-10">
+                                    <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                    value={email}
+                                   onChange={e => onInputChange(e)}/>
                                 </div>
                             </div>
                       </div>
                     </div>
                         <div className="row">
                             <div className="col-lg-6 ">
-                                <div class="form-group row campo">
+                                <div className="form-group row campo">
                                       <label for="exampleSelect1">Entidade:</label>
-                                    <div class="col-sm-9">
-                                        <select class="form-control" id="exampleSelect1">
-                                        <option>Instituto Politécnico de Bragança</option>
-                                        <option>Universidade do Minho</option>
-                                        <option>Universidade do Porto</option>
-                                        <option>Universidade de Lisboa</option>
-                                        <option>Universidade de Coimbra</option>
+                                    <div className="col-sm-9">
+                                        <select className="form-control" id="exampleSelect1">
+                                        <option></option>
                                         </select>
                                     </div>
                                 </div>
                             </div>
                                 <div className="col-md-6 ">
-                                <div class="form-group row campo">
+                                <div className="form-group row campo">
                                         <label for="exampleInputEmail1">Outros:</label>
-                                    <div class="col-sm-9">
-                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></input>
+                                    <div className="col-sm-9">
+                                        <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></input>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-lg-6 ">
-                                <div class="form-group row campo">
+                                <div className="form-group row campo">
                                         <label for="exampleInputEmail1">Concelho:</label>
-                                    <div class="col-sm-6">
-                                        <input type="text" readonly="" class="form-control-plaintext" id="staticEmail" value="Bragança"></input>
+                                    <div className="col-sm-6">
+                                        <input type="text" className="form-control-plaintext" id="staticEmail" value="Bragança"></input>
                                     </div>
                                 </div>
                             </div>
                             <div className="col-md-6 ">
-                                <div class="form-group row campo">
+                                <div className="form-group row campo">
                                         <label for="exampleInputEmail1">Concelho:</label>
-                                    <div class="col-sm-6">
-                                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></input>
+                                    <div className="col-sm-6">
+                                        <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></input>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <br></br>
-                        <div class="form-group row campo">
+                        <div className="form-group row campo">
                                 <label for="exampleTextarea">Observações:</label>
-                            <div class="col-md-6">
-                                <textarea class="form-control" id="exampleTextarea" rows="3"></textarea>
+                            <div className="col-md-6">
+                                <textarea className="form-control" id="exampleTextarea" rows="3"></textarea>
                             </div>
                         </div>
                         <div>
-                            <Link to="/paginaprincipal-adm" type="button" class="btn botao">Salvar</Link>
+                            <Link to="/paginaprincipal-adm" type="button" className="btn botao">Salvar</Link>
                         </div> 
                     </div> 
                 </div> 
@@ -103,7 +130,6 @@ class RegistoUtilizador extends React.Component{
       
         )
     }
-}
 
 
-export default withRouter (RegistoUtilizador);
+export default RegistoUtilizador;

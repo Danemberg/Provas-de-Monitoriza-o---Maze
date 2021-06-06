@@ -1,6 +1,5 @@
 import React, {useEffect,useState} from 'react';
 import '../index.css';
-import {withRouter} from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
 import axios from 'axios';
@@ -14,7 +13,7 @@ function ValidarUtilizador(){
            loadUtilizador();
       }, []);
       const loadUtilizador = async () =>{
-          const result = await axios.get("http://localhost/projeto-maze/web/rest/utilizador");
+          const result = await axios.get("http://localhost/projeto-maze/web/rest/utilizadors");
           console.log(result);
           setUtilizador(result.data.reverse())
       }
@@ -61,7 +60,7 @@ function ValidarUtilizador(){
                                         <td>{utilizador.nome}</td>
                                         <td>{utilizador.tipo_de_utilizador}</td>
                                         <td>
-                                            <Link type="button" to="/registar-utilizador/:email?" className=" btn botao-visualizar">Visualizar</Link> 
+                                            <Link type="button" to={`registo-utilizador/${utilizador.id}`} className=" btn botao-visualizar">Visualizar</Link> 
                                             <a href="" className="confirmar">
                                             <i className="material-icons">check</i></a>
                                             <a href="#deleteEmployeeModal" className="delete" data-toggle="modal">

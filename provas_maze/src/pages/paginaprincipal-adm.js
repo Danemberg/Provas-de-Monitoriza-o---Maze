@@ -15,12 +15,12 @@ function PaginaPrincipalAdm(){
            loadEntidade();
       }, []);
       const loadUtilizador = async () =>{
-          const result = await axios.get("http://192.168.1.84/projeto-maze/web/rest/utilizador");
+          const result = await axios.get("http://192.168.1.84/projeto-maze/web/rest/utilizadors");
           console.log(result);
           setUtilizador(result.data.reverse())
       }
       const loadEntidade = async () =>{
-        const result = await axios.get("http://192.168.1.84/projeto-maze/web/rest/entidade");
+        const result = await axios.get("http://192.168.1.84/projeto-maze/web/rest/entidades");
         console.log(result);
         setEntidade(result.data.reverse())
     }

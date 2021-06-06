@@ -1,13 +1,9 @@
 import React from 'react';
 import '../index.css';
-import {withRouter} from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
 
-
-
-class InstrucaoProva extends React.Component{
-    render(){
+function InstrucaoProva(){
         return(
             <div>
                 <nav className="navbar navbar-expand-lg my-navbar">     
@@ -29,7 +25,7 @@ class InstrucaoProva extends React.Component{
                     <div className="titulo">
                     Instruções para criar uma prova:
                     </div>
-                    <div class="col-sm-6">
+                    <div className="col-sm-6">
                             
                         </div>
                     <div className="table-responsive">
@@ -50,6 +46,5 @@ class InstrucaoProva extends React.Component{
         )
        
     }
-}
 
-export default withRouter (InstrucaoProva);
+export default InstrucaoProva;

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import {Switch, Route, BrowserRouter, Redirect} from 'react-router-dom'
+import {Switch, Route} from 'react-router-dom'
 
 import Login from './pages/login'
 import PaginaPrincipal from './pages/paginaprincipal'
@@ -30,8 +30,7 @@ import Footer from './components/footer'
 
 export default () => {
     return( //exact significa true; exact={false}
-        <div>
-      
+        <div>    
         <Footer/>
         <main>
             <Switch>
@@ -39,23 +38,23 @@ export default () => {
                 <Route exact path="/registar-utilizador" component={RegistarUtilizador}/>
                 <Route exact path="/pagina-principal" component={PaginaPrincipal}/>
                 <Route exact path="/validar-utilizador" component={ValidarUtilizador}/>
-                <Route exact path="/registar-utilizador/:email?" component={RegistoUtilizador}/>
+                <Route exact path="/registo-utilizador/:id" component={RegistoUtilizador}/>
                 <Route exact path="/gerir-exemplos" component={GerirExemplos}/> 
                 <Route exact path="/criar-exemplos" component={CriarExemplos}/> 
-                <Route exact path="/editar-exemplos" component={EditarExemplos}/>
+                <Route exact path="/editar-exemplos/:id" component={EditarExemplos}/>
                 <Route exact path="/listar-exemplos" component={ListarExemplos}/>
-                <Route exact path="/visualizar-exemplo" component={VisualizarExemplo}/> 
+                <Route exact path="/visualizar-exemplo/:id" component={VisualizarExemplo}/> 
                 <Route exact path="/gerir-provas" component={GerirProvas}/> 
                 <Route exact path="/instrucao-prova" component={Instrucoes}/> 
                 <Route exact path="/listar-provas" component={ListarProvas}/> 
                 <Route exact path="/criar-provas" component={CriarProvas}/> 
-                <Route exact path="/editar-provas" component={EditarProvas}/> 
-                <Route exact path="/visualizar-prova" component={VisualizarProva}/> 
+                <Route exact path="/editar-provas/:id" component={EditarProvas}/> 
+                <Route exact path="/visualizar-prova/:id" component={VisualizarProva}/> 
                 <Route exact path="/gerir-textos" component={GerirTextos}/>
                 <Route exact path="/criar-textos" component={CriarTextos}/> 
-                <Route exact path="/editar-textos" component={EditarTextos}/>
+                <Route exact path="/editar-textos/:id" component={EditarTextos}/>
                 <Route exact path="/listar-textos" component={ListarTextos}/> 
-                <Route exact path="/visualizar-texto" component={VisualizarTexto}/>  
+                <Route exact path="/visualizar-texto/:id" component={VisualizarTexto}/>  
                 <Route exact path="/paginaprincipal-adm" component={PaginaPrincipalAdm}/>
             </Switch>
         </main>

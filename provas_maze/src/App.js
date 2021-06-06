@@ -1,5 +1,5 @@
 import React from 'react';
-import Rotas from './rotas'
+import Rotas from './rotas';
 import {HashRouter} from 'react-router-dom'
 
 

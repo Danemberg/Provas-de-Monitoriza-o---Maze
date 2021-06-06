@@ -38,7 +38,7 @@ function ListarExemplos(){
                 <div className="titulo">
                 Histórico de Exemplos:
                 </div>
-                <div class="col-sm-6">
+                <div className="col-sm-6">
                         
                     </div>
                 <div className="table-responsive">

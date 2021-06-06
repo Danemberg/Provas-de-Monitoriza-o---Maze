@@ -1,14 +1,10 @@
 import React from 'react';
 import '../index.css';
-import {withRouter} from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
 
 
-
-
-class VisualizarProva extends React.Component{
-    render(){
+function VisualizarProva(){
         return(
             <div>
                 <nav className="navbar navbar-expand-lg my-navbar">     
@@ -43,6 +39,6 @@ class VisualizarProva extends React.Component{
         )
        
     }
-}
 
-export default withRouter (VisualizarProva);
+
+export default VisualizarProva;

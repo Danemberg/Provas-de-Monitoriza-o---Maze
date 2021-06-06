@@ -60,6 +60,7 @@ const EditarTextos = () => {
                                 <label for="exampleInputPassword1">Titulo:</label>
                             <div className="col-sm">
                                 <input type="text" className="form-control " name="titulo"
+                                 key={titulo}
                                  value={titulo}
                                  onChange={e => onInputChange(e)}/>
                             </div>
@@ -70,6 +71,7 @@ const EditarTextos = () => {
                                 <label for="exampleInputPassword1">Autor/a:</label>
                             <div className="col-sm">
                                 <input type="text" className="form-control " name="autor"
+                              key={autor}
                               value={autor}
                               onChange={e => onInputChange(e)}/>
                             </div>
@@ -81,6 +83,7 @@ const EditarTextos = () => {
                                     <label for="exampleInputPassword1">Editora do manual:</label>
                                 <div className="col-sm-5">
                                     <input type="text" className="form-control " name="editora"
+                                    key={editora_manual}
                                     value={editora_manual}
                                     onChange={e => onInputChange(e)}/>
                                 </div>
@@ -88,7 +91,8 @@ const EditarTextos = () => {
                             <div className="form-group row campo">
                                         <label for="exampleTextarea">Insira o texto:</label>
                                     <div className="col-lg-10">
-                                        <textarea className="form-control" name="conteudo" rows="8"  
+                                        <textarea className="form-control" name="conteudo" rows="8" 
+                                        key={conteudo} 
                                        value={conteudo}
                                        onChange={e => onInputChange(e)}/>
                                     </div>
@@ -98,8 +102,7 @@ const EditarTextos = () => {
                                         <label for="exampleSelect1">Ano:</label>
                                         <div className="col-sm-5">
                                             <select className="form-control" name="ano">
-                                            <option value={ano}
-                                            onChange={e => onInputChange(e)}></option>
+                                              <option>{textos.ano}</option>         
                                             </select>
                                         </div>
                                     </div>

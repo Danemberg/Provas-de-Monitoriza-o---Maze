@@ -1,6 +1,5 @@
 import React, {useEffect,useState} from 'react';
 import '../index.css';
-import {withRouter} from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
 import axios from 'axios';
@@ -42,9 +41,9 @@ function GerirProvas(){
                     <div className="titulo">
                     Gerir Provas:
                     <Link to="/instrucao-prova" className="edit">
-                    <i href="/instrucao-prova" class="material-icons info-icone">info</i></Link>
+                    <i href="/instrucao-prova" className="material-icons info-icone">info</i></Link>
                     </div>
-                    <div class="col-sm-6">
+                    <div className="col-sm-6">
                             
                         </div>
                     <div className="table-responsive">
@@ -59,7 +58,7 @@ function GerirProvas(){
                                         <th className="item-tabela">Turma</th>
                                         <th>
                                         <Link to="/criar-provas" className="btn btn-success botao-tabela ">
-                                        <i class="material-icons icone-add">&#xE147;</i> <span>Adicionar</span></Link>    
+                                        <i className="material-icons icone-add">&#xE147;</i> <span>Adicionar</span></Link>    
                                         </th>
                                     </tr>
                                 </thead>

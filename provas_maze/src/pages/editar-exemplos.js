@@ -47,34 +47,34 @@ import axios from 'axios';
                             </ul>  
                         </div>
                     </nav>
-            <div class="card border-danger mb-3 my-card">
-                    <div class="card-header titulo">Editar exemplos para provas:
-                        <div class="card-body">
+            <div className="card border-danger mb-3 my-card">
+                    <div className="card-header titulo">Editar exemplos para provas:
+                        <div className="card-body">
                         <div className="col-sm-6">
-                        <div class="form-group row campo">
+                        <div className="form-group row campo">
                                 <label for="exampleInputPassword1">Titulo:</label>
-                            <div class="col-sm-6">
-                                <input type="text" class="form-control " id="exampleInputPassword1" 
+                            <div className="col-sm-6">
+                                <input type="text" className="form-control " id="exampleInputPassword1" 
                                 value={titulo}
                                 onChange={e => onInputChange(e)}></input>
                             </div>
                         </div>
                       </div>
                             <div className="col">
-                                <div class="form-group row campo">
+                                <div className="form-group row campo">
                                         <label for="exampleTextarea">Insira um exemplo:</label>
-                                    <div class="col-lg-10">
-                                        <textarea class="form-control" id="exampleTextarea" rows="10"
+                                    <div className="col-lg-10">
+                                        <textarea className="form-control" id="exampleTextarea" rows="10"
                                         value={conteudo}
                                         onChange={e => onInputChange(e)}></textarea>
                                     </div>
                                 </div>
                                 <br></br>
                                 <div className="col-sm-3 ">
-                                    <div class="form-group row campo">
+                                    <div className="form-group row campo">
                                         <label for="exampleSelect1">Ano:</label>
-                                        <div class="col-sm-9">
-                                        <select class="form-control" id="exampleSelect1">
+                                        <div className="col-sm-9">
+                                        <select className="form-control" id="exampleSelect1">
                                             <option  value={ano}
                                             onChange={e => onInputChange(e)}></option>
                                             </select>
@@ -82,7 +82,7 @@ import axios from 'axios';
                                     </div>
                                 </div>
                                 <div>
-                                    <Link to="/gerir-exemplos" type="button" class="btn botao1">Salvar</Link>
+                                    <Link to="/gerir-exemplos" type="button" className="btn botao1">Salvar</Link>
                                 </div> 
                         </div> 
                     </div> 
