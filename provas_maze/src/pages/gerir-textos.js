@@ -1,4 +1,4 @@
-import React, {useEffect,useState} from 'react';
+import React, {useEffect,useState, alert} from 'react';
 import '../index.css';
 import { Link } from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
@@ -76,7 +76,7 @@ function GerirTextos(){
                                             <Link onClick={()=> deleteTexto(texto.id)} href="#deleteEmployeeModal" className="delete" data-toggle="modal">
                                             <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></Link>
                                         </td>
-                                        </tr>   
+                                    </tr>   
                                                 ))}  
                                 </tbody>
                             </table>

@@ -57,7 +57,7 @@ const EditarTextos = () => {
                     <div className="row">
                       <div className="col-sm">
                         <div className="form-group row campo">
-                                <label for="exampleInputPassword1">Titulo:</label>
+                                <label>Titulo:</label>
                             <div className="col-sm">
                                 <input type="text" className="form-control " name="titulo"
                                  key={titulo}
@@ -68,7 +68,7 @@ const EditarTextos = () => {
                       </div>
                       <div className="col-sm">
                         <div onSubmit={e =>onSubmit(e)} className="form-group row campo">
-                                <label for="exampleInputPassword1">Autor/a:</label>
+                                <label>Autor/a:</label>
                             <div className="col-sm">
                                 <input type="text" className="form-control " name="autor"
                               key={autor}
@@ -80,7 +80,7 @@ const EditarTextos = () => {
                     </div>
                         <div className="row-sm">
                             <div className="form-group row campo">
-                                    <label for="exampleInputPassword1">Editora do manual:</label>
+                                    <label>Editora do manual:</label>
                                 <div className="col-sm-5">
                                     <input type="text" className="form-control " name="editora"
                                     key={editora_manual}
@@ -89,7 +89,7 @@ const EditarTextos = () => {
                                 </div>
                             </div>
                             <div className="form-group row campo">
-                                        <label for="exampleTextarea">Insira o texto:</label>
+                                        <label>Insira o texto:</label>
                                     <div className="col-lg-10">
                                         <textarea className="form-control" name="conteudo" rows="8" 
                                         key={conteudo} 
@@ -99,11 +99,13 @@ const EditarTextos = () => {
                                 </div>
                                 <div className="col-sm-6">
                                     <div className="form-group row campo">
-                                        <label for="exampleSelect1">Ano:</label>
+                                        <label>Ano:</label>
                                         <div className="col-sm-5">
-                                            <select className="form-control" name="ano">
-                                              <option>{textos.ano}</option>         
-                                            </select>
+                                            <input type="text" className="form-control" name="ano"
+                                              key={ano} 
+                                              value={ano}
+                                              onChange={e => onInputChange(e)} />      
+                                           
                                         </div>
                                     </div>
                                 </div>

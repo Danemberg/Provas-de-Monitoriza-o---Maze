@@ -50,6 +50,7 @@ function ListarExemplos(){
                                     <th className="item-tabela">Titulo
                                     </th>
                                     <th className="item-tabela">Ano</th>
+                                    <th className="item-tabela"></th>
                                 </tr>
                             </thead>
                             <tbody>

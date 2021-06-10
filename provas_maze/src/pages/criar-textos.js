@@ -22,6 +22,7 @@ const CriarTextos = () => {
     await axios.post("http://192.168.1.84/projeto-maze/web/rest/textos", textos);
     history.push("/gerir-textos")
   };
+                      
         return(  
         <div>
             <nav className="navbar navbar-expand-lg my-navbar">     
@@ -45,7 +46,7 @@ const CriarTextos = () => {
                     <div className="row">
                       <div className="col-sm">
                         <div className="form-group row campo">
-                                <label For="exampleInputPassword1">Titulo:</label>
+                                <label>Titulo:</label>
                             <div className="col-sm">
                                 <input type="text" className="form-control " name="titulo"
                                  value={titulo}
@@ -85,14 +86,15 @@ const CriarTextos = () => {
                                     <div className="form-group row campo">
                                         <label>Ano:</label>
                                         <div className="col-sm-5">
-                                            <select className="form-control" name="ano">
-                                            <option value={ano}
-                                            onChange={e => onInputChange(e)}></option>
-                                            </select>
+                                            <input type="text" className="form-control" name="ano"
+                                             value={ano}
+                                            onChange={e => onInputChange(e)}/>
                                         </div>
+                                       
                                     </div>
                                 </div>
                                 <Link to="/gerir-textos" type="button" className="btn botao1">Gerar</Link>
+                                
                             </div>
                         </div>
                     </div>

@@ -30,7 +30,7 @@ function InstrucaoProva(){
                         </div>
                     <div className="table-responsive">
                         <div className="table-wrapper">
-                            <table className="table table-striped table-hover">
+                            <ul className="table table-striped table-hover">
                             . Escolher exemplo a ser utilizado para a prova
                             <br/>
                             . Escolher os três textos para a prova
@@ -38,7 +38,7 @@ function InstrucaoProva(){
                             . Inserir os distratores nos textos nos espaços vazios
                             <br/>
                             . Texto não pode ter parágrafos     
-                            </table>
+                            </ul>
                         </div>
                     </div>
             </div>

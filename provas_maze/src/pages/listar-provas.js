@@ -52,6 +52,7 @@ function ListarProvas(){
                                         <th className="item-tabela">Título</th>
                                         <th className="item-tabela">Data</th>
                                         <th className="item-tabela">Turma</th>
+                                        <th className="item-tabela"></th>
                                     </tr>
                                 </thead>
                                 <tbody>

@@ -1,31 +1,38 @@
 import React, {useEffect,useState}  from 'react';
 import {Dropdown} from 'react-bootstrap';
 import '../index.css';
-import { Link, useParams } from 'react-router-dom'
+import { Link, useParams, useHistory } from 'react-router-dom'
 import Imagem from '../images/imagem_pagina_principal.png'
 import Logo from '../images/LogoMBCL.png';
 import axios from 'axios';
 
-function PaginaPrincipal(){
+const PaginaPrincipal = ()=>{
+    let history = useHistory()
     const {id} = useParams();
-    const [utilizadores, setUtilizador] = useState([]);
-    const [entidades, setEntidade] = useState([]);
+    const [utilizadores, setUtilizador] = useState({
+      nome: "",
+      email: "",
+      senha: "",
+    })
+    const{nome, email, senha} = utilizadores;
+    const onInputChange = e =>{
+     setUtilizador({...utilizadores,[e.target.email]: e.target.value});
+    };
+
+    useEffect(() => {
+        loadUtilizadores();
+    }, []);
     
-      useEffect(()=>{
-           loadUtilizador();
-           loadEntidade();
-      }, []);
-      const loadUtilizador = async () =>{
-          const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/utilizadors${id}`);
-          console.log(result);
-          setUtilizador(result.data.reverse())
-      }
-      const loadEntidade = async () =>{
-        const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/entidades${id}`);
-        console.log(result);
-        setEntidade(result.data.reverse())
+    const onSubmit = async e =>{
+      e.preventDefault()
+      await axios.put(`http://192.168.1.84/projeto-maze/web/rest/utilizadors/${id}`, utilizadores);
+      history.push("/gerir-textos")
+    };
+    
+    const loadUtilizadores = async () =>{
+        const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/utilizadors/${id}`)
+        setUtilizador(result.data);
     }
-   
         return(
             <div>
              <nav className="navbar navbar-expand-lg my-navbar">     
@@ -44,12 +51,10 @@ function PaginaPrincipal(){
                 </div>
             </nav>
                 <img className="imagem-pp" src={Imagem} height="300" width="300" />
-                <form value={utilizadores.nome}
-                      value={utilizadores.email}
-                      value={entidades.nome}
-                      value={entidades.concelho}>
+                <ul value={nome}
+                      value={email}>         
 
-                </form>
+                </ul>
      
                 <Dropdown>
                     <Dropdown.Toggle variant="menu-pp" id="dropdown-basic" className="menu-pp">

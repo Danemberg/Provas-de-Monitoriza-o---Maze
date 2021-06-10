@@ -1,10 +1,11 @@
-import React from 'react';
+import React , {useState, useEffect} from 'react'
 import '../index.css';
-import { Link } from 'react-router-dom'
+import {Link, useHistory, useParams} from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
+import axios from 'axios';
 
-
-function VisualizarProva(){
+    
+const VisualizarProva =() =>{
         return(
             <div>
                 <nav className="navbar navbar-expand-lg my-navbar">     

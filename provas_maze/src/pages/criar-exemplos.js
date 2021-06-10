@@ -43,9 +43,9 @@ import axios from 'axios';
                         <div className="card-body">
                         <div className="col-sm-6">
                         <div className="form-group row campo">
-                                <label for="exampleInputPassword1">Titulo:</label>
+                                <label>Titulo:</label>
                             <div className="col-sm-6">
-                                <input type="text" className="form-control " id="exampleInputPassword1" 
+                                <input type="text" className="form-control " 
                                 value={titulo}
                                 onChange={e => onInputChange(e)}></input>
                             </div>
@@ -53,9 +53,9 @@ import axios from 'axios';
                       </div>
                             <div className="col">
                                 <div className="form-group row campo">
-                                        <label for="exampleTextarea">Insira um exemplo:</label>
+                                        <label>Insira um exemplo:</label>
                                     <div className="col-lg-10">
-                                        <textarea className="form-control" id="exampleTextarea" rows="10"
+                                        <textarea className="form-control" rows="10"
                                         value={conteudo}
                                         onChange={e => onInputChange(e)}></textarea>
                                     </div>
@@ -63,9 +63,9 @@ import axios from 'axios';
                                 <br></br>
                                 <div className="col-sm-3 ">
                                     <div className="form-group row campo">
-                                        <label for="exampleSelect1">Ano:</label>
+                                        <label>Ano:</label>
                                         <div className="col-sm-9">
-                                        <select className="form-control" id="exampleSelect1">
+                                        <select className="form-control">
                                             <option  value={ano}
                                             onChange={e => onInputChange(e)}></option>
                                             </select>

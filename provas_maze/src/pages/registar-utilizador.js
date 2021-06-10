@@ -59,32 +59,32 @@ import axios from 'axios';
                     <div className="row">
                       <div className="col-md-6">
                         <div className="form-group row campo">
-                                <label for="exampleInputPassword1">Nome:</label>
+                                <label>Nome:</label>
                             <div className="col-sm-10">
-                                <input type="text" className="form-control "  value={nome}
+                                <input type="text" className="form-control " name="name" value={nome}  
                                  onChange={e => onInputChange(e)}/>
                             </div>
                         </div>
                             <div className="form-group row campo">
-                                    <label for="exampleInputEmail1">Email:</label>
+                                    <label>Email:</label>
                                 <div className="col-sm-10">
-                                    <input type="text" className="form-control"  aria-describedby="emailHelp"value={email}
+                                    <input type="text" className="form-control" name="email" value={email}
                                  onChange={e => onInputChange(e)}/>
                                 </div>
                             </div>
                       </div>
                     </div>
                         <div className="form-group row campo">
-                                <label for="exampleInputEmail1">Senha de acesso:</label>
+                                <label>Senha de acesso:</label>
                             <div className="col-sm-3">
-                                <input type="password" className="form-control"  aria-describedby="emailHelp"value={senha}
+                                <input type="password" className="form-control" name="senha" value={senha}
                                  onChange={e => onInputChange(e)}/>
                             </div>
                         </div>
                         <div className="row">
                             <div className="col-lg-6 ">
                                 <div className="form-group row campo">
-                                      <label for="exampleSelect1">Entidade:</label>
+                                      <label>Entidade:</label>
                                     <div className="col-sm-9">
                                         <select className="form-control">
                                         <option> {entidades.nome}</option>
@@ -94,9 +94,9 @@ import axios from 'axios';
                             </div>
                                 <div className="col-md-6 ">
                                 <div className="form-group row campo">
-                                        <label for="exampleInputEmail1">Outros:</label>
+                                        <label>Outros:</label>
                                     <div className="col-sm-9">
-                                        <input type="text" className="form-control"  aria-describedby="emailHelp"></input>
+                                        <input type="text" className="form-control"></input>
                                     </div>
                                 </div>
                             </div>
@@ -104,29 +104,29 @@ import axios from 'axios';
                         <div className="row">
                             <div className="col-lg-6 ">
                                 <div className="form-group row campo">
-                                        <label for="exampleInputEmail1">Concelho:</label>
+                                        <label>Concelho:</label>
                                     <div className="col-sm-6">
-                                        <input type="text" className="form-control-plaintext"  value="Bragança"></input>
+                                        <input type="text" className="form-control-plaintext" ></input>
                                     </div>
                                 </div>
                             </div>
                             <div className="col-md-6 ">
                                 <div className="form-group row campo">
-                                        <label for="exampleInputEmail1">Concelho:</label>
+                                        <label>Concelho:</label>
                                     <div className="col-sm-6">
-                                        <input type="text" className="form-control" aria-describedby="emailHelp"></input>
+                                        <input type="text" className="form-control"></input>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div className="form-group row campo">
-                                <label for="exampleTextarea">Justificação de registo:</label>
+                                <label>Justificação de registo:</label>
                             <div className="col-md-6">
                                 <textarea className="form-control" rows="3"></textarea>
                             </div>
                         </div>
                         <div>
-                            <Link type="button" to="/" className=" btn botao">Registar</Link>
+                            <Link onSubmit={e=>onSubmit(e)} type="button" to="/" className=" btn botao">Registar</Link>
                         </div> 
                     </div> 
                 </div> 

@@ -55,9 +55,9 @@ const EditarProvas = () => {
                     <div className="row">
                       <div className="col-sm">
                         <div className="form-group row campo">
-                                <label for="exampleInputPassword1">Titulo:</label>
+                                <label>Titulo:</label>
                             <div className="col-sm">
-                                <input type="text" class="form-control " id="exampleInputPassword1"
+                                <input type="text" className="form-control " 
                                 value={titulo}
                                 onChange={e => onInputChange(e)}></input>
                             </div>
@@ -65,17 +65,17 @@ const EditarProvas = () => {
                       </div>
                       <div className="col-sm">
                         <div className="form-group row campo">
-                                <label  for="exampleInputPassword1">Data:</label>
+                                <label>Data:</label>
                             <div className="col-sm-5">
-                                <input type="text" class="form-control " id="exampleInputPassword1"
+                                <input type="text" className="form-control" 
                                 value={data_de_realizacao}
                                 onChange={e => onInputChange(e)}></input>
                             </div>
                             <div className="col-sm ">
-                                    <div class="form-group row campo">
-                                        <label for="exampleSelect1">Ano:</label>
+                                    <div className="form-group row campo">
+                                        <label>Ano:</label>
                                         <div className="col-sm">
-                                            <select className="form-control" id="exampleSelect1">
+                                            <select className="form-control">
                                             <option> {provas.ano}</option>
                                             </select>
                                         </div>
@@ -87,9 +87,9 @@ const EditarProvas = () => {
                         <div className="row">
                                 <div className="col-lg-6 ">
                                     <div className="form-group row campo">
-                                        <label for="exampleSelect1">Exemplo:</label>
+                                        <label>Exemplo:</label>
                                         <div className="col-sm-9">
-                                            <select className="form-control" id="exampleSelect1">
+                                            <select className="form-control">
                                             <option>exemplo</option>
                                             </select>
                                         </div>
@@ -100,9 +100,9 @@ const EditarProvas = () => {
                                 <div className="row">
                                     <div className="col-lg-6 ">
                                         <div className="form-group row campo">
-                                            <label for="exampleSelect1">Texto 1:</label>
+                                            <label>Texto 1:</label>
                                             <div className="col-sm-9">
-                                                <select className="form-control" id="exampleSelect1">
+                                                <select className="form-control">
                                                 <option>texto</option>
                                                 </select>
                                             </div>
@@ -112,9 +112,9 @@ const EditarProvas = () => {
                             <div className="row">
                                 <div className="col-lg-6 ">
                                     <div className="form-group row campo">
-                                        <label for="exampleSelect1">Texto 2:</label>
+                                        <label>Texto 2:</label>
                                         <div className="col-sm-9">
-                                            <select className="form-control" id="exampleSelect1">
+                                            <select className="form-control">
                                             <option>Texto</option>
                                             </select>
                                         </div>
@@ -124,9 +124,9 @@ const EditarProvas = () => {
                             <div className="row">
                                 <div className="col-lg-6 ">
                                     <div className="form-group row campo">
-                                        <label for="exampleSelect1">Texto 3:</label>
+                                        <label>Texto 3:</label>
                                         <div className="col-sm-9">
-                                            <select className="form-control" id="exampleSelect1">
+                                            <select className="form-control">
                                             <option>Texto</option>
                                             </select>
                                         </div>

@@ -69,7 +69,7 @@ function GerirExemplos(){
                                         <td>{exemplo.titulo}</td>
                                         <td>{exemplo.ano}</td>
                                         <td>
-                                            <Link to="/editar-provas" className="edit">
+                                            <Link to={`editar-exemplos/${exemplo.id}`} className="edit">
                                             <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></Link>
                                             <Link onClick={()=> deleteExemplo(exemplo.id)} href="#deleteEmployeeModal" className="delete" data-toggle="modal">
                                             <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></Link>  

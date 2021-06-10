@@ -52,6 +52,7 @@ function ListarTextos(){
                                         <th scope="col" className="item-tabela">Autor/a:</th>
                                         <th scope="col" className="item-tabela">Editora do manual</th>
                                         <th scope="col" className="item-tabela">Ano</th>
+                                        <th scope="col" className="item-tabela"></th>
                                     </tr>
                                 </thead>
                                 <tbody>

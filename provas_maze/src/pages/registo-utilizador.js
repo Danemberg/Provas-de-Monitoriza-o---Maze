@@ -57,17 +57,17 @@ const RegistoUtilizador = () => {
                     <div className="row">
                       <div className="col-md-6">
                         <div className="form-group row campo">
-                                <label for="exampleInputPassword1">Nome:</label>
+                                <label>Nome:</label>
                             <div className="col-sm-10">
-                                <input type="text" className="form-control " id="exampleInputPassword1" 
+                                <input type="text" className="form-control " 
                                  value={nome}
                                  onChange={e => onInputChange(e)}/>
                             </div>
                         </div>
                             <div className="form-group row campo">
-                                    <label for="exampleInputEmail1">Email:</label>
+                                    <label>Email:</label>
                                 <div className="col-sm-10">
-                                    <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                    <input type="text" className="form-control" 
                                     value={email}
                                    onChange={e => onInputChange(e)}/>
                                 </div>
@@ -77,9 +77,9 @@ const RegistoUtilizador = () => {
                         <div className="row">
                             <div className="col-lg-6 ">
                                 <div className="form-group row campo">
-                                      <label for="exampleSelect1">Entidade:</label>
+                                      <label>Entidade:</label>
                                     <div className="col-sm-9">
-                                        <select className="form-control" id="exampleSelect1">
+                                        <select className="form-control">
                                         <option></option>
                                         </select>
                                     </div>
@@ -87,9 +87,9 @@ const RegistoUtilizador = () => {
                             </div>
                                 <div className="col-md-6 ">
                                 <div className="form-group row campo">
-                                        <label for="exampleInputEmail1">Outros:</label>
+                                        <label>Outros:</label>
                                     <div className="col-sm-9">
-                                        <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></input>
+                                        <input type="text" className="form-control"></input>
                                     </div>
                                 </div>
                             </div>
@@ -97,26 +97,26 @@ const RegistoUtilizador = () => {
                         <div className="row">
                             <div className="col-lg-6 ">
                                 <div className="form-group row campo">
-                                        <label for="exampleInputEmail1">Concelho:</label>
+                                        <label>Concelho:</label>
                                     <div className="col-sm-6">
-                                        <input type="text" className="form-control-plaintext" id="staticEmail" value="Bragança"></input>
+                                        <input type="text" className="form-control"></input>
                                     </div>
                                 </div>
                             </div>
                             <div className="col-md-6 ">
                                 <div className="form-group row campo">
-                                        <label for="exampleInputEmail1">Concelho:</label>
+                                        <label >Concelho:</label>
                                     <div className="col-sm-6">
-                                        <input type="text" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"></input>
+                                        <input type="text" className="form-control" ></input>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <br></br>
                         <div className="form-group row campo">
-                                <label for="exampleTextarea">Observações:</label>
+                                <label>Observações:</label>
                             <div className="col-md-6">
-                                <textarea className="form-control" id="exampleTextarea" rows="3"></textarea>
+                                <textarea className="form-control" rows="3"></textarea>
                             </div>
                         </div>
                         <div>
