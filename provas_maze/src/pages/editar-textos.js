@@ -8,6 +8,7 @@ const EditarTextos = () => {
     let history = useHistory()
     const {id} = useParams();
     const [textos, setTexto] = useState({
+      id: "",
       titulo: "",
       autor: "",
       editora_manual: "",
@@ -17,7 +18,7 @@ const EditarTextos = () => {
    
     const{titulo, autor, editora_manual, ano, conteudo} = textos;
     const onInputChange = e =>{
-     setTexto({...textos,[e.target.titulo]: e.target.value});
+     setTexto({...textos,[e.target.id]: e.target.value});
     };
 
     useEffect(() => {
@@ -53,6 +54,7 @@ const EditarTextos = () => {
                 </nav>
             <div className="card border-danger mb-3 my-card">
                 <div className="card-header titulo">Editar texto:
+                <form onSubmit={e =>onSubmit(e)}>
                     <div className="card-body">
                     <div className="row">
                       <div className="col-sm">
@@ -67,7 +69,7 @@ const EditarTextos = () => {
                         </div>
                       </div>
                       <div className="col-sm">
-                        <div onSubmit={e =>onSubmit(e)} className="form-group row campo">
+                        <div className="form-group row campo">
                                 <label>Autor/a:</label>
                             <div className="col-sm">
                                 <input type="text" className="form-control " name="autor"
@@ -112,6 +114,7 @@ const EditarTextos = () => {
                                 <Link to="/gerir-textos" type="button" className="btn botao1">Salvar</Link>
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>    
         </div>

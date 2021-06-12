@@ -4,23 +4,34 @@ import Logo from '../images/LogoMBCL.png';
 import axios from 'axios';
 
 
-const CriarProvas = () => {
-    let history = useHistory()
+function CriarProvas(){
+    const url = "http://192.168.1.84/projeto-maze/web/rest/provas"
     const [provas, setProva] = useState({
+      id:"",
       titulo: "",
       data_de_realizacao: "",
-      ano: ""
-    })
+      ano: "",
+    });
    
-    const{titulo, data_de_realizacao, ano} = provas;
-    const onInputChange = e =>{
-     setProva({...provas,[e.target.titulo]: e.target.value})
-    }
-    const onSubmit = async e =>{
-      e.preventDefault()
-      await axios.post("http://192.168.1.84/projeto-maze/web/rest/provas", provas);
-      history.push("/gerir-provas")
-    };
+   function submit(e){
+       e.preventDefault();
+       axios.post(url,{
+          id: parseInt(provas.id),
+          titulo: provas.titulo,
+          data_de_realizacao: provas.data_de_realizacao,
+          ano: provas.ano,
+       })
+       .then(res => {
+           console.log(res.provas)
+       })
+   }  
+   
+   function handle(e){
+       const newprova = {...provas}
+       newprova[e.target.id] = e.target.value
+       setProva(newprova)
+       console.log(newprova)
+   }
         return(  
         <div>
             <nav className="navbar navbar-expand-lg my-navbar">     
@@ -38,6 +49,7 @@ const CriarProvas = () => {
                             </ul>  
                         </div>
                     </nav>
+        <form onSubmit={e =>submit(e)}>
             <div className="card border-danger mb-3 my-card">
                 <div className="card-header titulo">Informações para gerar prova:
                     <div className="card-body">
@@ -46,9 +58,9 @@ const CriarProvas = () => {
                         <div className="form-group row campo">
                                 <label>Titulo:</label>
                             <div className="col-sm">
-                                <input type="text" className="form-control " 
-                                value={titulo}
-                                onChange={e => onInputChange(e)}></input>
+                                <input type="text" id="titulo" className="form-control " name="titulo"
+                                value={provas.titulo}
+                                onChange={(e) => handle(e)}/>
                             </div>
                         </div>
                       </div>
@@ -56,18 +68,17 @@ const CriarProvas = () => {
                         <div className="form-group row campo">
                                 <label>Data:</label>
                             <div className="col-sm-5">
-                                <input type="text" className="form-control " 
-                                value={data_de_realizacao}
-                                onChange={e => onInputChange(e)}></input>
+                                <input type="text" className="form-control"  id="data_de_realizacao" name="data_de_realizacao"
+                                value={provas.data_de_realizacao}
+                                onChange={(e) => handle(e)}/>
                             </div>
                             <div className="col-sm ">
                                     <div className="form-group row campo">
                                         <label>Ano:</label>
-                                        <div className="col-sm">
-                                            <select className="form-control">
-                                            <option value={ano}
-                                            onChange={e => onInputChange(e)}></option>
-                                            </select>
+                                        <div className="col-sm" id="ano" name="ano">
+                                            <select className="form-control"
+                                            value={provas.ano}
+                                            onChange={(e) => handle(e)}></select>
                                         </div>
                                     </div>
                                 </div>
@@ -79,8 +90,8 @@ const CriarProvas = () => {
                                     <div className="form-group row campo">
                                         <label>Exemplo:</label>
                                         <div className="col-sm-9">
-                                            <select className="form-control">
-                                            <option>Exemplo</option>
+                                            <select className="form-control" 
+                                            >
                                             </select>
                                         </div>
                                     </div>
@@ -124,11 +135,12 @@ const CriarProvas = () => {
                                 </div>
                             </div> 
                             <div>
-                                <Link to="/gerir-provas" type="button" className="btn botao1">Gerar</Link>
+                                <button type="button" className="btn botao1">Gerar</button>
                             </div>  
                         </div>
                     </div>
-                </div>    
+                </div> 
+            </form>   
         </div>
    
       

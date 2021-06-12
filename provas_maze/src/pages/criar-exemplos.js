@@ -4,23 +4,34 @@ import Logo from '../images/LogoMBCL.png';
 import axios from 'axios';
    
    
-   const CriarExemplos = () => {
-       let history = useHistory()
-       const [exemplos, setExemplo] = useState({
-         titulo: "",
-         conteudo: "",
-         ano: ""
+function CriarExemplos(){
+    const url = "http://192.168.1.84/projeto-maze/web/rest/exemplos"
+    const [exemplos, setExemplo] = useState({
+      id:"",
+      titulo: "",
+      conteudo:"",
+      ano:""
+    });
+   
+   function submit(e){
+       e.preventDefault();
+       axios.post(url,{
+          id: parseInt(exemplos.id),
+          titulo: exemplos.titulo,
+          conteudo: exemplos.conteudo,
+          ano: exemplos.ano
        })
-      
-       const{titulo, conteudo, ano} = exemplos;
-       const onInputChange = e =>{
-        setExemplo({...exemplos,[e.target.titulo]: e.target.value})
-       }
-       const onSubmit = async e =>{
-         e.preventDefault()
-         await axios.post("http://192.168.1.84/projeto-maze/web/rest/exemplos", exemplos);
-         history.push("/gerir-exemplos")
-       };
+       .then(res => {
+           console.log(res.exemplos)
+       })
+   }  
+   
+   function handle(e){
+       const newexemplo = {...exemplos}
+       newexemplo[e.target.id] = e.target.value
+       setExemplo(newexemplo)
+       console.log(newexemplo)
+   }
         return(  
        <div>
             <nav className="navbar navbar-expand-lg my-navbar">     
@@ -38,6 +49,7 @@ import axios from 'axios';
                             </ul>  
                         </div>
                     </nav>
+        <form onSubmit={e =>submit(e)}>
             <div className="card border-danger mb-3 my-card">
                     <div className="card-header titulo">Criar exemplos para provas:
                         <div className="card-body">
@@ -45,9 +57,9 @@ import axios from 'axios';
                         <div className="form-group row campo">
                                 <label>Titulo:</label>
                             <div className="col-sm-6">
-                                <input type="text" className="form-control " 
-                                value={titulo}
-                                onChange={e => onInputChange(e)}></input>
+                                <input type="text" className="form-control" id="titulo" name="titulo"
+                                value={exemplos.titulo}
+                                onChange={(e) => handle(e)}></input>
                             </div>
                         </div>
                       </div>
@@ -55,9 +67,9 @@ import axios from 'axios';
                                 <div className="form-group row campo">
                                         <label>Insira um exemplo:</label>
                                     <div className="col-lg-10">
-                                        <textarea className="form-control" rows="10"
-                                        value={conteudo}
-                                        onChange={e => onInputChange(e)}></textarea>
+                                        <textarea className="form-control" rows="10" id="conteudo" name="conteudo"
+                                        value={exemplos.conteudo}
+                                        onChange={(e) => handle(e)}></textarea>
                                     </div>
                                 </div>
                                 <br></br>
@@ -65,21 +77,21 @@ import axios from 'axios';
                                     <div className="form-group row campo">
                                         <label>Ano:</label>
                                         <div className="col-sm-9">
-                                        <select className="form-control">
-                                            <option  value={ano}
-                                            onChange={e => onInputChange(e)}></option>
-                                            </select>
+                                        <input className="form-control" id="ano" name="ano" type="text"
+                                             value={exemplos.ano}
+                                            onChange={(e) => handle(e)}/>   
                                         </div>
                                     </div>
                                 </div>
                                 <div>
-                                    <Link to="/gerir-exemplos" type="button" className="btn botao1">Gerar</Link>
+                                    <button  type="submit" className="btn botao1">Gerar</button>
                                 </div> 
                         </div> 
                     </div> 
                 </div> 
             </div>   
-        </div>
+        </form>
+    </div>
    
         )
     }

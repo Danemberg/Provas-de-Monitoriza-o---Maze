@@ -51,6 +51,7 @@ const EditarProvas = () => {
                     </nav>
             <div className="card border-danger mb-3 my-card">
                 <div className="card-header titulo"> Editar informações para gerar prova:
+                <form onSubmit={e =>onSubmit(e)}>
                     <div className="card-body">
                     <div className="row">
                       <div className="col-sm">
@@ -134,9 +135,10 @@ const EditarProvas = () => {
                                 </div>
                             </div> 
                             <div>
-                                <Link to="/gerir-provas" type="button" className="btn botao1">Salvar</Link>
+                                <button type="button" className="btn botao1">Salvar</button>
                             </div>  
                         </div>
+                        </form>
                     </div>
                 </div>    
         </div>

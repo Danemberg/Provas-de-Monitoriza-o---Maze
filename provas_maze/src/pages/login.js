@@ -10,12 +10,12 @@ function Login(){
 
     useEffect(()=>{
         if(localStorage.getItem("utilizador")){
-            history.push("/pagina-principal")
+            history.push("/")
         }
     }, [])
     async function login()
     {
-        console.warn(email,senha)
+        console.log(email,senha)
         let item={email,senha};
         let result= await fetch("http://192.168.1.84/projeto-maze/web/rest/utilizadors",{
             method:'POST',
@@ -30,7 +30,8 @@ function Login(){
         history.push("/pagina-principal")   
     }
    
-   return(
+    
+        return(
             <div className="container login">
                 <div className="row colleft">
                     <div className="col">
@@ -51,7 +52,7 @@ function Login(){
                 
                 <div>
                     <Link className="link-registo" to="/registar-utilizador">Registar-se</Link>
-                    <Link  onClick={login}  type="button" to="/{`pagina-principal/${utilizador.id}`}" className=" btn botao">Entrar</Link>
+                    <Link  onClick={login}  type="button" to="/pagina-principal" className=" btn botao">Entrar</Link>
                 </div>
                 </div>
                 </div>
@@ -61,3 +62,7 @@ function Login(){
         
 }
 export default Login
+
+
+
+
