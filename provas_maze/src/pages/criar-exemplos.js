@@ -29,7 +29,7 @@ const loadExemplos = async () =>{
     const onSubmit = async e =>{
       e.preventDefault()
       await axios.post("http://192.168.1.84/projeto-maze/web/rest/exemplos", exemplos);
-      history.push("/")
+      history.push("/gerir-exemplos")
     };
         return(  
        <div>

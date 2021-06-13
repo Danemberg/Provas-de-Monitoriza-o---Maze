@@ -13,9 +13,10 @@ const RegistoUtilizador = () => {
         senha: "",
         tipo_de_utilizador: "",
         entidade_id: "",
+        justificacao_registo: ""
     })
    
-    const{nome, email, senha, tipo_de_utilizador, entidade_id} = utilizadores;
+    const{nome, email, senha, tipo_de_utilizador, entidade_id, justificacao_registo} = utilizadores;
     const onInputChange = e =>{
      setUtilizador({...utilizadores,[e.target.id]: e.target.value});
     };
@@ -115,9 +116,11 @@ const RegistoUtilizador = () => {
                         </div>
                         <br></br>
                         <div className="form-group row campo">
-                                <label>Observações:</label>
+                                <label>Justificação de registo:</label>
                             <div className="col-md-6">
-                                <textarea className="form-control" rows="3"></textarea>
+                                <textarea className="form-control" rows="3" id="justificacao_registo" name="justificacao_registo"
+                                value={justificacao_registo}
+                                onChange={e => onInputChange(e)}></textarea>
                             </div>
                         </div>
                         <div>

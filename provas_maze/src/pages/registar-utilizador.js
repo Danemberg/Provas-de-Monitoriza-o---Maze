@@ -12,6 +12,7 @@ import axios from 'axios';
           senha: "",
           tipo_de_utilizador: "",
           entidade_id: "",
+          justificacao_registo: ""
         })
         const [entidades, setEntidade] = useState({
             nome:"",
@@ -27,7 +28,7 @@ import axios from 'axios';
         setEntidade(result.data);
     }
        
-        const{nome, email, senha, tipo_de_utilizador, entidade_id} = utilizadores;
+        const{nome, email, senha, tipo_de_utilizador, entidade_id, justificacao_registo} = utilizadores;
         const onInputChange = e =>{
          setUtilizador({...utilizadores,[e.target.id]: e.target.value})
         }
@@ -123,7 +124,9 @@ import axios from 'axios';
                         <div className="form-group row campo">
                                 <label>Justificação de registo:</label>
                             <div className="col-md-6">
-                                <textarea className="form-control" rows="3"></textarea>
+                                <textarea className="form-control" rows="3"  id="justificacao_registo" name="justificacao_registo"
+                                value={justificacao_registo}
+                                onChange={e => onInputChange(e)}/>
                             </div>
                         </div>
                         <div>
@@ -132,7 +135,7 @@ import axios from 'axios';
                     </div> 
                 </div> 
             </div> 
-            </form>   
+        </form>   
         </div>
    
       
