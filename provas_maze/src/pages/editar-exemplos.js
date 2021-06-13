@@ -15,7 +15,7 @@ import axios from 'axios';
    
     const{titulo, conteudo, ano} = exemplos;
     const onInputChange = e =>{
-     setExemplo({...exemplos,[e.target.titulo]: e.target.value})
+     setExemplo({...exemplos,[e.target.id]: e.target.value})
     }
     useEffect(() => {
         loadExemplos();
@@ -47,6 +47,7 @@ import axios from 'axios';
                             </ul>  
                         </div>
                     </nav>
+        <form onSubmit={e =>onSubmit(e)}>
             <div className="card border-danger mb-3 my-card">
                     <div className="card-header titulo">Editar exemplos para provas:
                         <div className="card-body">
@@ -54,9 +55,9 @@ import axios from 'axios';
                         <div className="form-group row campo">
                                 <label>Titulo:</label>
                             <div className="col-sm-6">
-                                <input type="text" className="form-control " 
+                                <input type="text" className="form-control " id="titulo" name="ano"
                                 value={titulo}
-                                onChange={e => onInputChange(e)}></input>
+                                onChange={e => onInputChange(e)}/>
                             </div>
                         </div>
                       </div>
@@ -64,9 +65,9 @@ import axios from 'axios';
                                 <div className="form-group row campo">
                                         <label>Insira um exemplo:</label>
                                     <div className="col-lg-10">
-                                        <textarea className="form-control" rows="10"
+                                        <textarea className="form-control" rows="10" id="conteudo" name="conteudo"
                                         value={conteudo}
-                                        onChange={e => onInputChange(e)}></textarea>
+                                        onChange={e => onInputChange(e)}/>
                                     </div>
                                 </div>
                                 <br></br>
@@ -74,20 +75,21 @@ import axios from 'axios';
                                     <div className="form-group row campo">
                                         <label>Ano:</label>
                                         <div className="col-sm-9">
-                                        <select className="form-control">
-                                            <option  value={ano}
-                                            onChange={e => onInputChange(e)}></option>
-                                            </select>
+                                        <input className="form-control" id="ano" name="ano"
+                                            value={ano}
+                                            onChange={e => onInputChange(e)}
+                                            />
                                         </div>
                                     </div>
                                 </div>
                                 <div>
-                                    <Link to="/gerir-exemplos" type="button" className="btn botao1">Salvar</Link>
+                                    <button  type="submit" className="btn botao1">Salvar</button>
                                 </div> 
                         </div> 
                     </div> 
                 </div> 
-            </div>   
+            </div>  
+            </form> 
         </div>
    
         )

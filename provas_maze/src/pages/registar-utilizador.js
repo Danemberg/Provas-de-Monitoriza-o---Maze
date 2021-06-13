@@ -29,7 +29,7 @@ import axios from 'axios';
        
         const{nome, email, senha, tipo_de_utilizador, entidade_id} = utilizadores;
         const onInputChange = e =>{
-         setUtilizador({...utilizadores,[e.target.email]: e.target.value})
+         setUtilizador({...utilizadores,[e.target.id]: e.target.value})
         }
         const onSubmit = async e =>{
           e.preventDefault()
@@ -53,6 +53,7 @@ import axios from 'axios';
                 </ul>  
             </div>
         </nav>
+        <form onSubmit={e =>onSubmit(e)}>
             <div className="card border-danger mb-3 my-card">
                 <div className="card-header titulo">Registar:
                     <div className="card-body">
@@ -61,14 +62,14 @@ import axios from 'axios';
                         <div className="form-group row campo">
                                 <label>Nome:</label>
                             <div className="col-sm-10">
-                                <input type="text" className="form-control " name="name" value={nome}  
+                                <input type="text" className="form-control " id="nome" name="name" value={nome}  
                                  onChange={e => onInputChange(e)}/>
                             </div>
                         </div>
                             <div className="form-group row campo">
                                     <label>Email:</label>
                                 <div className="col-sm-10">
-                                    <input type="text" className="form-control" name="email" value={email}
+                                    <input type="text" className="form-control" id="email" name="email" value={email}
                                  onChange={e => onInputChange(e)}/>
                                 </div>
                             </div>
@@ -77,7 +78,7 @@ import axios from 'axios';
                         <div className="form-group row campo">
                                 <label>Senha de acesso:</label>
                             <div className="col-sm-3">
-                                <input type="password" className="form-control" name="senha" value={senha}
+                                <input type="password" className="form-control" id="senha" name="senha" value={senha}
                                  onChange={e => onInputChange(e)}/>
                             </div>
                         </div>
@@ -130,7 +131,8 @@ import axios from 'axios';
                         </div> 
                     </div> 
                 </div> 
-            </div>    
+            </div> 
+            </form>   
         </div>
    
       

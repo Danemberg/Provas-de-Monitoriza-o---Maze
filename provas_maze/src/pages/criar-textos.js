@@ -1,41 +1,37 @@
-import React , {useState,alert} from 'react'
-import {Link, useHistory} from 'react-router-dom'
+import React , {useEffect, useState,alert} from 'react'
+import {Link, useHistory, useParams} from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
 import axios from 'axios';
 
 
-function CriarTextos(){
-    const url = "http://192.168.1.84/projeto-maze/web/rest/textos"
+const CriarTextos = () => {
+    let history = useHistory()
+    const {id} = useParams();
     const [textos, setTexto] = useState({
-      id:"",
       titulo: "",
       autor: "",
       editora_manual: "",
       ano: "",
-      conteudo:""
-    });
+      conteudo: "",
+    })
+useEffect(() => {
+    loadTextos();
+}, []);
+
+const loadTextos = async () =>{
+    const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/textos`)
+    setTexto(result.data);
+}
    
-   function submit(e){
-       e.preventDefault();
-       axios.post(url,{
-          id: parseInt(textos.id),
-          titulo: textos.titulo,
-          autor: textos.autor,
-          editora_manual: textos.editora_manual,
-          ano: textos.ano,
-          conteudo: textos.conteudo
-       })
-       .then(res => {
-           console.log(res.textos)
-       })
-   }  
-   
-   function handle(e){
-       const newtexto = {...textos}
-       newtexto[e.target.id] = e.target.value
-       setTexto(newtexto)
-       console.log(newtexto)
-   }
+    const{titulo, autor, editora_manual, ano, conteudo} = textos;
+    const onInputChange = e =>{
+     setTexto({...textos,[e.target.id]: e.target.value})
+    }
+    const onSubmit = async e =>{
+      e.preventDefault()
+      await axios.post("http://192.168.1.84/projeto-maze/web/rest/textos", textos);
+      history.push("/")
+    };
           return(  
           <div>
               <nav className="navbar navbar-expand-lg my-navbar">     
@@ -53,7 +49,7 @@ function CriarTextos(){
                           </ul>  
                       </div>
                   </nav>
-                  <form onSubmit={e =>submit(e)}>
+                  <form onSubmit={e =>onSubmit(e)} >
               <div className="card border-danger mb-3 my-card">
                   <div className="card-header titulo">Criar texto:
                       <div className="card-body">
@@ -64,7 +60,7 @@ function CriarTextos(){
                               <div className="col-sm">
                                   <input type="text" id="titulo" className="form-control " name="titulo"
                                    value={textos.titulo}
-                                   onChange={(e) => handle(e)}/>
+                                   onChange={e => onInputChange(e)}/>
                               </div>
                           </div>
                         </div>
@@ -74,7 +70,7 @@ function CriarTextos(){
                               <div className="col-sm">
                                   <input type="text" id="autor" className="form-control " name="autor"
                                 value={textos.autor}
-                                onChange={(e) => handle(e)}/>
+                                onChange={e => onInputChange(e)}/>
                               </div>
                           </div>
                         </div>
@@ -85,7 +81,7 @@ function CriarTextos(){
                                   <div className="col-sm-5">
                                       <input type="text" id="editora_manual" className="form-control " name="editora_manual"
                                       value={textos.editora_manual}
-                                      onChange={(e) => handle(e)}/>
+                                      onChange={e => onInputChange(e)}/>
                                   </div>
                               </div>
                               <div className="form-group row campo">
@@ -93,7 +89,7 @@ function CriarTextos(){
                                       <div className="col-lg-10">
                                           <textarea id="conteudo" className="form-control" name="conteudo" rows="8"  
                                          value={textos.conteudo}
-                                         onChange={(e) => handle(e)}/>
+                                         onChange={e => onInputChange(e)}/>
                                       </div>
                                   </div>
                                   <div className="col-sm-6">
@@ -102,7 +98,7 @@ function CriarTextos(){
                                           <div className="col-sm-5">
                                               <input id="ano" type="text" className="form-control" name="ano"
                                                value={textos.ano}
-                                              onChange={(e) => handle(e)}/>
+                                               onChange={e => onInputChange(e)}/>
                                           </div>
                                          
                                       </div>

@@ -1,5 +1,4 @@
 import React , {useState,alert, useEffect} from 'react'
-import '../index.css';
 import {Link, useHistory, useParams} from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
 import axios from 'axios';
@@ -15,7 +14,7 @@ const EditarProvas = () => {
    
     const{titulo, data_de_realizacao, ano} = provas;
     const onInputChange = e =>{
-     setProva({...provas,[e.target.titulo]: e.target.value});
+     setProva({...provas,[e.target.id]: e.target.value});
     };
 
     useEffect(() => {
@@ -49,16 +48,16 @@ const EditarProvas = () => {
                             </ul>  
                         </div>
                     </nav>
+        <form onSubmit={e =>onSubmit(e)}>
             <div className="card border-danger mb-3 my-card">
                 <div className="card-header titulo"> Editar informações para gerar prova:
-                <form onSubmit={e =>onSubmit(e)}>
                     <div className="card-body">
                     <div className="row">
                       <div className="col-sm">
                         <div className="form-group row campo">
                                 <label>Titulo:</label>
                             <div className="col-sm">
-                                <input type="text" className="form-control " 
+                                <input type="text" className="form-control "  id="titulo" name="titulo"
                                 value={titulo}
                                 onChange={e => onInputChange(e)}></input>
                             </div>
@@ -68,7 +67,7 @@ const EditarProvas = () => {
                         <div className="form-group row campo">
                                 <label>Data:</label>
                             <div className="col-sm-5">
-                                <input type="text" className="form-control" 
+                                <input type="text" className="form-control" id="data_de_realizacao" name="data_de_realizacao"
                                 value={data_de_realizacao}
                                 onChange={e => onInputChange(e)}></input>
                             </div>
@@ -76,7 +75,7 @@ const EditarProvas = () => {
                                     <div className="form-group row campo">
                                         <label>Ano:</label>
                                         <div className="col-sm">
-                                            <select className="form-control">
+                                            <select className="form-control" id="conteudo" name="conteudo">
                                             <option> {provas.ano}</option>
                                             </select>
                                         </div>
@@ -135,12 +134,12 @@ const EditarProvas = () => {
                                 </div>
                             </div> 
                             <div>
-                                <button type="button" className="btn botao1">Salvar</button>
+                                <button type="submit" className="btn botao1">Salvar</button>
                             </div>  
-                        </div>
-                        </form>
+                        </div>   
                     </div>
-                </div>    
+                </div>  
+            </form>  
         </div>
        
         )

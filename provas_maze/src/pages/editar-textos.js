@@ -4,33 +4,31 @@ import {Link, useHistory, useParams} from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
 import axios from 'axios';
 
+
 const EditarTextos = () => {
     let history = useHistory()
     const {id} = useParams();
     const [textos, setTexto] = useState({
-      id: "",
-      titulo: "",
-      autor: "",
-      editora_manual: "",
-      ano: "",
-      conteudo:""
+        titulo: "",
+        autor: "",
+        editora_manual: "",
+        ano: "",
+        conteudo: "",
     })
    
     const{titulo, autor, editora_manual, ano, conteudo} = textos;
     const onInputChange = e =>{
-     setTexto({...textos,[e.target.id]: e.target.value});
-    };
-
+     setTexto({...textos,[e.target.id]: e.target.value})
+    }
     useEffect(() => {
         loadTextos();
     }, []);
-    
+
     const onSubmit = async e =>{
       e.preventDefault()
       await axios.put(`http://192.168.1.84/projeto-maze/web/rest/textos/${id}`, textos);
       history.push("/gerir-textos")
     };
-    
     const loadTextos = async () =>{
         const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/textos/${id}`)
         setTexto(result.data);
@@ -52,18 +50,17 @@ const EditarTextos = () => {
                         </ul>  
                     </div>
                 </nav>
+        <form onSubmit={e =>onSubmit(e)}>
             <div className="card border-danger mb-3 my-card">
                 <div className="card-header titulo">Editar texto:
-                <form onSubmit={e =>onSubmit(e)}>
                     <div className="card-body">
                     <div className="row">
                       <div className="col-sm">
                         <div className="form-group row campo">
                                 <label>Titulo:</label>
                             <div className="col-sm">
-                                <input type="text" className="form-control " name="titulo"
-                                 key={titulo}
-                                 value={titulo}
+                                <input type="text" className="form-control " name="titulo" id="titulo"
+                                 value={textos.titulo}
                                  onChange={e => onInputChange(e)}/>
                             </div>
                         </div>
@@ -72,9 +69,8 @@ const EditarTextos = () => {
                         <div className="form-group row campo">
                                 <label>Autor/a:</label>
                             <div className="col-sm">
-                                <input type="text" className="form-control " name="autor"
-                              key={autor}
-                              value={autor}
+                                <input type="text" className="form-control " name="autor" id="autor"
+                              value={textos.autor}
                               onChange={e => onInputChange(e)}/>
                             </div>
                         </div>
@@ -84,18 +80,16 @@ const EditarTextos = () => {
                             <div className="form-group row campo">
                                     <label>Editora do manual:</label>
                                 <div className="col-sm-5">
-                                    <input type="text" className="form-control " name="editora"
-                                    key={editora_manual}
-                                    value={editora_manual}
+                                    <input type="text" className="form-control " name="editora_manual" id="editora_manual"
+                                    value={textos.editora_manual}
                                     onChange={e => onInputChange(e)}/>
                                 </div>
                             </div>
                             <div className="form-group row campo">
                                         <label>Insira o texto:</label>
                                     <div className="col-lg-10">
-                                        <textarea className="form-control" name="conteudo" rows="8" 
-                                        key={conteudo} 
-                                       value={conteudo}
+                                        <textarea className="form-control" name="conteudo" rows="8" id="conteudo"
+                                       value={textos.conteudo}
                                        onChange={e => onInputChange(e)}/>
                                     </div>
                                 </div>
@@ -103,24 +97,22 @@ const EditarTextos = () => {
                                     <div className="form-group row campo">
                                         <label>Ano:</label>
                                         <div className="col-sm-5">
-                                            <input type="text" className="form-control" name="ano"
-                                              key={ano} 
-                                              value={ano}
+                                            <input type="text" className="form-control" name="ano" id="ano"
+                                              value={textos.ano}
                                               onChange={e => onInputChange(e)} />      
                                            
                                         </div>
                                     </div>
                                 </div>
-                                <Link to="/gerir-textos" type="button" className="btn botao1">Salvar</Link>
+                                <button  type="submit" className="btn botao1">Salvar</button>
                             </div>
                         </div>
-                        </form>
                     </div>
                 </div>    
+            </form>
         </div>
         )
     }
 
+    export default EditarTextos;
 
-
-export default EditarTextos;

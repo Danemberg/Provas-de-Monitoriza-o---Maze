@@ -1,37 +1,36 @@
-import React , {useState,alert} from 'react'
-import {Link, useHistory} from 'react-router-dom'
+import React , {useEffect, useState,alert} from 'react'
+import {Link, useHistory, useParams} from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
 import axios from 'axios';
    
    
-function CriarExemplos(){
-    const url = "http://192.168.1.84/projeto-maze/web/rest/exemplos"
+const CriarExemplos = () => {
+    let history = useHistory()
+    const {id} = useParams();
     const [exemplos, setExemplo] = useState({
-      id:"",
       titulo: "",
-      conteudo:"",
-      ano:""
-    });
+      conteudo: "",
+      ano: "",
+      
+    })
+useEffect(() => {
+    loadExemplos();
+}, []);
+
+const loadExemplos = async () =>{
+    const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/exemplos`)
+    setExemplo(result.data);
+}
    
-   function submit(e){
-       e.preventDefault();
-       axios.post(url,{
-          id: parseInt(exemplos.id),
-          titulo: exemplos.titulo,
-          conteudo: exemplos.conteudo,
-          ano: exemplos.ano
-       })
-       .then(res => {
-           console.log(res.exemplos)
-       })
-   }  
-   
-   function handle(e){
-       const newexemplo = {...exemplos}
-       newexemplo[e.target.id] = e.target.value
-       setExemplo(newexemplo)
-       console.log(newexemplo)
-   }
+    const{titulo,conteudo, ano} = exemplos;
+    const onInputChange = e =>{
+     setExemplo({...exemplos,[e.target.id]: e.target.value})
+    }
+    const onSubmit = async e =>{
+      e.preventDefault()
+      await axios.post("http://192.168.1.84/projeto-maze/web/rest/exemplos", exemplos);
+      history.push("/")
+    };
         return(  
        <div>
             <nav className="navbar navbar-expand-lg my-navbar">     
@@ -49,7 +48,7 @@ function CriarExemplos(){
                             </ul>  
                         </div>
                     </nav>
-        <form onSubmit={e =>submit(e)}>
+        <form onSubmit={e =>onSubmit(e)}>
             <div className="card border-danger mb-3 my-card">
                     <div className="card-header titulo">Criar exemplos para provas:
                         <div className="card-body">
@@ -59,7 +58,7 @@ function CriarExemplos(){
                             <div className="col-sm-6">
                                 <input type="text" className="form-control" id="titulo" name="titulo"
                                 value={exemplos.titulo}
-                                onChange={(e) => handle(e)}></input>
+                                onChange={e => onInputChange(e)}/>
                             </div>
                         </div>
                       </div>
@@ -69,7 +68,7 @@ function CriarExemplos(){
                                     <div className="col-lg-10">
                                         <textarea className="form-control" rows="10" id="conteudo" name="conteudo"
                                         value={exemplos.conteudo}
-                                        onChange={(e) => handle(e)}></textarea>
+                                        onChange={e => onInputChange(e)}/>
                                     </div>
                                 </div>
                                 <br></br>
@@ -79,7 +78,7 @@ function CriarExemplos(){
                                         <div className="col-sm-9">
                                         <input className="form-control" id="ano" name="ano" type="text"
                                              value={exemplos.ano}
-                                            onChange={(e) => handle(e)}/>   
+                                             onChange={e => onInputChange(e)}/>   
                                         </div>
                                     </div>
                                 </div>

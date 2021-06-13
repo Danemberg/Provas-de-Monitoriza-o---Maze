@@ -1,37 +1,34 @@
-import React , {useState,alert} from 'react'
-import {Link, useHistory} from 'react-router-dom'
+import React , {useEffect, useState,alert} from 'react'
+import {Link, useHistory, useParams} from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
 import axios from 'axios';
 
-
-function CriarProvas(){
-    const url = "http://192.168.1.84/projeto-maze/web/rest/provas"
+const CriarProvas = () => {
+    let history = useHistory()
+    const {id} = useParams();
     const [provas, setProva] = useState({
-      id:"",
       titulo: "",
       data_de_realizacao: "",
       ano: "",
-    });
+    })
+useEffect(() => {
+    loadProvas();
+}, []);
+
+const loadProvas = async () =>{
+    const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/provas`)
+    setProva(result.data);
+}
    
-   function submit(e){
-       e.preventDefault();
-       axios.post(url,{
-          id: parseInt(provas.id),
-          titulo: provas.titulo,
-          data_de_realizacao: provas.data_de_realizacao,
-          ano: provas.ano,
-       })
-       .then(res => {
-           console.log(res.provas)
-       })
-   }  
-   
-   function handle(e){
-       const newprova = {...provas}
-       newprova[e.target.id] = e.target.value
-       setProva(newprova)
-       console.log(newprova)
-   }
+    const{titulo, data_de_realizacao, ano} = provas;
+    const onInputChange = e =>{
+     setProva({...provas,[e.target.id]: e.target.value})
+    }
+    const onSubmit = async e =>{
+      e.preventDefault()
+      await axios.post("http://192.168.1.84/projeto-maze/web/rest/provas", provas);
+      history.push("/")
+    };
         return(  
         <div>
             <nav className="navbar navbar-expand-lg my-navbar">     
@@ -49,7 +46,7 @@ function CriarProvas(){
                             </ul>  
                         </div>
                     </nav>
-        <form onSubmit={e =>submit(e)}>
+        <form onSubmit={e =>onSubmit(e)} >
             <div className="card border-danger mb-3 my-card">
                 <div className="card-header titulo">Informações para gerar prova:
                     <div className="card-body">
@@ -60,7 +57,7 @@ function CriarProvas(){
                             <div className="col-sm">
                                 <input type="text" id="titulo" className="form-control " name="titulo"
                                 value={provas.titulo}
-                                onChange={(e) => handle(e)}/>
+                                onChange={e => onInputChange(e)}/>
                             </div>
                         </div>
                       </div>
@@ -70,7 +67,7 @@ function CriarProvas(){
                             <div className="col-sm-5">
                                 <input type="text" className="form-control"  id="data_de_realizacao" name="data_de_realizacao"
                                 value={provas.data_de_realizacao}
-                                onChange={(e) => handle(e)}/>
+                                onChange={e => onInputChange(e)}/>
                             </div>
                             <div className="col-sm ">
                                     <div className="form-group row campo">
@@ -78,7 +75,7 @@ function CriarProvas(){
                                         <div className="col-sm" id="ano" name="ano">
                                             <select className="form-control"
                                             value={provas.ano}
-                                            onChange={(e) => handle(e)}></select>
+                                            onChange={e => onInputChange(e)}></select>
                                         </div>
                                     </div>
                                 </div>
@@ -135,7 +132,7 @@ function CriarProvas(){
                                 </div>
                             </div> 
                             <div>
-                                <button type="button" className="btn botao1">Gerar</button>
+                                <button type="submit" className="btn botao1">Gerar</button>
                             </div>  
                         </div>
                     </div>
