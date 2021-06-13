@@ -9,7 +9,7 @@ const EditarProvas = () => {
     const [provas, setProva] = useState({
         titulo: "",
         data_de_realizacao: "",
-        ano: ""
+        turma: ""
       })
    
     const{titulo, data_de_realizacao, ano} = provas;
@@ -73,9 +73,9 @@ const EditarProvas = () => {
                             </div>
                             <div className="col-sm ">
                                     <div className="form-group row campo">
-                                        <label>Ano:</label>
+                                        <label>Turma:</label>
                                         <div className="col-sm">
-                                            <select className="form-control" id="conteudo" name="conteudo">
+                                            <select className="form-control" id="turma" name="turma">
                                             <option> {provas.ano}</option>
                                             </select>
                                         </div>

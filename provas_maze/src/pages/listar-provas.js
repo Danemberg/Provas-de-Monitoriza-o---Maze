@@ -62,7 +62,7 @@ function ListarProvas(){
                                         <th scope="row">{index + 1}</th>
                                         <td>{prova.titulo}</td>
                                         <td>{prova.data_de_realizacao}</td>
-                                        <td>{prova.ano}</td>
+                                        <td>{prova.turma}</td>
                                         <td><Link to={`visualizar-prova/${prova.id}`} type="button" className=" btn botao-visualizar">Visualizar</Link></td> 
                                     </tr>
                               ))}   

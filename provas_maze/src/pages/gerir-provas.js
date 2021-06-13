@@ -69,7 +69,7 @@ function GerirProvas(){
                                         <th scope="row">{index + 1}</th>
                                         <td>{prova.titulo}</td>
                                         <td>{prova.data_de_realizacao}</td>
-                                        <td>{prova.ano}</td>
+                                        <td>{prova.turma}</td>
                                         <td>
                                             <Link to={`editar-provas/${prova.id}`} className="edit">
                                             <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></Link>

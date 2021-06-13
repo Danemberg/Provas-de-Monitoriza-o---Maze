@@ -17,7 +17,7 @@ const RegistoUtilizador = () => {
    
     const{nome, email, senha, tipo_de_utilizador, entidade_id} = utilizadores;
     const onInputChange = e =>{
-     setUtilizador({...utilizadores,[e.target.email]: e.target.value});
+     setUtilizador({...utilizadores,[e.target.id]: e.target.value});
     };
 
     useEffect(() => {
@@ -27,7 +27,7 @@ const RegistoUtilizador = () => {
     const onSubmit = async e =>{
       e.preventDefault()
       await axios.put(`http://192.168.1.84/projeto-maze/web/rest/utilizadors/${id}`, utilizadores);
-      history.push("/validar-utilizador-admin")
+      history.push("/validar-utilizador")
     };
     
     const loadUtilizadores = async () =>{
@@ -51,6 +51,7 @@ const RegistoUtilizador = () => {
                         </ul>  
                     </div>
                 </nav>
+        <form onSubmit={e =>onSubmit(e)} >
             <div className="card border-danger mb-3 my-card">
                 <div className="card-header titulo">Registo de utilizador:
                     <div className="card-body">
@@ -59,7 +60,7 @@ const RegistoUtilizador = () => {
                         <div className="form-group row campo">
                                 <label>Nome:</label>
                             <div className="col-sm-10">
-                                <input type="text" className="form-control " 
+                                <input type="text" className="form-control " id="nome" name="nome"
                                  value={nome}
                                  onChange={e => onInputChange(e)}/>
                             </div>
@@ -67,7 +68,7 @@ const RegistoUtilizador = () => {
                             <div className="form-group row campo">
                                     <label>Email:</label>
                                 <div className="col-sm-10">
-                                    <input type="text" className="form-control" 
+                                    <input type="text" className="form-control" id="email" name="email"
                                     value={email}
                                    onChange={e => onInputChange(e)}/>
                                 </div>
@@ -120,11 +121,12 @@ const RegistoUtilizador = () => {
                             </div>
                         </div>
                         <div>
-                            <Link to="/paginaprincipal-adm" type="button" className="btn botao">Salvar</Link>
+                            <button type="submit" className="btn botao">Salvar</button>
                         </div> 
                     </div> 
                 </div> 
-            </div>    
+            </div>  
+        </form>  
         </div>
    
       

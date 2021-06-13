@@ -9,7 +9,7 @@ const CriarProvas = () => {
     const [provas, setProva] = useState({
       titulo: "",
       data_de_realizacao: "",
-      ano: "",
+      turma: "",
     })
 useEffect(() => {
     loadProvas();
@@ -71,11 +71,11 @@ const loadProvas = async () =>{
                             </div>
                             <div className="col-sm ">
                                     <div className="form-group row campo">
-                                        <label>Ano:</label>
-                                        <div className="col-sm" id="ano" name="ano">
-                                            <select className="form-control"
-                                            value={provas.ano}
-                                            onChange={e => onInputChange(e)}></select>
+                                        <label>Turma:</label>
+                                        <div className="col-sm" id="turma" name="turma">
+                                            <select className="form-control" onChange={e => onInputChange(e)}>         
+                                                    <option>{provas.turma}</option>
+                                            </select>
                                         </div>
                                     </div>
                                 </div>

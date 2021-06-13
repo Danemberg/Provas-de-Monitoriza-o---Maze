@@ -1,22 +1,15 @@
 import React , {useState, useEffect} from 'react'
-import '../index.css';
-import {Link, useHistory, useParams} from 'react-router-dom'
+import {Link, useParams} from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
 import axios from 'axios';
 
     
 const VisualizarTexto = () => {
-    let history = useHistory()
     const {id} = useParams();
     const [textos, setTexto] = useState({
       conteudo:""
     })
-   
-    
     const{conteudo} = textos;
-    const onInputChange = e =>{
-     setTexto({...textos,[e.target.conteudo]: e.target.value});
-    };
 
     useEffect(() => {
         loadTextos();

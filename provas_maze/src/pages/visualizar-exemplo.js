@@ -1,22 +1,16 @@
 import React, {useEffect,useState} from 'react';
-import '../index.css';
-import {Link, useHistory, useParams} from 'react-router-dom'
+import {Link,  useParams} from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
 import axios from 'axios';
 
 
 const VisualizarExemplo = () =>{
-    let history = useHistory()
     const {id} = useParams();
     const [exemplos, setExemplo] = useState({
         conteudo:""
 
     });
-    
     const{conteudo} = exemplos;
-    const onInputChange = e =>{
-     setExemplo({...exemplos,[e.target.conteudo]: e.target.value});
-    };
 
       useEffect(()=>{
            loadExemplos();

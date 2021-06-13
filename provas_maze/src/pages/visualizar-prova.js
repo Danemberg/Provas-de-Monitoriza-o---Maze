@@ -6,6 +6,20 @@ import axios from 'axios';
 
     
 const VisualizarProva =() =>{
+    const {id} = useParams();
+    const [exemplos, setExemplo] = useState({
+        conteudo:""
+
+    });
+    const{conteudo} = exemplos;
+
+      useEffect(()=>{
+           loadExemplos();
+      }, []);
+      const loadExemplos = async () =>{
+          const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/exemplos/${id}`);
+          setExemplo(result.data)
+      }
         return(
             <div>
                 <nav className="navbar navbar-expand-lg my-navbar">     
@@ -34,8 +48,10 @@ const VisualizarProva =() =>{
                             </table>
                         </div>
                     </div>
-              
-            </div>
+                </div>
+            <ul className="texto">
+                <p>{conteudo}</p>
+            </ul>   
         </div>
         )
        
