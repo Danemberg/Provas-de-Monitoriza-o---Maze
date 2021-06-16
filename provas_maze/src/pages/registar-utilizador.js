@@ -130,7 +130,7 @@ import axios from 'axios';
                             </div>
                         </div>
                         <div>
-                            <Link onSubmit={e=>onSubmit(e)} type="button" to="/" className=" btn botao">Registar</Link>
+                            <button onSubmit={e=>onSubmit(e)} type="button" className=" btn botao">Registar</button>
                         </div> 
                     </div> 
                 </div> 

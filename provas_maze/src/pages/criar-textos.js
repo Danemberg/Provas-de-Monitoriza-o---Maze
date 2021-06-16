@@ -6,13 +6,12 @@ import axios from 'axios';
 
 const CriarTextos = () => {
     let history = useHistory()
-    const {id} = useParams();
     const [textos, setTexto] = useState({
       titulo: "",
       autor: "",
       editora_manual: "",
       ano: "",
-      conteudo: "",
+      conteudo: ""
     })
 useEffect(() => {
     loadTextos();
@@ -20,17 +19,24 @@ useEffect(() => {
 
 const loadTextos = async () =>{
     const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/textos`)
+    console.log(result);
     setTexto(result.data);
 }
    
     const{titulo, autor, editora_manual, ano, conteudo} = textos;
     const onInputChange = e =>{
-     setTexto({...textos,[e.target.id]: e.target.value})
+    setTexto({...textos,[e.target.id]: e.target.value})
     }
     const onSubmit = async e =>{
       e.preventDefault()
-      await axios.post("http://192.168.1.84/projeto-maze/web/rest/textos", textos);
-      history.push("/gerir-textos")
+      try{
+        await axios.post("http://192.168.1.84/projeto-maze/web/rest/textos", textos);
+        alert("Texto criado com sucesso!!!")
+        history.push("/gerir-textos")
+      }catch(error){
+        alert("Preencha todos os campos!")
+    }
+        
     };
           return(  
           <div>
@@ -94,19 +100,20 @@ const loadTextos = async () =>{
                                   </div>
                                   <div className="col-sm-6">
                                       <div className="form-group row campo">
-                                          <label>Ano:</label>
+                                          <label >Ano:</label>
                                           <div className="col-sm-5">
-                                              <input id="ano" type="text" className="form-control" name="ano"
-                                               value={textos.ano}
-                                               onChange={e => onInputChange(e)}/>
-                                          </div>
-                                         
+                                              <select  className="form-control" value={textos.ano} id="ano" name="ano"
+                                               onChange={e => onInputChange(e)}>  
+                                                { textos.map((texto, index) =>(
+                                                    <option > {texto.ano}</option>
+                                                    ))}   
+                                               </select>
+                                          </div>  
                                       </div>
                                   </div>
                                   <button type="submit" className="btn botao1" replace>Gerar</button>
                               </div>
                           </div>
-                          
                       </div>
                   </div> 
                   </form>   

@@ -1,4 +1,4 @@
-import React , {useEffect, useState,alert} from 'react'
+import React , {useEffect, useState} from 'react'
 import {Link, useHistory, useParams} from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
 import axios from 'axios';
@@ -28,9 +28,16 @@ const loadExemplos = async () =>{
     }
     const onSubmit = async e =>{
       e.preventDefault()
-      await axios.post("http://192.168.1.84/projeto-maze/web/rest/exemplos", exemplos);
-      history.push("/gerir-exemplos")
+      try{
+        await axios.post("http://192.168.1.84/projeto-maze/web/rest/exemplos", exemplos);
+        alert("Exemplo criado com sucesso!!!")
+        history.push("/gerir-exemplos")     
+      }catch(error){
+          alert("Preencha todos os campos!")
+      }
+          
     };
+
         return(  
        <div>
             <nav className="navbar navbar-expand-lg my-navbar">     
@@ -83,7 +90,9 @@ const loadExemplos = async () =>{
                                     </div>
                                 </div>
                                 <div>
-                                    <button  type="submit" className="btn botao1">Gerar</button>
+                                    <button type="submit" className="btn botao1">Gerar</button>
+                            
+                                
                                 </div> 
                         </div> 
                     </div> 

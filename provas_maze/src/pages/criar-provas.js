@@ -26,8 +26,14 @@ const loadProvas = async () =>{
     }
     const onSubmit = async e =>{
       e.preventDefault()
-      await axios.post("http://192.168.1.84/projeto-maze/web/rest/provas", provas);
-      history.push("/gerir-provas")
+      try{
+        await axios.post("http://192.168.1.84/projeto-maze/web/rest/provas", provas);
+        alert("Prova criada com sucesso!!!")
+        history.push("/gerir-provas")
+      }catch(error){
+        alert("Preencha todos os campos!")
+    }
+          
     };
         return(  
         <div>
