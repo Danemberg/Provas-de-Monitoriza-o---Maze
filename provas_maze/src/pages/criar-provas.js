@@ -6,20 +6,27 @@ import axios from 'axios';
 const CriarProvas = () => {
     let history = useHistory()
     const {id} = useParams();
+    const[exemplos, setExemplo] = useState({})
     const [provas, setProva] = useState({
       titulo: "",
       data_de_realizacao: "",
-      turma: "",
+      turma: ""
     })
 useEffect(() => {
     loadProvas();
 }, []);
 
+const loadExemplos = async () =>{
+    const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/provas`)
+    setExemplo(result.data);
+}
+  
+
 const loadProvas = async () =>{
     const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/provas`)
     setProva(result.data);
 }
-   
+ 
     const{titulo, data_de_realizacao, ano} = provas;
     const onInputChange = e =>{
      setProva({...provas,[e.target.id]: e.target.value})
@@ -32,6 +39,9 @@ const loadProvas = async () =>{
         history.push("/gerir-provas")
       }catch(error){
         alert("Preencha todos os campos!")
+    }
+    const gerarProva = () =>{
+
     }
           
     };
@@ -62,7 +72,6 @@ const loadProvas = async () =>{
                                 <label>Titulo:</label>
                             <div className="col-sm">
                                 <input type="text" id="titulo" className="form-control " name="titulo"
-                                value={provas.titulo}
                                 onChange={e => onInputChange(e)}/>
                             </div>
                         </div>
@@ -79,8 +88,11 @@ const loadProvas = async () =>{
                                     <div className="form-group row campo">
                                         <label>Turma:</label>
                                         <div className="col-sm" id="turma" name="turma">
-                                            <select className="form-control" onChange={e => onInputChange(e)}>         
-                                                    <option>{provas.turma}</option>
+                                            <select className="form-control">
+                                        {
+                                        provas.map((prova) =>(
+                                                    <option value={prova.turma} >{prova.turma}</option>
+                                            ))}  
                                             </select>
                                         </div>
                                     </div>
@@ -93,8 +105,9 @@ const loadProvas = async () =>{
                                     <div className="form-group row campo">
                                         <label>Exemplo:</label>
                                         <div className="col-sm-9">
-                                            <select className="form-control" 
-                                            >
+                                            <select className="form-control" id="titulo" name="titulo"
+                                            onChange={e => onInputChange(e)}> 
+                                             <option></option>
                                             </select>
                                         </div>
                                     </div>
