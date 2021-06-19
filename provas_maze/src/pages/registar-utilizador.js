@@ -21,16 +21,21 @@ import axios from 'axios';
         
     useEffect(() => {
         loadEntidades();
+        loadUtilizadores();
     }, []);
 
+    const loadUtilizadores = async () =>{
+        const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/utilizadores`)
+        setUtilizador(result.data);
+    }
     const loadEntidades = async () =>{
         const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/entidades`)
         setEntidade(result.data);
     }
-       
         const{nome, email, senha, tipo_de_utilizador, entidade_id, justificacao_registo} = utilizadores;
         const onInputChange = e =>{
          setUtilizador({...utilizadores,[e.target.id]: e.target.value})
+         setEntidade({...entidades,[e.target.id]: e.target.value})
         }
         const onSubmit = async e =>{
           e.preventDefault()
@@ -59,7 +64,7 @@ import axios from 'axios';
                 <div className="card-header titulo">Registar:
                     <div className="card-body">
                     <div className="row">
-                      <div className="col-md-6">
+                      <div className="col-lg-6">
                         <div className="form-group row campo">
                                 <label>Nome:</label>
                             <div className="col-sm-10">
@@ -67,6 +72,8 @@ import axios from 'axios';
                                  onChange={e => onInputChange(e)}/>
                             </div>
                         </div>
+                        </div>
+                        <div className="col-md-6">
                             <div className="form-group row campo">
                                     <label>Email:</label>
                                 <div className="col-sm-10">
@@ -74,8 +81,8 @@ import axios from 'axios';
                                  onChange={e => onInputChange(e)}/>
                                 </div>
                             </div>
+                        </div>
                       </div>
-                    </div>
                         <div className="form-group row campo">
                                 <label>Senha de acesso:</label>
                             <div className="col-sm-3">
@@ -128,6 +135,18 @@ import axios from 'axios';
                                 value={justificacao_registo}
                                 onChange={e => onInputChange(e)}/>
                             </div>
+                        </div>
+                        <div className="form-group row campo">
+                            <label class="form-check-label" for="flexCheckChecked">
+                                    Autorizo o tratamento dos dados
+                            </label>
+                            <div className="form-check">
+                                <input
+                                    className="form-check-input"
+                                    type="checkbox"
+                                    value=""       
+                                />
+                            </div>    
                         </div>
                         <div>
                             <button onSubmit={e=>onSubmit(e)} type="button" className=" btn botao">Registar</button>

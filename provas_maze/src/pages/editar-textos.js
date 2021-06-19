@@ -97,10 +97,13 @@ const EditarTextos = () => {
                                     <div className="form-group row campo">
                                         <label>Ano:</label>
                                         <div className="col-sm-5">
-                                            <input type="text" className="form-control" name="ano" id="ano"
-                                              value={textos.ano}
-                                              onChange={e => onInputChange(e)} />      
-                                           
+                                               <select className="form-control" id="ano" name="ano"
+                                                    onChange={e => onInputChange(e)}>  
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>         
+                                               </select>
                                         </div>
                                     </div>
                                 </div>

@@ -1,4 +1,4 @@
-import React , {useEffect, useState,alert} from 'react'
+import React , {useEffect, useState} from 'react'
 import {Link, useHistory, useParams} from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
 import axios from 'axios';
@@ -65,7 +65,6 @@ const loadTextos = async () =>{
                                   <label>Titulo:</label>
                               <div className="col-sm">
                                   <input type="text" id="titulo" className="form-control " name="titulo"
-                                   value={textos.titulo}
                                    onChange={e => onInputChange(e)}/>
                               </div>
                           </div>
@@ -75,7 +74,6 @@ const loadTextos = async () =>{
                                   <label>Autor/a:</label>
                               <div className="col-sm">
                                   <input type="text" id="autor" className="form-control " name="autor"
-                                value={textos.autor}
                                 onChange={e => onInputChange(e)}/>
                               </div>
                           </div>
@@ -86,7 +84,6 @@ const loadTextos = async () =>{
                                       <label>Editora do manual:</label>
                                   <div className="col-sm-5">
                                       <input type="text" id="editora_manual" className="form-control " name="editora_manual"
-                                      value={textos.editora_manual}
                                       onChange={e => onInputChange(e)}/>
                                   </div>
                               </div>
@@ -94,7 +91,6 @@ const loadTextos = async () =>{
                                           <label>Insira o texto:</label>
                                       <div className="col-lg-10">
                                           <textarea id="conteudo" className="form-control" name="conteudo" rows="8"  
-                                         value={textos.conteudo}
                                          onChange={e => onInputChange(e)}/>
                                       </div>
                                   </div>
@@ -102,11 +98,12 @@ const loadTextos = async () =>{
                                       <div className="form-group row campo">
                                           <label >Ano:</label>
                                           <div className="col-sm-5">
-                                              <select  className="form-control" value={textos.ano} id="ano" name="ano"
+                                              <select  className="form-control" id="ano" name="ano"
                                                onChange={e => onInputChange(e)}>  
-                                                { textos.map((texto, index) =>(
-                                                    <option > {texto.ano}</option>
-                                                    ))}   
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>         
                                                </select>
                                           </div>  
                                       </div>

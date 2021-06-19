@@ -6,11 +6,8 @@ import axios from 'axios';
     
 const VisualizarTexto = () => {
     const {id} = useParams();
-    const [textos, setTexto] = useState({
-      conteudo:""
-    })
-    const{conteudo} = textos;
-
+    const [textos, setTexto] = useState([])
+    
     useEffect(() => {
         loadTextos();
     }, []);
@@ -38,7 +35,7 @@ const VisualizarTexto = () => {
             </nav>
         
             <ul className="texto">
-                <p>{conteudo}</p>
+                <p>{textos.conteudo}</p>
             </ul>                                 
         </div>       
                                                      

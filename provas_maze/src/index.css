@@ -339,7 +339,10 @@ input[type="checkbox"]:checked + label {
 .ab{
     color: darkred;
 }
-.aceitar{
+
+input[type=checkbox]{
+    color: darkorange;
+    margin-left: 5px;
     width: 100px;
 
 }

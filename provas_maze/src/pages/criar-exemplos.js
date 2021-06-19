@@ -64,7 +64,6 @@ const loadExemplos = async () =>{
                                 <label>Titulo:</label>
                             <div className="col-sm-6">
                                 <input type="text" className="form-control" id="titulo" name="titulo"
-                                value={exemplos.titulo}
                                 onChange={e => onInputChange(e)}/>
                             </div>
                         </div>
@@ -74,7 +73,6 @@ const loadExemplos = async () =>{
                                         <label>Insira um exemplo:</label>
                                     <div className="col-lg-10">
                                         <textarea className="form-control" rows="10" id="conteudo" name="conteudo"
-                                        value={exemplos.conteudo}
                                         onChange={e => onInputChange(e)}/>
                                     </div>
                                 </div>
@@ -83,16 +81,18 @@ const loadExemplos = async () =>{
                                     <div className="form-group row campo">
                                         <label>Ano:</label>
                                         <div className="col-sm-9">
-                                        <input className="form-control" id="ano" name="ano" type="text"
-                                             value={exemplos.ano}
-                                             onChange={e => onInputChange(e)}/>   
+                                        <select  className="form-control" id="ano" name="ano"
+                                               onChange={e => onInputChange(e)}>  
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+                                                    <option value="4">4</option>         
+                                               </select>
                                         </div>
                                     </div>
                                 </div>
                                 <div>
                                     <button type="submit" className="btn botao1">Gerar</button>
-                            
-                                
                                 </div> 
                         </div> 
                     </div> 

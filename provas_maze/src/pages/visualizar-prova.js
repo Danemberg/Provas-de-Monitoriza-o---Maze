@@ -1,26 +1,35 @@
 import React , {useState, useEffect} from 'react'
-import '../index.css';
-import {Link, useHistory, useParams} from 'react-router-dom'
+import {Link, useParams} from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
 import axios from 'axios';
 
     
 const VisualizarProva =() =>{
     const {id} = useParams();
-    const [exemplos, setExemplo] = useState({
-        conteudo:""
-
-    });
-    const{conteudo} = exemplos;
+    const [exemplos, setExemplo] = useState([]);
+    const [textos, setTexto] = useState([]);
+    const [provas, setProva] = useState([]);
 
       useEffect(()=>{
+           loadProvas();
            loadExemplos();
+           loadTextos();
       }, []);
-      const loadExemplos = async () =>{
+
+    const loadExemplos = async () =>{
           const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/exemplos/${id}`);
           setExemplo(result.data)
-      }
+    }
+    const loadTextos = async () =>{
+        const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/textos/${id}`);
+        setTexto(result.data)
+  }
+    const loadProvas = async () =>{
+        const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/provas/${id}`);
+        setProva(result.data)
+    }
         return(
+
             <div>
                 <nav className="navbar navbar-expand-lg my-navbar">     
                             <div className="collapse navbar-collapse">
@@ -50,7 +59,8 @@ const VisualizarProva =() =>{
                     </div>
                 </div>
             <ul className="texto">
-                <p>{conteudo}</p>
+                <p>{exemplos.conteudo}</p>
+                <p>{textos.conteudo}</p>
             </ul>   
         </div>
         )
