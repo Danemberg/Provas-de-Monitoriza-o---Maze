@@ -137,15 +137,9 @@ import axios from 'axios';
                             </div>
                         </div>
                         <div className="form-group row campo">
-                            <label class="form-check-label" for="flexCheckChecked">
-                                    Autorizo o tratamento dos dados
-                            </label>
-                            <div className="form-check">
-                                <input
-                                    className="form-check-input"
-                                    type="checkbox"
-                                    value=""       
-                                />
+                            <label>Autorizo o tratamento dos dados</label>
+                            <div className="form-group row campo">
+                                <input className="form-control" type="checkbox" required/>
                             </div>    
                         </div>
                         <div>

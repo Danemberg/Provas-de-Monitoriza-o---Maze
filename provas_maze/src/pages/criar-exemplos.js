@@ -64,7 +64,7 @@ const loadExemplos = async () =>{
                                 <label>Titulo:</label>
                             <div className="col-sm-6">
                                 <input type="text" className="form-control" id="titulo" name="titulo"
-                                onChange={e => onInputChange(e)}/>
+                                onChange={e => onInputChange(e)} required/>
                             </div>
                         </div>
                       </div>
@@ -73,7 +73,7 @@ const loadExemplos = async () =>{
                                         <label>Insira um exemplo:</label>
                                     <div className="col-lg-10">
                                         <textarea className="form-control" rows="10" id="conteudo" name="conteudo"
-                                        onChange={e => onInputChange(e)}/>
+                                        onChange={e => onInputChange(e)} required/>
                                     </div>
                                 </div>
                                 <br></br>
@@ -82,7 +82,7 @@ const loadExemplos = async () =>{
                                         <label>Ano:</label>
                                         <div className="col-sm-9">
                                         <select  className="form-control" id="ano" name="ano"
-                                               onChange={e => onInputChange(e)}>  
+                                               onChange={e => onInputChange(e)} required>  
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>

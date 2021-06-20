@@ -65,7 +65,7 @@ const loadTextos = async () =>{
                                   <label>Titulo:</label>
                               <div className="col-sm">
                                   <input type="text" id="titulo" className="form-control " name="titulo"
-                                   onChange={e => onInputChange(e)}/>
+                                   onChange={e => onInputChange(e)} required/>
                               </div>
                           </div>
                         </div>
@@ -74,7 +74,7 @@ const loadTextos = async () =>{
                                   <label>Autor/a:</label>
                               <div className="col-sm">
                                   <input type="text" id="autor" className="form-control " name="autor"
-                                onChange={e => onInputChange(e)}/>
+                                onChange={e => onInputChange(e)} required/>
                               </div>
                           </div>
                         </div>
@@ -84,14 +84,14 @@ const loadTextos = async () =>{
                                       <label>Editora do manual:</label>
                                   <div className="col-sm-5">
                                       <input type="text" id="editora_manual" className="form-control " name="editora_manual"
-                                      onChange={e => onInputChange(e)}/>
+                                      onChange={e => onInputChange(e)} required/>
                                   </div>
                               </div>
                               <div className="form-group row campo">
                                           <label>Insira o texto:</label>
                                       <div className="col-lg-10">
                                           <textarea id="conteudo" className="form-control" name="conteudo" rows="8"  
-                                         onChange={e => onInputChange(e)}/>
+                                         onChange={e => onInputChange(e)} required/>
                                       </div>
                                   </div>
                                   <div className="col-sm-6">
@@ -99,7 +99,7 @@ const loadTextos = async () =>{
                                           <label >Ano:</label>
                                           <div className="col-sm-5">
                                               <select  className="form-control" id="ano" name="ano"
-                                               onChange={e => onInputChange(e)}>  
+                                               onChange={e => onInputChange(e)} required>  
                                                     <option value="1">1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
