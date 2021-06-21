@@ -27,6 +27,18 @@ import PaginaPrincipalAdm from './pages/paginaprincipal-adm'
 import Footer from './components/footer'
 
 
+const Administrador = () =>{
+    return(
+        
+    )
+
+}
+
+const Docente = () =>{
+    return(
+
+    )
+}
 
 export default () => {
     return( //exact significa true; exact={false}
