@@ -6,6 +6,7 @@ import axios from 'axios';
     const RegistarUtilizador = () => {
         let history = useHistory()
         const {id} = useParams();
+        const [ent, setEnt] = useState([])
         const [utilizadores, setUtilizador] = useState({
           nome: "",
           email: "",
@@ -20,6 +21,7 @@ import axios from 'axios';
           })
         
     useEffect(() => {
+        setEnt([]);
         loadEntidades();
         loadUtilizadores();
     }, []);
@@ -31,6 +33,7 @@ import axios from 'axios';
     const loadEntidades = async () =>{
         const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/entidades`)
         setEntidade(result.data);
+        setEnt(result.data);
     }
         const{nome, email, senha, tipo_de_utilizador, entidade_id, justificacao_registo} = utilizadores;
         const onInputChange = e =>{
@@ -95,9 +98,13 @@ import axios from 'axios';
                                 <div className="form-group row campo">
                                       <label>Entidade:</label>
                                     <div className="col-sm-9">
-                                        <select className="form-control">
-                                        <option> {entidades.nome}</option>
-                                        </select>
+                                    <select  className="form-control" id="entidade" name="entidade"
+                                            onChange={e => onInputChange(e)}> 
+                                               {
+                                           ent.map((entidade) =>(
+                                            <option>{entidade.nome}</option>
+                                               ))}  
+                                           </select>
                                     </div>
                                 </div>
                             </div>

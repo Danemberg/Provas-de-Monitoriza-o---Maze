@@ -6,29 +6,60 @@ import axios from 'axios';
 const CriarProvas = () => {
     let history = useHistory()
     const {id} = useParams();
-    const[exemplos, setExemplo] = useState({})
+    const [ex, setEx] = useState([])
+    const [text,setText] = useState([])
+    const[prov,setProv] = useState([])
+    const[exemplos, setExemplo] = useState({
+        titulo: "",
+        conteudo: "",
+        ano: "",
+    })
+    const[textos, setTexto] = useState({
+        titulo: "",
+        autor: "",
+        editora_manual: "",
+        ano: "",
+        conteudo: ""
+    })
     const [provas, setProva] = useState({
       titulo: "",
       data_de_realizacao: "",
       turma: ""
     })
 useEffect(() => {
+    setEx([]);
+    setText([]);
+    setProv([]);
+    loadExemplos();
+    loadTextos();
     loadProvas();
 }, []);
 
 const loadExemplos = async () =>{
-    const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/provas`)
+    const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/exemplos`)
+    console.log(result);
     setExemplo(result.data);
+    setEx(result.data);
+    
 }
-  
+const loadTextos = async ()=>{
+    const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/textos`)
+    console.log(result);
+    setTexto(result.data);
+    setText(result.data);
+} 
 
 const loadProvas = async () =>{
     const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/provas`)
+    console.log(result);
     setProva(result.data);
+    setProv(result.data);
 }
  
     const{titulo, data_de_realizacao, ano} = provas;
     const onInputChange = e =>{
+     setExemplo({...exemplos,[e.target.id]: e.target.value})
+     setTexto({...textos,[e.target.id]: e.target.value})
      setProva({...provas,[e.target.id]: e.target.value})
     }
     const onSubmit = async e =>{
@@ -41,6 +72,8 @@ const loadProvas = async () =>{
         alert("Preencha todos os campos!")
     }
     const gerarProva = () =>{
+ 
+        
 
     }
           
@@ -70,8 +103,8 @@ const loadProvas = async () =>{
                       <div className="col-sm">
                         <div className="form-group row campo">
                                 <label>Titulo:</label>
-                            <div className="col-sm">
-                                <input type="text" id="titulo" className="form-control " name="titulo"
+                            <div className="col-sm-10">
+                                <input type="text" id="titulo.prov" className="form-control " name="titulo.prov"
                                 onChange={e => onInputChange(e)}/>
                             </div>
                         </div>
@@ -79,36 +112,42 @@ const loadProvas = async () =>{
                       <div className="col-sm">
                         <div className="form-group row campo">
                                 <label>Data:</label>
-                            <div className="col-sm-5">
-                                <input type="text" className="form-control"  id="data_de_realizacao" name="data_de_realizacao"
+                            <div className="col-sm-7">
+                                <input type="date" className="form-control"  id="data_de_realizacao" name="data_de_realizacao"
                                 value={provas.data_de_realizacao}
                                 onChange={e => onInputChange(e)}/>
                             </div>
-                            <div className="col-sm ">
-                                    <div className="form-group row campo">
-                                        <label>Turma:</label>
-                                        <div className="col-sm" id="turma" name="turma">
-                                            <select className="form-control">
-                                        {
-                                        provas.map((prova) =>(
-                                                    <option value={prova.turma} >{prova.turma}</option>
-                                            ))}  
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
                         </div>
                       </div>
+                    </div>
+                    <div className="row">
+                    <div className="col-lg-6 ">
+                        <div className="form-group row campo">
+                            <label>Turma:</label>
+                                <div className="col-sm-4" >
+                                    <select  className="form-control" id="turma" name="turma"
+                                            onChange={e => onInputChange(e)}> 
+                                               {
+                                           prov.map((provs) =>(
+                                        <option>{provs.turma}</option>
+                                               ))}  
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                         <div className="row">
                                 <div className="col-lg-6 ">
                                     <div className="form-group row campo">
                                         <label>Exemplo:</label>
                                         <div className="col-sm-9">
-                                            <select className="form-control" id="titulo" name="titulo"
+                                        <select  className="form-control" id="exemplo" name="exemplo"
                                             onChange={e => onInputChange(e)}> 
-                                             <option></option>
-                                            </select>
+                                               {
+                                           ex.map((exemplo) =>(
+                                            <option>{exemplo.titulo}</option>
+                                               ))}  
+                                           </select>
                                         </div>
                                     </div>
                                 </div>
@@ -119,9 +158,13 @@ const loadProvas = async () =>{
                                         <div className="form-group row campo">
                                             <label>Texto 1:</label>
                                             <div className="col-sm-9">
-                                                <select className="form-control">
-                                                <option>Texto</option>
-                                                </select>
+                                            <select  className="form-control" id="texto" name="texto"
+                                            onChange={e => onInputChange(e)}> 
+                                               {
+                                           text.map((texto) =>(
+                                            <option>{texto.titulo}</option>
+                                               ))}  
+                                           </select>
                                             </div>
                                         </div>
                                     </div>
@@ -131,9 +174,13 @@ const loadProvas = async () =>{
                                     <div className="form-group row campo">
                                         <label>Texto 2:</label>
                                         <div className="col-sm-9">
-                                            <select className="form-control">
-                                            <option>Texto</option>
-                                            </select>
+                                        <select  className="form-control" id="texto2" name="texto2"
+                                            onChange={e => onInputChange(e)}> 
+                                               {
+                                           text.map((texto) =>(
+                                            <option>{texto.titulo}</option>
+                                               ))}  
+                                           </select>
                                         </div>
                                     </div>
                                 </div>       
@@ -143,9 +190,13 @@ const loadProvas = async () =>{
                                     <div className="form-group row campo">
                                         <label>Texto 3:</label>
                                         <div className="col-sm-9">
-                                            <select className="form-control">
-                                            <option>Texto</option>
-                                            </select>
+                                        <select  className="form-control" id="texto3" name="texto3"
+                                            onChange={e => onInputChange(e)}> 
+                                               {
+                                           text.map((texto) =>(
+                                            <option>{texto.titulo}</option>
+                                               ))}  
+                                           </select>
                                         </div>
                                     </div>       
                                 </div>
