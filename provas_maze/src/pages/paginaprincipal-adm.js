@@ -1,12 +1,13 @@
 import React, {useEffect,useState}  from 'react';
 import {Dropdown} from 'react-bootstrap';
 import '../index.css';
-import { Link } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import Imagem from '../images/imagem_pagina_principal.png'
 import Logo from '../images/LogoMBCL.png';
 import axios from 'axios';
 
 function PaginaPrincipalAdm(){
+    const {id} = useParams();
     const [utilizadores, setUtilizador] = useState([]);
     const [entidades, setEntidade] = useState([]);
     
@@ -15,14 +16,14 @@ function PaginaPrincipalAdm(){
            loadEntidade();
       }, []);
       const loadUtilizador = async () =>{
-          const result = await axios.get("http://192.168.1.84/projeto-maze/web/rest/utilizadors");
+          const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/utilizadors/${id}`, utilizadores);
           console.log(result);
-          setUtilizador(result.data.reverse())
+          setUtilizador(result.data)
       }
       const loadEntidade = async () =>{
-        const result = await axios.get("http://192.168.1.84/projeto-maze/web/rest/entidades");
+        const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/entidades/${id}`, entidades);
         console.log(result);
-        setEntidade(result.data.reverse())
+        setEntidade(result.data)
     }
         return(
             <div>
@@ -42,20 +43,16 @@ function PaginaPrincipalAdm(){
                     </div>
                 </nav>
                 <img className="imagem-pp" src={Imagem} height="300" width="300" />
-                {
-                    utilizadores.map((utilizador, index) =>(
+              
                         <div >    
-                            <p>{utilizador.nome}</p>
-                            <p>{utilizador.email}</p>
+                            <p>{utilizadores.nome}</p>
+                            <p>{utilizadores.email}</p>
                         </div>        
-                ))}
-                  {
-                    entidades.map((entidade, index) =>(
                         <div >    
-                            <p>{entidade.nome}</p>
-                            <p>{entidade.concelho}</p>
+                            <p>{entidades.nome}</p>
+                            <p>{entidades.concelho}</p>
                         </div>        
-                ))}
+
                 <Dropdown>
                     <Dropdown.Toggle variant="menu-pp" id="dropdown-basic" className="menu-pp2">
                         Opções

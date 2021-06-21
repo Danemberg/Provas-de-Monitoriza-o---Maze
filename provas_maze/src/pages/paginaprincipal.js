@@ -7,31 +7,23 @@ import Logo from '../images/LogoMBCL.png';
 import axios from 'axios';
 
 const PaginaPrincipal = ()=>{
-    let history = useHistory()
     const {id} = useParams();
-    const [utilizadores, setUtilizador] = useState({
-      nome: "",
-      email: "",
-      senha: "",
-    })
-    const{nome, email, senha} = utilizadores;
-    const onInputChange = e =>{
-     setUtilizador({...utilizadores,[e.target.email]: e.target.value});
-    };
-
-    useEffect(() => {
-        loadUtilizadores();
-    }, []);
+    const [utilizadores, setUtilizador] = useState([]);
+    const [entidades, setEntidade] = useState([]);
     
-    const onSubmit = async e =>{
-      e.preventDefault()
-      await axios.put(`http://192.168.1.84/projeto-maze/web/rest/utilizadors/${id}`, utilizadores);
-      history.push("/gerir-textos")
-    };
-    
-    const loadUtilizadores = async () =>{
-        const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/utilizadors/${id}`)
-        setUtilizador(result.data);
+      useEffect(()=>{
+           loadUtilizador();
+           loadEntidade();
+      }, []);
+      const loadUtilizador = async () =>{
+          const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/utilizadors/${id}`, utilizadores);
+          console.log(result);
+          setUtilizador(result.data)
+      }
+      const loadEntidade = async () =>{
+        const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/entidades/${id}`, entidades);
+        console.log(result);
+        setEntidade(result.data)
     }
         return(
             <div>
@@ -51,11 +43,15 @@ const PaginaPrincipal = ()=>{
                 </div>
             </nav>
                 <img className="imagem-pp" src={Imagem} height="300" width="300" />
-                <ul value={nome}
-                      value={email}>         
+                <div >    
+                    <p>{utilizadores.nome}</p>
+                    <p>{utilizadores.email}</p>
+                </div>        
+                <div >    
+                    <p>{entidades.nome}</p>
+                    <p>{entidades.concelho}</p>
+                </div>        
 
-                </ul>
-     
                 <Dropdown>
                     <Dropdown.Toggle variant="menu-pp" id="dropdown-basic" className="menu-pp">
                         Texto
