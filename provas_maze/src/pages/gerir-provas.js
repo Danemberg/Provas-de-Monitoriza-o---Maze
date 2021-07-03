@@ -73,7 +73,7 @@ function GerirProvas(){
                                         <td>
                                             <Link to={`editar-provas/${prova.id}`} className="edit">
                                             <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></Link>
-                                            <Link onClick={()=> deleteProva(prova.id)} href="#deleteEmployeeModal" className="delete" data-toggle="modal">
+                                            <Link onClick={()=> {if(window.confirm('Deseja apagar a prova?')) {deleteProva(prova.id)};}} href="#deleteEmployeeModal" className="delete" data-toggle="modal">
                                             <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></Link>  
                                         </td>
                                         </tr>   

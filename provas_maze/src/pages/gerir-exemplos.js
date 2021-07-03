@@ -19,6 +19,7 @@ function GerirExemplos(){
       const deleteExemplo = async id =>{
         await axios.delete(`http://192.168.1.84/projeto-maze/web/rest/exemplos/${id}`)
         loadExemplos();
+        
       }
         return(
             <div>
@@ -71,7 +72,7 @@ function GerirExemplos(){
                                         <td>
                                             <Link to={`editar-exemplos/${exemplo.id}`} className="edit">
                                             <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></Link>
-                                            <Link onClick={()=> deleteExemplo(exemplo.id)} href="#deleteEmployeeModal" className="delete" data-toggle="modal">
+                                            <Link onClick={()=>{if(window.confirm('Deseja apagar o exemplo?')) {deleteExemplo(exemplo.id)};}} href="#deleteEmployeeModal" className="delete" data-toggle="modal">
                                             <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></Link>  
                                         </td>
                                         </tr>   

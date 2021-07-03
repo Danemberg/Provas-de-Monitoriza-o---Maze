@@ -73,7 +73,7 @@ function GerirTextos(){
                                         <td>
                                             <Link to={`editar-textos/${texto.id}`} className="edit">
                                             <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></Link>
-                                            <Link onClick={()=> deleteTexto(texto.id)} href="#deleteEmployeeModal" className="delete" data-toggle="modal">
+                                            <Link onClick={()=> {if(window.confirm('Deseja apagar o texto?')) {deleteTexto(texto.id)};}} href="#deleteEmployeeModal" className="delete" data-toggle="modal">
                                             <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></Link>
                                         </td>
                                     </tr>   

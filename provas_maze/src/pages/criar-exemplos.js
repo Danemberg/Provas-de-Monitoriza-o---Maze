@@ -83,7 +83,6 @@ const loadExemplos = async () =>{
                                         <div className="col-sm-9">
                                         <select  className="form-control" id="ano" name="ano"
                                                onChange={e => onInputChange(e)} required>  
-                                                    <option value="1">1</option>
                                                     <option value="2">2</option>
                                                     <option value="3">3</option>
                                                     <option value="4">4</option>         

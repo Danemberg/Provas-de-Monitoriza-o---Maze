@@ -74,13 +74,11 @@ const PaginaPrincipal = ()=>{
                         um estudo longitudinal sobre alunos em risco</h1>
                         <br></br>
                         <p className="texto-pp">
-                            Este projeto tem como finalidade monitorizar a aprendizagem da leitura de uma amostra representativa das crianças que no ano letivo 2017/2018 frequentam o 1º ano de escolaridade no concelho de Bragança.
-                            O projeto tem como objetivos:
-                            i) conhecer o nível de realização das crianças no final da educação pré-escolar relativamente à identificação do som e do nome das letras;
-                            ii) conhecer o nível de realização das mesmas crianças no outono, no inverno e na primavera dos 1.º, 2.º, 3.º e 4.º anos de escolaridade, relativamente à fluência e compreensão da leitura;
-                            iii) identificar alunos em risco na leitura;
-                            iv) identificar fatores de risco na leitura.
-                            Os resultados terão impacto social na medida em que permitirão conhecer trajetórias de aprendizagem da leitura na população e nos alunos em risco.
+                        A monitorização-com-base-no-currículo tem origem na Universidade do Minnesota, 
+                        EUA, nos anos 70 pela mão de Stanley Deno e permite uma triagem e uma monitorização do progresso de estudantes de forma fácil, rápida válida. 
+                        Desempenha um papel central nos modelos de intervenção multinível e pode ser utilizada para fornecer informações acerca da eficácia do ensino ministrado na sala de aula inclusiva.
+                        Da colaboração entre o Centro de Investigação em Educação da Universidade do Minho, do Centro de Investigação em Educação Básica e do Centro de Investigação em Digitalização e Robótica 
+                        Inteligente do Instituto Politécnico de Bragança resulta esta plataforma de geração de provas de monitorização-com-base-no-currículo na leitura.
                         </p>
             </div>
         )   
