@@ -67,7 +67,7 @@ function ValidarUtilizador(){
                                         <td>
                                             <Link type="button" to={`registo-utilizador/${utilizador.id}`} className=" btn botao-visualizar">Visualizar</Link> </td>
                                         <td>
-                                               <Link onClick={()=> deleteUtilizador(utilizador.id)} href="#deleteEmployeeModal" className="delete" data-toggle="modal">
+                                               <Link onClick={()=> {if(window.confirm('Deseja recusar acesso ao utilizador?')) {deleteUtilizador(utilizador.id)};}} href="#deleteEmployeeModal" className="delete" data-toggle="modal">
                                             <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></Link>
                                         </td>
                                         </tr>  

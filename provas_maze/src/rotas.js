@@ -1,5 +1,4 @@
 import React from 'react'
-
 import {Switch, Route} from 'react-router-dom'
 
 import Login from './pages/login'
@@ -26,50 +25,80 @@ import VisualizarTexto from './pages/visualizar-texto'
 import PaginaPrincipalAdm from './pages/paginaprincipal-adm'
 import Footer from './components/footer'
 
-
 const Administrador = () =>{
     return(
-        
+        <Switch>
+            <Route exact path="/paginaprincipal-adm/:id" component={PaginaPrincipalAdm}/>
+            <Route exact path="/validar-utilizador" component={ValidarUtilizador}/>
+            <Route exact path="/registo-utilizador/:id" component={RegistoUtilizador}/>
+            <Route exact path="/gerir-exemplos" component={GerirExemplos}/> 
+            <Route exact path="/criar-exemplos" component={CriarExemplos}/> 
+            <Route exact path="/editar-exemplos/:id" component={EditarExemplos}/>
+            <Route exact path="/listar-exemplos" component={ListarExemplos}/>
+            <Route exact path="/visualizar-exemplo/:id" component={VisualizarExemplo}/> 
+        </Switch>    
     )
 
 }
-
 const Docente = () =>{
     return(
-
+        <Switch>
+            <Route exact path="/pagina-principal/:id" component={PaginaPrincipal}/>  
+            <Route exact path="/gerir-provas" component={GerirProvas}/> 
+            <Route exact path="/instrucao-prova" component={Instrucoes}/> 
+            <Route exact path="/listar-provas" component={ListarProvas}/> 
+            <Route exact path="/criar-provas" component={CriarProvas}/> 
+            <Route exact path="/editar-provas/:id" component={EditarProvas}/> 
+            <Route exact path="/visualizar-prova/:id" component={VisualizarProva}/> 
+            <Route exact path="/gerir-textos" component={GerirTextos}/>
+            <Route exact path="/criar-textos" component={CriarTextos}/> 
+            <Route exact path="/editar-textos/:id" component={EditarTextos}/>
+            <Route exact path="/listar-textos" component={ListarTextos}/> 
+            <Route exact path="/visualizar-texto/:id" component={VisualizarTexto}/>  
+        </Switch>
     )
 }
 
 export default () => {
-    return( //exact significa true; exact={false}
-        <div>    
+    /*const tipo = "administrador";
+    if (tipo == "administrador") {
+        return(
+            <Administrador/> 
+        )
+    }
+    else{
+        return(
+            <Docente/>
+        )
+    }*/
+    return( //exact significa true; exact={false} 
+        
+    <div> 
         <Footer/>
-        <main>
-            <Switch>
-                <Route exact path="/" component={Login}/> 
-                <Route exact path="/registar-utilizador" component={RegistarUtilizador}/>
-                <Route exact path="/pagina-principal" component={PaginaPrincipal}/>
-                <Route exact path="/validar-utilizador" component={ValidarUtilizador}/>
-                <Route exact path="/registo-utilizador/:id" component={RegistoUtilizador}/>
-                <Route exact path="/gerir-exemplos" component={GerirExemplos}/> 
-                <Route exact path="/criar-exemplos" component={CriarExemplos}/> 
-                <Route exact path="/editar-exemplos/:id" component={EditarExemplos}/>
-                <Route exact path="/listar-exemplos" component={ListarExemplos}/>
-                <Route exact path="/visualizar-exemplo/:id" component={VisualizarExemplo}/> 
-                <Route exact path="/gerir-provas" component={GerirProvas}/> 
-                <Route exact path="/instrucao-prova" component={Instrucoes}/> 
-                <Route exact path="/listar-provas" component={ListarProvas}/> 
-                <Route exact path="/criar-provas" component={CriarProvas}/> 
-                <Route exact path="/editar-provas/:id" component={EditarProvas}/> 
-                <Route exact path="/visualizar-prova/:id" component={VisualizarProva}/> 
-                <Route exact path="/gerir-textos" component={GerirTextos}/>
-                <Route exact path="/criar-textos" component={CriarTextos}/> 
-                <Route exact path="/editar-textos/:id" component={EditarTextos}/>
-                <Route exact path="/listar-textos" component={ListarTextos}/> 
-                <Route exact path="/visualizar-texto/:id" component={VisualizarTexto}/>  
-                <Route exact path="/paginaprincipal-adm" component={PaginaPrincipalAdm}/>
-            </Switch>
-        </main>
-</div>
+        <Switch>
+            <Route exact path="/" component={Login}/> 
+            <Route exact path="/registar-utilizador" component={RegistarUtilizador}/>
+            <Route exact path="/paginaprincipal-adm/:id" component={PaginaPrincipalAdm}/>
+            <Route exact path="/validar-utilizador" component={ValidarUtilizador}/>
+            <Route exact path="/registo-utilizador/:id" component={RegistoUtilizador}/>
+            <Route exact path="/gerir-exemplos" component={GerirExemplos}/> 
+            <Route exact path="/criar-exemplos" component={CriarExemplos}/> 
+            <Route exact path="/editar-exemplos/:id" component={EditarExemplos}/>
+            <Route exact path="/listar-exemplos" component={ListarExemplos}/>
+            <Route exact path="/visualizar-exemplo/:id" component={VisualizarExemplo}/> 
+            <Route exact path="/pagina-principal/:id" component={PaginaPrincipal}/>  
+            <Route exact path="/gerir-provas" component={GerirProvas}/> 
+            <Route exact path="/instrucao-prova" component={Instrucoes}/> 
+            <Route exact path="/listar-provas" component={ListarProvas}/> 
+            <Route exact path="/criar-provas" component={CriarProvas}/> 
+            <Route exact path="/editar-provas/:id" component={EditarProvas}/> 
+            <Route exact path="/visualizar-prova/:id" component={VisualizarProva}/> 
+            <Route exact path="/gerir-textos" component={GerirTextos}/>
+            <Route exact path="/criar-textos" component={CriarTextos}/> 
+            <Route exact path="/editar-textos/:id" component={EditarTextos}/>
+            <Route exact path="/listar-textos" component={ListarTextos}/> 
+            <Route exact path="/visualizar-texto/:id" component={VisualizarTexto}/>  
+        </Switch>     
+    </div>
     )
 }

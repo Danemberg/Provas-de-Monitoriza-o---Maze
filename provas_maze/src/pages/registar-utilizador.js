@@ -27,7 +27,7 @@ import axios from 'axios';
     }, []);
 
     const loadUtilizadores = async () =>{
-        const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/utilizadores`)
+        const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/utilizadors`)
         setUtilizador(result.data);
     }
     const loadEntidades = async () =>{
@@ -42,8 +42,14 @@ import axios from 'axios';
         }
         const onSubmit = async e =>{
           e.preventDefault()
+          try{
           await axios.post("http://192.168.1.84/projeto-maze/web/rest/utilizadors", utilizadores);
+          alert("Registo criado com sucesso!!!")
           history.push("/")
+        }catch(error){
+            alert("Preencha todos os campos!")
+        }
+            
         };
         return(  
         <div>
@@ -71,7 +77,7 @@ import axios from 'axios';
                         <div className="form-group row campo">
                                 <label>Nome:</label>
                             <div className="col-sm-10">
-                                <input type="text" className="form-control " id="nome" name="name" value={nome}  
+                                <input type="text" className="form-control " id="nome" name="name"  
                                  onChange={e => onInputChange(e)}/>
                             </div>
                         </div>
@@ -80,8 +86,8 @@ import axios from 'axios';
                             <div className="form-group row campo">
                                     <label>Email:</label>
                                 <div className="col-sm-10">
-                                    <input type="text" className="form-control" id="email" name="email" value={email}
-                                 onChange={e => onInputChange(e)}/>
+                                    <input type="text" className="form-control" id="email" name="email" 
+                                 onChange={e => onInputChange(e)}required/>
                                 </div>
                             </div>
                         </div>
@@ -89,8 +95,8 @@ import axios from 'axios';
                         <div className="form-group row campo">
                                 <label>Senha de acesso:</label>
                             <div className="col-sm-3">
-                                <input type="password" className="form-control" id="senha" name="senha" value={senha}
-                                 onChange={e => onInputChange(e)}/>
+                                <input type="password" className="form-control" id="senha" name="senha" 
+                                 onChange={e => onInputChange(e)}required/>
                             </div>
                         </div>
                         <div className="row">
@@ -112,7 +118,8 @@ import axios from 'axios';
                                 <div className="form-group row campo">
                                         <label>Outros:</label>
                                     <div className="col-sm-9">
-                                        <input type="text" className="form-control"></input>
+                                    <input type="text" className="form-control" id="outros" name="outros" 
+                                 onChange={e => onInputChange(e)}/>
                                     </div>
                                 </div>
                             </div>
@@ -122,7 +129,13 @@ import axios from 'axios';
                                 <div className="form-group row campo">
                                         <label>Concelho:</label>
                                     <div className="col-sm-6">
-                                        <input type="text" className="form-control-plaintext" ></input>
+                                    <select className="form-control" id="concelho" name="concelho"
+                                            onChange={e => onInputChange(e)}> 
+                                               {
+                                           ent.map((entidade) =>(
+                                            <option>{entidade.concelho}</option>
+                                               ))}  
+                                           </select>
                                     </div>
                                 </div>
                             </div>
@@ -130,7 +143,8 @@ import axios from 'axios';
                                 <div className="form-group row campo">
                                         <label>Concelho:</label>
                                     <div className="col-sm-6">
-                                        <input type="text" className="form-control"></input>
+                                    <input type="text" className="form-control" id="concelho-outros" name="concelho-outros" 
+                                 onChange={e => onInputChange(e)}/>
                                     </div>
                                 </div>
                             </div>
@@ -139,7 +153,6 @@ import axios from 'axios';
                                 <label>Justificação de registo:</label>
                             <div className="col-md-6">
                                 <textarea className="form-control" rows="3"  id="justificacao_registo" name="justificacao_registo"
-                                value={justificacao_registo}
                                 onChange={e => onInputChange(e)}/>
                             </div>
                         </div>

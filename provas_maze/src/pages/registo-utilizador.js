@@ -7,6 +7,7 @@ import axios from 'axios';
 const RegistoUtilizador = () => {
     let history = useHistory()
     const {id} = useParams();
+    const [ent, setEnt] = useState([])
     const [utilizadores, setUtilizador] = useState({
         nome: "",
         email: "",
@@ -15,13 +16,20 @@ const RegistoUtilizador = () => {
         entidade_id: "",
         justificacao_registo: ""
     })
+    const [entidades, setEntidade] = useState({
+        nome:"",
+        concelho: ""
+      })
    
     const{nome, email, senha, tipo_de_utilizador, entidade_id, justificacao_registo} = utilizadores;
+    const{name, concelho} = entidades;
     const onInputChange = e =>{
      setUtilizador({...utilizadores,[e.target.id]: e.target.value});
     };
 
     useEffect(() => {
+        setEnt([]);
+        loadEntidades();
         loadUtilizadores();
     }, []);
     
@@ -34,6 +42,11 @@ const RegistoUtilizador = () => {
     const loadUtilizadores = async () =>{
         const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/utilizadors/${id}`)
         setUtilizador(result.data);
+    }
+    const loadEntidades = async () =>{
+        const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/entidades`)
+        setEntidade(result.data);
+        setEnt(result.data);
     }
         return(  
         <div>
@@ -62,7 +75,7 @@ const RegistoUtilizador = () => {
                                 <label>Nome:</label>
                             <div className="col-sm-10">
                                 <input type="text" className="form-control " id="nome" name="nome"
-                                 value={nome}
+                                 value={utilizadores.nome}
                                  onChange={e => onInputChange(e)}/>
                             </div>
                         </div>
@@ -70,7 +83,7 @@ const RegistoUtilizador = () => {
                                     <label>Email:</label>
                                 <div className="col-sm-10">
                                     <input type="text" className="form-control" id="email" name="email"
-                                    value={email}
+                                    value={utilizadores.email}
                                    onChange={e => onInputChange(e)}/>
                                 </div>
                             </div>
@@ -81,9 +94,13 @@ const RegistoUtilizador = () => {
                                 <div className="form-group row campo">
                                       <label>Entidade:</label>
                                     <div className="col-sm-9">
-                                        <select className="form-control">
-                                        <option></option>
-                                        </select>
+                                    <select  className="form-control" id="entidade" name="entidade" value={ent.name}
+                                            onChange={e => onInputChange(e)}> 
+                                               {
+                                           ent.map((entidade) =>(
+                                            <option>{entidade.nome}</option>
+                                               ))}  
+                                           </select>
                                     </div>
                                 </div>
                             </div>
@@ -91,7 +108,9 @@ const RegistoUtilizador = () => {
                                 <div className="form-group row campo">
                                         <label>Outros:</label>
                                     <div className="col-sm-9">
-                                        <input type="text" className="form-control"></input>
+                                    <input type="text" className="form-control" id="outros" name="outros"
+                                    value={name}
+                                   onChange={e => onInputChange(e)}/>
                                     </div>
                                 </div>
                             </div>
@@ -101,7 +120,13 @@ const RegistoUtilizador = () => {
                                 <div className="form-group row campo">
                                         <label>Concelho:</label>
                                     <div className="col-sm-6">
-                                        <input type="text" className="form-control"></input>
+                                        <select className="form-control" id="concelho" name="concelho"
+                                                onChange={e => onInputChange(e)}> 
+                                                {
+                                                ent.map((entidade) =>(
+                                                <option>{entidade.concelho}</option>
+                                                ))}  
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -109,7 +134,9 @@ const RegistoUtilizador = () => {
                                 <div className="form-group row campo">
                                         <label >Concelho:</label>
                                     <div className="col-sm-6">
-                                        <input type="text" className="form-control" ></input>
+                                    <input type="text" className="form-control" id="concelho" name="concelho"
+                                    value={concelho}
+                                   onChange={e => onInputChange(e)}/>
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +146,7 @@ const RegistoUtilizador = () => {
                                 <label>Justificação de registo:</label>
                             <div className="col-md-6">
                                 <textarea className="form-control" rows="3" id="justificacao_registo" name="justificacao_registo"
-                                value={justificacao_registo}
+                                value={utilizadores.justificacao_registo}
                                 onChange={e => onInputChange(e)}></textarea>
                             </div>
                         </div>
