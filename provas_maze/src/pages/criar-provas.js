@@ -124,7 +124,7 @@ const loadProvas = async () =>{
                     <div className="col-lg-6 ">
                         <div className="form-group row campo">
                             <label>Turma:</label>
-                                <div className="col-sm-4" >
+                                <div className="col-sm-6" >
                                     <select  className="form-control" id="turma" name="turma"
                                             onChange={e => onInputChange(e)}> 
                                                {

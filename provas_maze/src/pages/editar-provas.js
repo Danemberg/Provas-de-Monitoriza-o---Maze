@@ -67,7 +67,7 @@ const EditarProvas = () => {
                         <div className="form-group row campo">
                                 <label>Data:</label>
                             <div className="col-sm-5">
-                                <input type="text" className="form-control" id="data_de_realizacao" name="data_de_realizacao"
+                                <input type="date" className="form-control" id="data_de_realizacao" name="data_de_realizacao"
                                 value={data_de_realizacao}
                                 onChange={e => onInputChange(e)}></input>
                             </div>

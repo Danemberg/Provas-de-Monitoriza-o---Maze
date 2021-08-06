@@ -7,7 +7,6 @@ import axios from 'axios';
 const RegistoUtilizador = () => {
     let history = useHistory()
     const {id} = useParams();
-    const [ent, setEnt] = useState([])
     const [utilizadores, setUtilizador] = useState({
         nome: "",
         email: "",
@@ -23,21 +22,12 @@ const RegistoUtilizador = () => {
    
     const{nome, email, senha, tipo_de_utilizador, entidade_id, justificacao_registo} = utilizadores;
     const{name, concelho} = entidades;
-    const onInputChange = e =>{
-     setUtilizador({...utilizadores,[e.target.id]: e.target.value});
-    };
-
+    
     useEffect(() => {
-        setEnt([]);
         loadEntidades();
         loadUtilizadores();
     }, []);
-    
-    const onSubmit = async e =>{
-      e.preventDefault()
-      await axios.put(`http://192.168.1.84/projeto-maze/web/rest/utilizadors/${id}`, utilizadores);
-      history.push("/validar-utilizador")
-    };
+
     
     const loadUtilizadores = async () =>{
         const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/utilizadors/${id}`)
@@ -46,7 +36,6 @@ const RegistoUtilizador = () => {
     const loadEntidades = async () =>{
         const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/entidades`)
         setEntidade(result.data);
-        setEnt(result.data);
     }
         return(  
         <div>
@@ -65,52 +54,47 @@ const RegistoUtilizador = () => {
                         </ul>  
                     </div>
                 </nav>
-        <form onSubmit={e =>onSubmit(e)} >
+        <form>
             <div className="card border-danger mb-3 my-card">
                 <div className="card-header titulo">Registo de utilizador:
                     <div className="card-body">
                     <div className="row">
-                      <div className="col-md-6">
+                      <div className="col-lg-6">
                         <div className="form-group row campo">
                                 <label>Nome:</label>
                             <div className="col-sm-10">
                                 <input type="text" className="form-control " id="nome" name="nome"
-                                 value={utilizadores.nome}
-                                 onChange={e => onInputChange(e)}/>
+                                 value={utilizadores.nome}/>
                             </div>
                         </div>
+                       </div>
+                        <div className="col-md-6">
                             <div className="form-group row campo">
                                     <label>Email:</label>
                                 <div className="col-sm-10">
                                     <input type="text" className="form-control" id="email" name="email"
-                                    value={utilizadores.email}
-                                   onChange={e => onInputChange(e)}/>
+                                    value={utilizadores.email}/>
                                 </div>
                             </div>
-                      </div>
+                        </div>
                     </div>
                         <div className="row">
                             <div className="col-lg-6 ">
                                 <div className="form-group row campo">
                                       <label>Entidade:</label>
                                     <div className="col-sm-9">
-                                    <select  className="form-control" id="entidade" name="entidade" value={ent.name}
-                                            onChange={e => onInputChange(e)}> 
-                                               {
-                                           ent.map((entidade) =>(
-                                            <option>{entidade.nome}</option>
-                                               ))}  
-                                           </select>
+                                    <input type="text" className="form-control" id="nome" name="nome" value={entidades.name}
+                                            /> 
                                     </div>
                                 </div>
                             </div>
-                                <div className="col-md-6 ">
+                            <div className="col-lg-6 ">
                                 <div className="form-group row campo">
-                                        <label>Outros:</label>
+                                        <label>Concelho:</label>
                                     <div className="col-sm-9">
-                                    <input type="text" className="form-control" id="outros" name="outros"
-                                    value={name}
-                                   onChange={e => onInputChange(e)}/>
+                                        <input type = "text" className="form-control" id="concelho" name="concelho"
+                                        value= {entidades.concelho}
+                                        />   
                                     </div>
                                 </div>
                             </div>
@@ -118,41 +102,27 @@ const RegistoUtilizador = () => {
                         <div className="row">
                             <div className="col-lg-6 ">
                                 <div className="form-group row campo">
-                                        <label>Concelho:</label>
+                                      <label>Tipo de utilizador:</label>
                                     <div className="col-sm-6">
-                                        <select className="form-control" id="concelho" name="concelho"
-                                                onChange={e => onInputChange(e)}> 
-                                                {
-                                                ent.map((entidade) =>(
-                                                <option>{entidade.concelho}</option>
-                                                ))}  
-                                        </select>
+                                    <input type="text" className="form-control" id="tipo_de_utilizador" name="tipo_de_utilizador" 
+                                     value={utilizadores.tipo_de_utilizador}/>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-md-6 ">
-                                <div className="form-group row campo">
-                                        <label >Concelho:</label>
-                                    <div className="col-sm-6">
-                                    <input type="text" className="form-control" id="concelho" name="concelho"
-                                    value={concelho}
-                                   onChange={e => onInputChange(e)}/>
-                                    </div>
-                                </div>
+                        </div>
+                        <div className="form-group row campo">
+                                <label>Justificação de registo:</label>
+                            <div className="col-md-8">
+                                <textarea className="form-control" rows="4" id="justificacao_registo" name="justificacao_registo"
+                                value={utilizadores.justificacao_registo}
+                                ></textarea>
                             </div>
                         </div>
                         <br></br>
-                        <div className="form-group row campo">
-                                <label>Justificação de registo:</label>
-                            <div className="col-md-6">
-                                <textarea className="form-control" rows="3" id="justificacao_registo" name="justificacao_registo"
-                                value={utilizadores.justificacao_registo}
-                                onChange={e => onInputChange(e)}></textarea>
-                            </div>
-                        </div>
+                        <br></br>
                         <div>
-                            <button type="submit" className="btn botao">Salvar</button>
-                        </div> 
+                            <Link to="/validar-utilizador" type="button" className=" btn botao">Voltar</Link>
+                        </div>
                     </div> 
                 </div> 
             </div>  
