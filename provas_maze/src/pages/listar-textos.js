@@ -17,7 +17,7 @@ function ListarTextos(){
    const loadTextos = async () =>{
        const result = await axios.get("http://192.168.1.84/projeto-maze/web/rest/textos");
        console.log(result);
-       setTexto(result.data.reverse())
+       setTexto(result.data) // (result.data.reverse()) para listar a partir do ultimo registo
        setpaginatedTextos(_(result.data).slice(0).take(pageSize).value())
    }
    const pageCount = textos? Math.ceil(textos.length/pageSize) :0;
