@@ -27,7 +27,7 @@ function GerirTextos(){
       }
 
       const pageCount = textos? Math.ceil(textos.length/pageSize) :0;
-      if(pageCount ===1) return null;
+      if(pageCount ===0) return null;
       const pages = _.range(1,pageCount+1)
 
       const pagination=(pageNo)=>{

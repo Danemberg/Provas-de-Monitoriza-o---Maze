@@ -3,12 +3,15 @@ import '../index.css';
 import { Link } from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
 import axios from 'axios';
-
+import _ from 'lodash';
 
 
 function ListarProvas(){
+    const pageSize = 5;
     const [provas, setProva] = useState([]);
-    
+    const [paginatedProvas, setpaginatedProvas] = useState ([]);
+    const [currentPage, setcurrentPage] = useState(1)
+
       useEffect(()=>{
            loadProvas();
       }, []);
@@ -16,6 +19,17 @@ function ListarProvas(){
           const result = await axios.get("http://192.168.1.84/projeto-maze/web/rest/provas");
           console.log(result);
           setProva(result.data.reverse())
+          setpaginatedProvas(_(result.data).slice(0).take(pageSize).value())
+      }
+      const pageCount = provas? Math.ceil(provas.length/pageSize) :0;
+      if(pageCount ===0) return null;
+      const pages = _.range(1,pageCount+1)
+
+      const pagination=(pageNo)=>{
+          setcurrentPage(pageNo);
+          const startIndex =(pageNo -1) * pageSize;
+          const paginatedProvas = _(provas).slice(startIndex).take(pageSize).value();
+          setpaginatedProvas(paginatedProvas)
       }
 
         return(
@@ -57,9 +71,9 @@ function ListarProvas(){
                                 </thead>
                                 <tbody>
                                 {
-                                provas.map((prova, index) =>(
+                                paginatedProvas.map((prova) =>(
                                     <tr>
-                                        <th scope="row">{index + 1}</th>
+                                        <th scope="row"></th>
                                         <td>{prova.titulo}</td>
                                         <td>{prova.data_de_realizacao}</td>
                                         <td>{prova.turma}</td>
@@ -69,17 +83,20 @@ function ListarProvas(){
                                     
                                 </tbody>
                             </table>
-                            <div className="clearfix">
-                                <ul className="pagination">
-                                <a href="#" className="page-link">Anterior</a>
-                                    <a href="#" className="page-link ">1</a>
-                                    <a href="#" className="page-link ">2</a>
-                                    <a href="#" className="page-link active">3</a>
-                                    <a href="#" className="page-link">4</a>
-                                    <a href="#" className="page-link">5</a>
-                                    <a href="#" className="page-link">Próximo</a>
-                                </ul>
-                            </div>
+                            <nav>
+                               <ul className="pagination">
+                                   {
+                                       pages.map((page)=>(
+                                        <li  className={
+                                            page=== currentPage ? "page-item active " : "page-item" 
+                                        }><p className="page-link active"
+                                            onClick={()=>pagination(page)}
+                                            >{page}</p>
+                                        </li>
+                                       ))
+                                   }
+                               </ul>
+                           </nav>
                         </div>
                     </div>
             </div>
