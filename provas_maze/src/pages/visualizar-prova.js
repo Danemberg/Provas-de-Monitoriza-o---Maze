@@ -58,10 +58,10 @@ const VisualizarProva =() =>{
                         </div>
                     </div>
                 </div>
-            <ul className="texto">
-                <p>{exemplos.conteudo}</p>
-                <p>{textos.conteudo}</p>
-            </ul>   
+            <div className="texto">
+                {exemplos.conteudo}
+                {textos.conteudo}
+            </div>   
         </div>
         )
        

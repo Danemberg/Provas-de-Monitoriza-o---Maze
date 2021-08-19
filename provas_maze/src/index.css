@@ -69,7 +69,10 @@ body{
     margin-right: 5%;
     position: fixed;
 }
-
+.visualizar-texto{
+    color: darkred;
+    font-size: 18px;
+}
 .campo{
     margin-bottom: 30px;
 }

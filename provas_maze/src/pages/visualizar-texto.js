@@ -33,10 +33,21 @@ const VisualizarTexto = () => {
                         </ul>  
                     </div>
             </nav>
-        
-            <ul className="texto">
-                <p>{textos.conteudo}</p>
-            </ul>                                 
+            <div className="row-md">
+                <div className="form-group row texto" >
+                    <label className="visualizar-texto">Autor:</label>
+                    <div className="col-md-3">
+                       <label className="visualizar-texto">{textos.autor}</label>
+                    </div>
+                    <label className="visualizar-texto">Editora do Manual:</label>
+                    <div className="col-md-3">
+                        <label className="visualizar-texto">{textos.editora_manual}</label>
+                    </div>  
+                </div>  
+            </div> 
+            <div className="texto">
+                {textos.conteudo}
+            </div>                            
         </div>       
                                                      
         )
