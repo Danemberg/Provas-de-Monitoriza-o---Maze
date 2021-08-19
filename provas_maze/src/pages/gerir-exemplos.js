@@ -33,8 +33,12 @@ function GerirExemplos(){
           setpaginatedExemplos(_(result.data).slice(0).take(pageSize).value())
       }
       const deleteExemplo = async id =>{
+        try{
         await axios.delete(`http://192.168.1.84/projeto-maze/web/rest/exemplos/${id}`)
         loadExemplos();
+        }catch(error){
+            alert("Este exemplo está a ser utilizado em uma prova. Apague a prova para apagar este exemplo!")
+        }
         
       }
       const pageCount = exemplos? Math.ceil(exemplos.length/pageSize) :0;
@@ -70,7 +74,6 @@ function GerirExemplos(){
                     Gerir Exemplos:
                     </div>
                     <div className="col-sm-6">
-                            
                         </div>
                     <div className="table-responsive">
                         <div className="table-wrapper">
