@@ -70,7 +70,6 @@ body{
     position: fixed;
 }
 
-
 .campo{
     margin-bottom: 30px;
 }
@@ -191,7 +190,6 @@ input[type=checkbox]{
     margin: 30px 0;
     border: 2px solid darkred;
     border-radius: 2px;
-
 }
 .table-title {
     color:#870B5A;
@@ -322,7 +320,7 @@ input[type="checkbox"]:checked + label {
 }
 .menu-pp1{
     bottom:70%;
-    Right: 20%;
+    right: 20%;
     position: fixed;
     border: 0px;
     border-radius: 16px;
@@ -333,7 +331,7 @@ input[type="checkbox"]:checked + label {
 }
 .menu-pp2{
     bottom:70%;
-    Right: 20%;
+    right: 20%;
     position: fixed;
     border: 0px;
     border-radius: 16px;
@@ -349,4 +347,8 @@ input[type="checkbox"]:checked + label {
 }
 .ab{
     color: darkred;
+}
+.pesquisa{
+    padding: 4px 42px;
+
 }

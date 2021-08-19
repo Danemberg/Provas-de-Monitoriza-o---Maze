@@ -10,10 +10,22 @@ function GerirProvas(){
     const [provas, setProva] = useState([]);
     const [paginatedProvas, setpaginatedProvas] = useState ([]);
     const [currentPage, setcurrentPage] = useState(1)
+    const [input, setInput] = useState('')
 
       useEffect(()=>{
            loadProvas();
       }, []);
+      useEffect(()=>{
+        setpaginatedProvas([])
+        provas.filter(val=>{
+            if(val.titulo.toLowerCase().includes(input.toLocaleLowerCase()))
+            {
+                setpaginatedProvas(paginatedProvas=>[...paginatedProvas,val])
+            }
+        })
+      
+ }, [input]);
+
       const loadProvas = async () =>{
           const result = await axios.get("http://192.168.1.84/projeto-maze/web/rest/provas");
           console.log(result);
@@ -68,8 +80,12 @@ function GerirProvas(){
                                         <th>
                                         </th>
                                         <th className="item-tabela">Título</th>
-                                        <th className="item-tabela">Data</th>
+                                        <th className="item-tabela">Data de criação</th>
                                         <th className="item-tabela">Turma</th>
+                                        <th>
+                                        <input onChange={e=>setInput(e.target.value)} type="text" placeholder="Pesquisar por título" 
+                                        className="item-tabela pesquisa"></input>
+                                        </th>
                                         <th>
                                         <Link to="/criar-provas" className="btn btn-success botao-tabela ">
                                         <i className="material-icons icone-add">&#xE147;</i> <span>Adicionar</span></Link>    

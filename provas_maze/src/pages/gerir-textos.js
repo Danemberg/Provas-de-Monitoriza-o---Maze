@@ -11,10 +11,22 @@ function GerirTextos(){
     const [textos, setTexto] = useState([]);
     const [paginatedTextos, setpaginatedTextos] = useState ([]);
     const [currentPage, setcurrentPage] = useState(1)
+    const [input, setInput] = useState('')
     
       useEffect(()=>{
            loadTextos();
       }, []);
+      useEffect(()=>{
+          setpaginatedTextos([])
+          textos.filter(val=>{
+              if(val.titulo.toLowerCase().includes(input.toLocaleLowerCase()))
+              {
+                  setpaginatedTextos(paginatedTextos=>[...paginatedTextos,val])
+              }
+          })
+        
+   }, [input]);
+
       const loadTextos = async () =>{
           const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/textos`);
           console.log(result);
@@ -57,9 +69,6 @@ function GerirTextos(){
                     <div className="titulo">
                     Gerir Textos:
                     </div>
-                    <div className="col-sm-6">
-                            
-                        </div>
                     <div className="table-responsive">
                         <div className="table-wrapper">
                             <table className="table table-striped table-hover">
@@ -68,9 +77,11 @@ function GerirTextos(){
                                         <th>
                                         </th>
                                         <th className="item-tabela">Título</th>
-                                        <th className="item-tabela">Autor/a</th>
-                                        <th className="item-tabela">Editora do manual</th>
                                         <th className="item-tabela">Ano</th>
+                                        <th>
+                                        <input onChange={e=>setInput(e.target.value)} type="text" placeholder="Pesquisar por título" 
+                                        className="item-tabela pesquisa"></input>
+                                        </th>
                                         <th>
                                         <Link to="/criar-textos" className="btn btn-success botao-tabela ">
                                         <i className="material-icons icone-add">&#xE147;</i> <span>Adicionar</span></Link>    
@@ -83,8 +94,6 @@ function GerirTextos(){
                                     <tr>
                                         <th scope="row"></th>
                                         <td>{texto.titulo}</td>
-                                        <td>{texto.autor}</td>
-                                        <td>{texto.editora_manual}</td>
                                         <td>{texto.ano}</td> 
                                         <td>
                                             <Link to={`editar-textos/${texto.id}`} className="edit">
@@ -93,7 +102,7 @@ function GerirTextos(){
                                             <i className="material-icons" data-toggle="tooltip" title="Eliminar">&#xE872;</i></Link>
                                         </td>
                                     </tr>   
-                                                ))}  
+                                                ))} 
                                 </tbody>
                             </table>
                            <nav>

@@ -10,10 +10,22 @@ function GerirExemplos(){
     const [exemplos, setExemplo] = useState([]);
     const [paginatedExemplos, setpaginatedExemplos] = useState ([]);
     const [currentPage, setcurrentPage] = useState(1)
+    const [input, setInput] = useState('')
 
       useEffect(()=>{
            loadExemplos();
       }, []);
+      useEffect(()=>{
+        setpaginatedExemplos([])
+        exemplos.filter(val=>{
+            if(val.titulo.toLowerCase().includes(input.toLocaleLowerCase()))
+            {
+                setpaginatedExemplos(paginatedExemplos=>[...paginatedExemplos,val])
+            }
+        })
+      
+ }, [input]);
+
       const loadExemplos = async () =>{
           const result = await axios.get("http://192.168.1.84/projeto-maze/web/rest/exemplos");
           console.log(result);
@@ -69,6 +81,10 @@ function GerirExemplos(){
                                         <th className="item-tabela">Titulo
                                         </th>
                                         <th className="item-tabela">Ano</th>
+                                        <th>
+                                        <input onChange={e=>setInput(e.target.value)} type="text" placeholder="Pesquisar por título" 
+                                        className="item-tabela pesquisa"></input>
+                                        </th>
                                         <th>
                                         <Link to="/criar-exemplos" className="btn btn-success botao-tabela ">
                                         <i className="material-icons icone-add">&#xE147;</i> <span>Adicionar</span></Link>     
