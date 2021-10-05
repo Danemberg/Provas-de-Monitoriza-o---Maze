@@ -95,6 +95,7 @@ function GerirTextos(){
                                         <th scope="row"></th>
                                         <td>{texto.titulo}</td>
                                         <td>{texto.ano}</td> 
+                                        <td></td>
                                         <td>
                                             <Link to={`editar-textos/${texto.id}`} className="edit">
                                             <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></Link>

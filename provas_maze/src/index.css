@@ -228,7 +228,6 @@ table.table th i {
     cursor: pointer;
 }
 table.table td:last-child i {
-    opacity: 0.9;
     font-size: 22px;
     margin: 0 5px;
 }
@@ -238,7 +237,13 @@ table.table td a {
     text-decoration: none;
     outline: none !important;
 }
+.edit{
 
+    justify-content: flex-end;
+}
+.delete{
+    justify-content: flex-end;
+}
 table.table td a.edit {
     color: darkorange;
 }
@@ -254,7 +259,7 @@ table.table td a.confirmar{
 table.table td i {
     font-size: 19px;
 }
-.item-tabela{
+.item-tabela {
     color: #870B5A;
 }
 .botao-tabela{
@@ -353,5 +358,6 @@ input[type="checkbox"]:checked + label {
 }
 .pesquisa{
     padding: 4px 42px;
-
+    border-radius: 16px;
+    border-color: darkred;
 }

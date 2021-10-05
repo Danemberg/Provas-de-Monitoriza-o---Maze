@@ -102,6 +102,7 @@ function GerirExemplos(){
                                         <th scope="row"></th>
                                         <td>{exemplo.titulo}</td>
                                         <td>{exemplo.ano}</td>
+                                        <td></td>
                                         <td>
                                             <Link to={`editar-exemplos/${exemplo.id}`} className="edit">
                                             <i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></Link>
