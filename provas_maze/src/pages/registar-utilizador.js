@@ -2,24 +2,9 @@ import React, {useEffect,useState, useCallback} from 'react';
 import {Link, useHistory, useParams, withRouter} from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
 import axios from 'axios';
-import { authConfig } from '../auth/config.js';
+
 
     export const RegistarUtilizador = withRouter(({history}) =>{
-
-        const Registo = useCallback(
-            async (event) =>{
-                event.preventDefault();
-
-                const{email, senha} = event.target.elements;
-                try{
-                    await authConfig.auth().createUserWithEmailAndPassword(email.value, senha.value);
-                    history.push('/');
-                }catch (error){
-                    console.log(error);
-                }
-            },
-            [history],
-        );
        
         return(  
         <div>
@@ -38,7 +23,7 @@ import { authConfig } from '../auth/config.js';
                 </ul>  
             </div>
         </nav>
-        <form onSubmit={Registo}>
+        <form>
             <div className="card border-danger mb-3 my-card">
                 <div className="card-header titulo">Registar:
                     <div className="card-body">

@@ -4,27 +4,12 @@ import '../index.css';
 import { Link, useParams, useHistory } from 'react-router-dom'
 import Imagem from '../images/imagem_pagina_principal.png'
 import Logo from '../images/LogoMBCL.png';
-import axios from 'axios';
+import { useAuth0 } from '@auth0/auth0-react';
+import { Button } from 'react-bootstrap';
+
 
 const PaginaPrincipal = ()=>{
-    const {id} = useParams();
-    const [utilizadores, setUtilizador] = useState([]);
-    const [entidades, setEntidade] = useState([]);
-    
-      useEffect(()=>{
-           loadUtilizador();
-           loadEntidade();
-      }, []);
-      const loadUtilizador = async () =>{
-          const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/utilizadors/${id}`, utilizadores);
-          console.log(result);
-          setUtilizador(result.data)
-      }
-      const loadEntidade = async () =>{
-        const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/entidades/${id}`, entidades);
-        console.log(result);
-        setEntidade(result.data)
-    }
+    const {logout} = useAuth0();
         return(
             <div>
              <nav className="navbar navbar-expand-lg my-navbar">     
@@ -37,20 +22,13 @@ const PaginaPrincipal = ()=>{
                                 Plataforma para geração de Provas de Monitorização com base no currículo - Maze
                         </li>
                         <li className="nav-item item-navbar">
-                            <Link className="nav-link item-navbar" to="/">Sair</Link>
+                           <Button onClick={()=>logout()} className=" btn botao" to="/">Sair</Button>
                         </li>
                     </ul>  
                 </div>
             </nav>
                 <img className="imagem-pp" src={Imagem} height="300" width="300" />
-                <div >    
-                    <p>{utilizadores.nome}</p>
-                    <p>{utilizadores.email}</p>
-                </div>        
-                <div >    
-                    <p>{entidades.nome}</p>
-                    <p>{entidades.concelho}</p>
-                </div>        
+    
 
                 <Dropdown>
                     <Dropdown.Toggle variant="menu-pp" id="dropdown-basic" className="menu-pp">

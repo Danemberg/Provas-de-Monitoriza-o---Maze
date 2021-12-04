@@ -1,7 +1,6 @@
 import React from 'react'
-import {BrowserRouter, Route} from 'react-router-dom'
-import { AuthProvider } from './auth/AuthContext'
-import {PrivateRoute} from './auth/PrivatePrivateRoute'
+import {BrowserRouter, Route, PrivateRoute} from 'react-router-dom'
+import Auth0ProviderWithHistory from './auth/Auth0Provider'
 
 import Login from './pages/login'
 import PaginaPrincipal from './pages/paginaprincipal'
@@ -28,38 +27,41 @@ import PaginaPrincipalAdm from './pages/paginaprincipal-adm'
 import Footer from './components/footer'
 
 
+
 export default () => {
     return(
         
-        <AuthProvider>
+        <Auth0ProviderWithHistory
+        domain="dev-oxax7bam.us.auth0.com"
+        clientId="lBTfwJsr95k7rvbH9pe1OtE3NaOreWO4"
+        redirectUrl={window.location.origin}
+        >
             <Footer/>
-            <BrowserRouter>
                 <div>
-                    <PrivateRoute exact path="/" component={Login}/> 
-                    <PrivateRoute exact path="/registar-utilizador" component={RegistarUtilizador}/>
-                    <PrivateRoute exact path="/paginaprincipal-adm/:id" component={PaginaPrincipalAdm}/>
-                    <PrivateRoute exact path="/validar-utilizador" component={ValidarUtilizador}/>
-                    <PrivateRoute exact path="/registo-utilizador/:id" component={RegistoUtilizador}/>
-                    <PrivateRoute exact path="/gerir-exemplos" component={GerirExemplos}/> 
-                    <PrivateRoute exact path="/criar-exemplos" component={CriarExemplos}/> 
-                    <PrivateRoute exact path="/editar-exemplos/:id" component={EditarExemplos}/>
-                    <PrivateRoute exact path="/listar-exemplos" component={ListarExemplos}/>
-                    <PrivateRoute exact path="/visualizar-exemplo/:id" component={VisualizarExemplo}/> 
-                    <PrivateRoute exact path="/pagina-principal/:id" component={PaginaPrincipal}/>  
-                    <PrivateRoute exact path="/gerir-provas" component={GerirProvas}/> 
-                    <PrivateRoute exact path="/instrucao-prova" component={Instrucoes}/> 
-                    <PrivateRoute exact path="/listar-provas" component={ListarProvas}/> 
-                    <PrivateRoute exact path="/criar-provas" component={CriarProvas}/> 
-                    <PrivateRoute exact path="/editar-provas/:id" component={EditarProvas}/> 
-                    <PrivateRoute exact path="/visualizar-prova/:id" component={VisualizarProva}/> 
-                    <PrivateRoute exact path="/gerir-textos" component={GerirTextos}/>
-                    <PrivateRoute exact path="/criar-textos" component={CriarTextos}/> 
-                    <PrivateRoute exact path="/editar-textos/:id" component={EditarTextos}/>
-                    <PrivateRoute exact path="/listar-textos" component={ListarTextos}/> 
-                    <PrivateRoute exact path="/visualizar-texto/:id" component={VisualizarTexto}/>  
+                    <Route exact path="/" component={Login}/> 
+                    <Route exact path="/registar-utilizador" component={RegistarUtilizador}/>
+                    <Route exact path="/paginaprincipal-adm/:id" component={PaginaPrincipalAdm}/>
+                    <Route exact path="/validar-utilizador" component={ValidarUtilizador}/>
+                    <Route exact path="/registo-utilizador/:id" component={RegistoUtilizador}/>
+                    <Route exact path="/gerir-exemplos" component={GerirExemplos}/> 
+                    <Route exact path="/criar-exemplos" component={CriarExemplos}/> 
+                    <Route exact path="/editar-exemplos/:id" component={EditarExemplos}/>
+                    <Route exact path="/listar-exemplos" component={ListarExemplos}/>
+                    <Route exact path="/visualizar-exemplo/:id" component={VisualizarExemplo}/> 
+                    <Route exact path="/pagina-principal" component={PaginaPrincipal}/>  
+                    <Route exact path="/gerir-provas" component={GerirProvas}/> 
+                    <Route exact path="/instrucao-prova" component={Instrucoes}/> 
+                    <Route exact path="/listar-provas" component={ListarProvas}/> 
+                    <Route exact path="/criar-provas" component={CriarProvas}/> 
+                    <Route exact path="/editar-provas/:id" component={EditarProvas}/> 
+                    <Route exact path="/visualizar-prova/:id" component={VisualizarProva}/> 
+                    <Route exact path="/gerir-textos" component={GerirTextos}/>
+                    <Route exact path="/criar-textos" component={CriarTextos}/> 
+                    <Route exact path="/editar-textos/:id" component={EditarTextos}/>
+                    <Route exact path="/listar-textos" component={ListarTextos}/> 
+                    <Route exact path="/visualizar-texto/:id" component={VisualizarTexto}/>  
                 </div>
-            </BrowserRouter>
-        </AuthProvider>     
+        </Auth0ProviderWithHistory>     
   
     );
 }

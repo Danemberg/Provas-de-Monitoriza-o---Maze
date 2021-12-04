@@ -29,20 +29,22 @@ body{
 }
 
 .login{
-    margin-top: 100px;
-    margin-right: 50px;
+    margin: 0;
+    position: fixed;
+    top: 25%;
+    left: 25%;
+    margin-right: -50%;
 }
-.colleft{
-    background-color: white;
-    align-items: center;
-}
+
 .colright{
     background-color:darkred;
     color: darkorange;
+    height: 320px;
 }
 .titulo{
-    font-size: 32px;
-    color: #870B5A;
+    font-size: 38px;
+    color: darkorange;
+    text-align: center;
 }
 .titulo2{
     font-size:32px;
@@ -116,7 +118,7 @@ input[type=checkbox]{
     color:#ffffff;
     padding: 4px 24px;
     position: absolute;
-    top: 80%;
+    top: 70%;
     Right: 10%;
     margin-left: -90%;
 

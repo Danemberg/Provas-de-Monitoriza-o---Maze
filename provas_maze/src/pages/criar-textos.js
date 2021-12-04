@@ -2,9 +2,12 @@ import React , {useEffect, useState} from 'react'
 import {Link, useHistory, useParams} from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
 import axios from 'axios';
+import { useAuth0 } from '@auth0/auth0-react';
+import { Button } from 'react-bootstrap';
 
 
 const CriarTextos = () => {
+    const {logout} = useAuth0();
     let history = useHistory()
     const [textos, setTexto] = useState({
       titulo: "",
@@ -50,7 +53,7 @@ const loadTextos = async () =>{
                                       Plataforma para geração de Provas de Monitorização com base no currículo - Maze
                               </li>
                               <li className="nav-item item-navbar">
-                                  <Link className="nav-link item-navbar" to="/">Sair</Link>
+                                  <Button onClick={()=>logout()} className=" btn botao" to="/">Sair</Button>
                               </li>
                           </ul>  
                       </div>

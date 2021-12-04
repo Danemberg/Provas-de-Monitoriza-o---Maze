@@ -5,7 +5,6 @@ import { Link, useParams } from 'react-router-dom'
 import Imagem from '../images/imagem_pagina_principal.png'
 import Logo from '../images/LogoMBCL.png';
 import axios from 'axios';
-import { authConfig } from '../auth/config.js';
 
 function PaginaPrincipalAdm(){
     const {id} = useParams();
@@ -38,7 +37,7 @@ function PaginaPrincipalAdm(){
                                     Plataforma para geração de Provas de Monitorização com base no currículo - Maze
                             </li>
                             <li className="nav-item item-navbar">
-                                <button onClick={()=> authConfig.auth().signOut()} className="nav-link item-navbar" to="/">Sair</button>
+                                <button  className="nav-link item-navbar" to="/">Sair</button>
                             </li>
                         </ul>  
                     </div>
