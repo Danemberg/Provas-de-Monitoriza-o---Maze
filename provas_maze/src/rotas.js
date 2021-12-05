@@ -16,7 +16,6 @@ import GerirProvas from './pages/gerir-provas'
 import Instrucoes from './pages/instrucao-prova'
 import ListarProvas from './pages/listar-provas'
 import CriarProvas from './pages/criar-provas'
-import CriarProvasTexto from './pages/gerar-textos-provas'
 import EditarProvas from './pages/editar-provas'
 import VisualizarProva from './pages/visualizar-prova'
 import GerirTextos from './pages/gerir-textos'
@@ -54,7 +53,6 @@ export default () => {
                     <Route exact path="/instrucao-prova" component={Instrucoes}/> 
                     <Route exact path="/listar-provas" component={ListarProvas}/> 
                     <Route exact path="/criar-provas" component={CriarProvas}/> 
-                    <Route exact path="/gerar-textos-provas" component={CriarProvasTexto}/> 
                     <Route exact path="/editar-provas/:id" component={EditarProvas}/> 
                     <Route exact path="/visualizar-prova/:id" component={VisualizarProva}/> 
                     <Route exact path="/gerir-textos" component={GerirTextos}/>
