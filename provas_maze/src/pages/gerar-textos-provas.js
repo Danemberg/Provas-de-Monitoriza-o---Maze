@@ -1,38 +1,35 @@
-import React , {useState,alert, useEffect} from 'react'
+import React , {useEffect, useState,alert} from 'react'
 import {Link, useHistory, useParams} from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
 import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
 
-const EditarProvas = () => {
+const CriarProvasTexto = () => {
     const {logout} = useAuth0();
     let history = useHistory()
-    const {id} = useParams();
-    const [provas, setProva] = useState({
-        titulo: "",
-        data_de_realizacao: "",
-        turma: ""
-      })
-   
+    const [provastexto, setProvaTexto] = useState({
+      titulo: "",
+      data_de_realizacao: "",
+      turma: ""
+    })
+useEffect(() => {
+    loadProvas();
+}, []);
+
+const loadProvas = async () =>{
+    const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/provas`)
+    console.log(result);
+    setProva(result.data);
+}
     const{titulo, data_de_realizacao, turma} = provas;
     const onInputChange = e =>{
-     setProva({...provas,[e.target.id]: e.target.value});
-    };
-
-    useEffect(() => {
-        loadProvas();
-    }, []);
-    
+     setProva({...provas,[e.target.id]: e.target.value})
+    }
     const onSubmit = async e =>{
       e.preventDefault()
-      await axios.put(`http://192.168.1.84/projeto-maze/web/rest/provas/${id}`, provas);
-      history.push("/gerir-provas")
+        await axios.post("http://192.168.1.84/projeto-maze/web/rest/provas", provas);
+        history.push("/gerir-provas")
     };
-    
-    const loadProvas = async () =>{
-        const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/provas/${id}`)
-        setProva(result.data);
-    }
     return(  
         <div>
             <nav className="navbar navbar-expand-lg my-navbar">     
@@ -53,7 +50,7 @@ const EditarProvas = () => {
                             </ul>  
                         </div>
                     </nav>
-                    <form onSubmit={e =>onSubmit(e)} >
+        <form onSubmit={e =>onSubmit(e)} >
             <div className="card border-danger mb-3 my-card2">
                 <div className="card-header titulo">Informações para gerar prova:
                     <div className="card-body">
@@ -64,7 +61,6 @@ const EditarProvas = () => {
                                 <label>Titulo:</label>
                             <div className="col-sm-10">
                                 <input type="text" id="titulo" className="form-control " name="titulo"
-                                value={titulo}
                                 onChange={e => onInputChange(e)}required/>
                             </div>
                         </div>
@@ -75,7 +71,6 @@ const EditarProvas = () => {
                                 <label>Data:</label>
                             <div className="col-sm-7">
                                 <input type="date" className="form-control"  id="data_de_realizacao" name="data_de_realizacao"
-                                value={data_de_realizacao}
                                 onChange={e => onInputChange(e)}required/>
                             </div>
                         </div>
@@ -87,23 +82,23 @@ const EditarProvas = () => {
                             <label>Turma:</label>
                                 <div className="col-sm-6" >
                                     <input type="text" className="form-control" id="turma" name="turma"
-                                            value={turma}
                                             onChange={e => onInputChange(e)}/> 
                                 </div>
                             </div>
                         </div>
                             <div>
-                                <button type="submit" className="btn botao2">Salvar</button>
+                              <button type="submit" className="btn botao2" replace>Gerar</button>
                             </div>  
+                        </div>
                     </div>
-                 </div>   
-                </div>
-        </form>  
+                </div> 
+            </form>   
         </div>
-       
+   
+      
         )
     }
 
 
 
-export default EditarProvas;
+export default CriarProvasTexto;

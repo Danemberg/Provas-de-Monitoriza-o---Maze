@@ -137,12 +137,34 @@ input[type=checkbox]{
     margin-left: -90%;
 
 }
+.botao2{
+    font-size: 20px;
+    background: darkorange;
+    border: 0px;
+    border-radius: 16px;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    color:#ffffff;
+    padding: 4px 24px;
+    position: absolute;
+    top: 85%;
+    Right: 10%;
+    margin-left: -90%;
+
+}
 .botao1:hover{
     background: #ccbbff;
     box-shadow: inset 2px 2px 2px rgba(0,0,0,0.2);
     text-shadow: none;
 }
+.botao2:hover{
+    background: #ccbbff;
+    box-shadow: inset 2px 2px 2px rgba(0,0,0,0.2);
+    text-shadow: none;
+}
 .botao1 select{
+    cursor: pointer;
+}
+.botao2 select{
     cursor: pointer;
 }
 .botao:hover{
@@ -182,6 +204,12 @@ input[type=checkbox]{
     margin-top: 70px;
     width: 80%;
     height: 85%;
+}
+.my-card2{
+    position: fixed;
+    margin-top: 70px;
+    width: 80%;
+    height: 60%;
 }
 .imagem{
     position: fixed;
@@ -298,6 +326,13 @@ input[type="checkbox"]:checked + label {
 }
 .icone-add{
     color: white;
+}
+.icone-redirect{
+    color: darkorange;
+    font-size: 28px;
+    margin-left: 20px;
+    margin-top: 10px;
+    position: fixed;
 }
 .cabecalho-prova{
     font-size: 18px;

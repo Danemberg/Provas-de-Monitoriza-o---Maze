@@ -4,8 +4,10 @@ import { Link } from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
 import axios from 'axios';
 import _ from 'lodash';
+import { useAuth0 } from '@auth0/auth0-react';
 
 function GerirExemplos(){
+    const {logout} = useAuth0();
     const pageSize = 5;
     const [exemplos, setExemplo] = useState([]);
     const [paginatedExemplos, setpaginatedExemplos] = useState ([]);
@@ -63,7 +65,7 @@ function GerirExemplos(){
                                     Plataforma para geração de Provas de Monitorização com base no currículo - Maze
                             </li>
                             <li className="nav-item item-navbar">
-                                <Link className="nav-link item-navbar" to="/">Sair</Link>
+                                <Link onClick={()=>logout()} className="nav-link item-navbar" to="/">Sair</Link>
                             </li>
                         </ul>  
                     </div>

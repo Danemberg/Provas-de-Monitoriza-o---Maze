@@ -5,8 +5,10 @@ import { Link, useParams } from 'react-router-dom'
 import Imagem from '../images/imagem_pagina_principal.png'
 import Logo from '../images/LogoMBCL.png';
 import axios from 'axios';
+import { useAuth0 } from '@auth0/auth0-react';
 
 function PaginaPrincipalAdm(){
+    const {logout} = useAuth0();
     const {id} = useParams();
     const [utilizadores, setUtilizador] = useState([]);
     const [entidades, setEntidade] = useState([]);
@@ -37,7 +39,7 @@ function PaginaPrincipalAdm(){
                                     Plataforma para geração de Provas de Monitorização com base no currículo - Maze
                             </li>
                             <li className="nav-item item-navbar">
-                                <button  className="nav-link item-navbar" to="/">Sair</button>
+                                <Link onClick={()=>logout()}  className="nav-link item-navbar" to="/">Sair</Link>
                             </li>
                         </ul>  
                     </div>

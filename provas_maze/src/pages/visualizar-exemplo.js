@@ -2,9 +2,10 @@ import React, {useEffect,useState} from 'react';
 import {Link,  useParams} from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
 import axios from 'axios';
-
+import { useAuth0 } from '@auth0/auth0-react';
 
 const VisualizarExemplo = () =>{
+    const {logout} = useAuth0();
     const {id} = useParams();
     const [exemplos, setExemplo] = useState({
         conteudo:""
@@ -32,7 +33,7 @@ const VisualizarExemplo = () =>{
                                         Plataforma para geração de Provas de Monitorização com base no currículo - Maze
                                 </li>
                                 <li className="nav-item item-navbar">
-                                    <Link className="nav-link item-navbar" to="/">Sair</Link>
+                                    <Link onClick={()=>logout()} className="nav-link item-navbar" to="/">Sair</Link>
                                 </li>
                             </ul>  
                         </div>

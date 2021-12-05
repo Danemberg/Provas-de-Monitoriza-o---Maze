@@ -3,8 +3,6 @@ import {Link, useHistory, useParams} from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
 import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
-import { Button } from 'react-bootstrap';
-
 
 const CriarTextos = () => {
     const {logout} = useAuth0();
@@ -49,16 +47,19 @@ const loadTextos = async () =>{
                               <li className="nav-item">
                                   <img className="navbar-left" src={Logo} height="50" width="80" />
                               </li>
+                              <li>
+                            <Link to="/gerir-textos"><i class="material-icons icone-redirect">subdirectory_arrow_left</i></Link>  
+                            </li>
                               <li className="nav-item active title-navbar">
                                       Plataforma para geração de Provas de Monitorização com base no currículo - Maze
                               </li>
                               <li className="nav-item item-navbar">
-                                  <Button onClick={()=>logout()} className=" btn botao" to="/">Sair</Button>
+                                  <Link onClick={()=>logout()} className="nav-link item-navbar" to="/">Sair</Link>
                               </li>
                           </ul>  
                       </div>
                   </nav>
-                  <form onSubmit={e =>onSubmit(e)} >
+            <form onSubmit={e =>onSubmit(e)} >
               <div className="card border-danger mb-3 my-card">
                   <div className="card-header titulo">Criar texto:
                       <div className="card-body">
@@ -115,7 +116,7 @@ const loadTextos = async () =>{
                           </div>
                       </div>
                   </div> 
-                  </form>   
+            </form>   
           </div>
           )
       }

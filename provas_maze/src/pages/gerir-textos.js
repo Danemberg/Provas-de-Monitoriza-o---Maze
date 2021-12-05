@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
 import axios from 'axios';
 import _ from 'lodash';
-
+import { useAuth0 } from '@auth0/auth0-react';
 
 function GerirTextos(){
+    const {logout} = useAuth0();
     const pageSize = 5;
     const [textos, setTexto] = useState([]);
     const [paginatedTextos, setpaginatedTextos] = useState ([]);
@@ -56,11 +57,14 @@ function GerirTextos(){
                             <li className="nav-item">
                                 <img className="navbar-left" src={Logo} height="50" width="80" />
                             </li>
+                            <li>
+                            <Link to="/pagina-principal"><i class="material-icons icone-redirect">subdirectory_arrow_left</i></Link>  
+                            </li>
                             <li className="nav-item active title-navbar">
                                     Plataforma para geração de Provas de Monitorização com base no currículo - Maze
                             </li>
                             <li className="nav-item item-navbar">
-                                <Link className="nav-link item-navbar" to="/">Sair</Link>
+                                <Link onClick={()=>logout()} className="nav-link item-navbar" to="/">Sair</Link>
                             </li>
                         </ul>  
                     </div>

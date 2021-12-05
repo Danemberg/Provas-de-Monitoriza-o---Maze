@@ -5,8 +5,6 @@ import { Link, useParams, useHistory } from 'react-router-dom'
 import Imagem from '../images/imagem_pagina_principal.png'
 import Logo from '../images/LogoMBCL.png';
 import { useAuth0 } from '@auth0/auth0-react';
-import { Button } from 'react-bootstrap';
-
 
 const PaginaPrincipal = ()=>{
     const {logout} = useAuth0();
@@ -22,7 +20,7 @@ const PaginaPrincipal = ()=>{
                                 Plataforma para geração de Provas de Monitorização com base no currículo - Maze
                         </li>
                         <li className="nav-item item-navbar">
-                           <Button onClick={()=>logout()} className=" btn botao" to="/">Sair</Button>
+                           <Link onClick={()=>logout()} className="nav-link item-navbar" to="/">Sair</Link>
                         </li>
                     </ul>  
                 </div>

@@ -2,8 +2,10 @@ import React from 'react';
 import '../index.css';
 import { Link } from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
+import { useAuth0 } from '@auth0/auth0-react';
 
 function InstrucaoProva(){
+    const {logout} = useAuth0();
         return(
             <div>
                 <nav className="navbar navbar-expand-lg my-navbar">     
@@ -12,11 +14,14 @@ function InstrucaoProva(){
                             <li className="nav-item">
                                 <img className="navbar-left" src={Logo} height="50" width="80" />
                             </li>
+                            <li>
+                            <Link to="/gerir-provas"><i class="material-icons icone-redirect">subdirectory_arrow_left</i></Link>  
+                            </li>
                             <li className="nav-item active title-navbar">
                                     Plataforma para geração de Provas de Monitorização com base no currículo - Maze
                             </li>
                             <li className="nav-item item-navbar">
-                                <Link className="nav-link item-navbar" to="/">Sair</Link>
+                                <Link onClick={()=>logout()} className="nav-link item-navbar" to="/">Sair</Link>
                             </li>
                         </ul>  
                     </div>
