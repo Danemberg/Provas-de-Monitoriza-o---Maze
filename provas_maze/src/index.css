@@ -347,6 +347,7 @@ input[type="checkbox"]:checked + label {
     position: absolute;
     right: 10px;
     margin-top: 15px;
+    width: 100px;
 }
 .imagem-pp{
     margin-top: 100px;
@@ -376,7 +377,7 @@ input[type="checkbox"]:checked + label {
 }
 .menu-pp2{
     bottom:70%;
-    right: 20%;
+    right: 40%;
     position: fixed;
     border: 0px;
     border-radius: 16px;

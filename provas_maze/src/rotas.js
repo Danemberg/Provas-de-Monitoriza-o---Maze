@@ -4,9 +4,6 @@ import Auth0ProviderWithHistory from './auth/Auth0Provider'
 
 import Login from './pages/login'
 import PaginaPrincipal from './pages/paginaprincipal'
-import RegistarUtilizador from './pages/registar-utilizador'
-import ValidarUtilizador from './pages/validar-utilizador-admin'
-import RegistoUtilizador from './pages/registo-utilizador'
 import GerirExemplos from './pages/gerir-exemplos'
 import CriarExemplos from './pages/criar-exemplos'
 import EditarExemplos from './pages/editar-exemplos'
@@ -16,6 +13,7 @@ import GerirProvas from './pages/gerir-provas'
 import Instrucoes from './pages/instrucao-prova'
 import ListarProvas from './pages/listar-provas'
 import CriarProvas from './pages/criar-provas'
+import InserirTextoProva from './pages/inserir-texto-prova'
 import EditarProvas from './pages/editar-provas'
 import VisualizarProva from './pages/visualizar-prova'
 import GerirTextos from './pages/gerir-textos'
@@ -39,10 +37,7 @@ export default () => {
             <Footer/>
                 <div>
                     <Route exact path="/" component={Login}/> 
-                    <Route exact path="/registar-utilizador" component={RegistarUtilizador}/>
-                    <Route exact path="/paginaprincipal-adm/:id" component={PaginaPrincipalAdm}/>
-                    <Route exact path="/validar-utilizador" component={ValidarUtilizador}/>
-                    <Route exact path="/registo-utilizador/:id" component={RegistoUtilizador}/>
+                    <Route exact path="/paginaprincipal-adm" component={PaginaPrincipalAdm}/>
                     <Route exact path="/gerir-exemplos" component={GerirExemplos}/> 
                     <Route exact path="/criar-exemplos" component={CriarExemplos}/> 
                     <Route exact path="/editar-exemplos/:id" component={EditarExemplos}/>
@@ -53,6 +48,7 @@ export default () => {
                     <Route exact path="/instrucao-prova" component={Instrucoes}/> 
                     <Route exact path="/listar-provas" component={ListarProvas}/> 
                     <Route exact path="/criar-provas" component={CriarProvas}/> 
+                    <Route exact path="/inserir-texto-prova" component={InserirTextoProva}/>
                     <Route exact path="/editar-provas/:id" component={EditarProvas}/> 
                     <Route exact path="/visualizar-prova/:id" component={VisualizarProva}/> 
                     <Route exact path="/gerir-textos" component={GerirTextos}/>

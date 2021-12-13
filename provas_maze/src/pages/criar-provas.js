@@ -17,7 +17,7 @@ useEffect(() => {
 }, []);
 
 const loadProvas = async () =>{
-    const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/provas`)
+    const result = await axios.get(`http://192.168.134.1/projeto-maze/web/rest/provas`)
     console.log(result);
     setProva(result.data);
 }
@@ -27,8 +27,8 @@ const loadProvas = async () =>{
     }
     const onSubmit = async e =>{
       e.preventDefault()
-        await axios.post("http://192.168.1.84/projeto-maze/web/rest/provas", provas);
-        history.push("/gerar-textos-provas")
+        await axios.post("http://192.168.134.1/projeto-maze/web/rest/provas", provas);
+        history.push("/inserir-texto-prova")
     };
         return(  
         <div>

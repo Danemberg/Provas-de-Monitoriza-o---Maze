@@ -29,13 +29,13 @@ function GerirProvas(){
  }, [input]);
 
       const loadProvas = async () =>{
-          const result = await axios.get("http://192.168.1.84/projeto-maze/web/rest/provas");
+          const result = await axios.get("http://192.168.134.1/projeto-maze/web/rest/provas");
           console.log(result);
           setProva(result.data)
           setpaginatedProvas(_(result.data).slice(0).take(pageSize).value())
       }
       const deleteProva = async id =>{
-        await axios.delete(`http://192.168.1.84/projeto-maze/web/rest/provas/${id}`)
+        await axios.delete(`http://192.168.134.1/projeto-maze/web/rest/provas/${id}`)
         loadProvas();
       }
       const pageCount = provas? Math.ceil(provas.length/pageSize) :0;
@@ -71,8 +71,8 @@ function GerirProvas(){
                 <div className="container-xl info-tabela">
                     <div className="titulo">
                     Gerir Provas:
-                    <Link to="/instrucao-prova" className="edit">
-                    <i href="/instrucao-prova" className="material-icons info-icone">info</i></Link>
+                    <Link to="/instrucao-prova">
+                    <i  className="material-icons info-icone">info</i></Link>
                     </div>
                     <div className="col-sm-6">
                             

@@ -14,7 +14,7 @@ const VisualizarTexto = () => {
     }, []);
      
     const loadTextos = async () =>{
-        const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/textos/${id}`)
+        const result = await axios.get(`http://192.168.134.1/projeto-maze/web/rest/textos/${id}`)
         setTexto(result.data);
     }
     return(  

@@ -36,13 +36,13 @@ function InstrucaoProva(){
                     <div className="table-responsive">
                         <div className="table-wrapper">
                             <ul className="table table-striped table-hover">
+                            . Inserir informações básicas (título, data e turma)
+                            <br/>
                             . Escolher exemplo a ser utilizado para a prova
                             <br/>
                             . Escolher os três textos para a prova
                             <br/>
-                            . Inserir os distratores nos textos nos espaços vazios
-                            <br/>
-                            . Texto não pode ter parágrafos     
+                            . Inserir os distratores nos textos nos espaços vazios   
                             </ul>
                         </div>
                     </div>

@@ -25,11 +25,11 @@ import { useAuth0 } from '@auth0/auth0-react';
 
     const onSubmit = async e =>{
       e.preventDefault()
-      await axios.put(`http://192.168.1.84/projeto-maze/web/rest/exemplos/${id}`, exemplos);
+      await axios.put(`http://192.168.134.1/projeto-maze/web/rest/exemplos/${id}`, exemplos);
       history.push("/gerir-exemplos")
     };
     const loadExemplos = async () =>{
-        const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/exemplos/${id}`)
+        const result = await axios.get(`http://192.168.134.1/projeto-maze/web/rest/exemplos/${id}`)
         setExemplo(result.data);
     }
         return(  
@@ -70,7 +70,7 @@ import { useAuth0 } from '@auth0/auth0-react';
                                 <div className="form-group row campo">
                                         <label>Insira um exemplo:</label>
                                     <div className="col-lg-10">
-                                        <textarea className="form-control" rows="10" id="conteudo" name="conteudo"
+                                        <textarea className="form-control" rows="9" id="conteudo" name="conteudo"
                                         value={conteudo}
                                         onChange={e => onInputChange(e)}/>
                                     </div>

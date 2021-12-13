@@ -29,7 +29,7 @@ function ListarExemplos(){
  }, [input]);
 
       const loadExemplos = async () =>{
-          const result = await axios.get("http://192.168.1.84/projeto-maze/web/rest/exemplos");
+          const result = await axios.get("http://192.168.134.1/projeto-maze/web/rest/exemplos");
           console.log(result);
           setExemplo(result.data)
           setpaginatedExemplos(_(result.data).slice(0).take(pageSize).value())
@@ -53,7 +53,7 @@ function ListarExemplos(){
                             <img className="navbar-left" src={Logo} height="50" width="80" />
                         </li>
                         <li>
-                            <Link to="/pagina-principal"><i class="material-icons icone-redirect">subdirectory_arrow_left</i></Link>  
+                            <Link to="/paginaprincipal-adm"><i class="material-icons icone-redirect">subdirectory_arrow_left</i></Link>  
                             </li>
                         <li className="nav-item active title-navbar">
                                 Plataforma para geração de Provas de Monitorização com base no currículo - Maze

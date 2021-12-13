@@ -61,6 +61,9 @@ function GerirExemplos(){
                             <li className="nav-item">
                                 <img className="navbar-left" src={Logo} height="50" width="80" />
                             </li>
+                            <li>
+                            <Link to="/paginaprincipal-adm"><i class="material-icons icone-redirect">subdirectory_arrow_left</i></Link>  
+                            </li>
                             <li className="nav-item active title-navbar">
                                     Plataforma para geração de Provas de Monitorização com base no currículo - Maze
                             </li>

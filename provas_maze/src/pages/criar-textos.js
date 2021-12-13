@@ -19,7 +19,7 @@ useEffect(() => {
 }, []);
 
 const loadTextos = async () =>{
-    const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/textos`)
+    const result = await axios.get(`http://192.168.134.1/projeto-maze/web/rest/textos`)
     console.log(result);
     setTexto(result.data);
 }
@@ -31,7 +31,7 @@ const loadTextos = async () =>{
     const onSubmit = async e =>{
       e.preventDefault()
       try{
-        await axios.post("http://192.168.1.84/projeto-maze/web/rest/textos", textos);
+        await axios.post("http://192.168.134.1/projeto-maze/web/rest/textos", textos);
         alert("Texto criado com sucesso!!!")
         history.push("/gerir-textos")
       }catch(error){

@@ -54,13 +54,30 @@ function PaginaPrincipalAdm(){
                             <p>{entidades.concelho}</p>
                         </div>        
                 <Dropdown>
-                    <Dropdown.Toggle variant="menu-pp" id="dropdown-basic" className="menu-pp2">
-                        Opções
+                    <Dropdown.Toggle variant="menu-pp2" id="dropdown-basic" className="menu-pp2">
+                        Exemplo
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                        <Dropdown.Item href="#/validar-utilizador">Validar acesso</Dropdown.Item>
                         <Dropdown.Item href="#/gerir-exemplos">Gerir exemplos</Dropdown.Item>
                         <Dropdown.Item href="#/listar-exemplos">Listar exemplos</Dropdown.Item>
+                    </Dropdown.Menu>
+                    </Dropdown>
+                    <Dropdown>
+                    <Dropdown.Toggle variant="menu-pp" id="dropdown-basic" className="menu-pp">
+                        Texto
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                        <Dropdown.Item href="#/gerir-textos">Gerir Textos</Dropdown.Item>
+                        <Dropdown.Item href="#/listar-textos">Listar Textos</Dropdown.Item>
+                    </Dropdown.Menu>
+                </Dropdown>
+                <Dropdown>
+                    <Dropdown.Toggle variant="menu-pp1" id="dropdown-basic" className="menu-pp1">
+                        Prova
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                        <Dropdown.Item href="#/gerir-provas">Gerir Provas</Dropdown.Item>
+                        <Dropdown.Item href="#/listar-provas">Listar Provas</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
                     <h1 className="titulo-texto">MBCL - Monitorização com Base no Currículo na leitura: 
@@ -73,7 +90,7 @@ function PaginaPrincipalAdm(){
                         Da colaboração entre o Centro de Investigação em Educação da Universidade do Minho, do Centro de Investigação em Educação Básica e do Centro de Investigação em Digitalização e Robótica 
                         Inteligente do Instituto Politécnico de Bragança resulta esta plataforma de geração de provas de monitorização-com-base-no-currículo na leitura.
                         </p>
-                </div>
+            </div>
         )   
        
     }

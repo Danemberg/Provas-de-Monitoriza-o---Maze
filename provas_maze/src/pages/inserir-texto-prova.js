@@ -1,39 +1,36 @@
-import React , {useState,alert, useEffect} from 'react'
+import React , {useEffect, useState,alert} from 'react'
 import {Link, useHistory, useParams} from 'react-router-dom'
 import Logo from '../images/LogoMBCL.png';
 import axios from 'axios';
 import { useAuth0 } from '@auth0/auth0-react';
 
-const EditarProvas = () => {
+
+const InserirTextoProva= () => {
     const {logout} = useAuth0();
     let history = useHistory()
-    const {id} = useParams();
-    const [provas, setProva] = useState({
-        titulo: "",
-        data_de_realizacao: "",
-        turma: ""
-      })
-   
-    const{titulo, data_de_realizacao, turma} = provas;
-    const onInputChange = e =>{
-     setProva({...provas,[e.target.id]: e.target.value});
-    };
+    const [provatexto, setProvaTexto] = useState({
+      texto_id: "",
+      prova_id: ""
+    })
+useEffect(() => {
+    loadProvaTexto();
+}, []);
 
-    useEffect(() => {
-        loadProvas();
-    }, []);
-    
+const loadProvaTexto = async () =>{
+    const result = await axios.get(`http://192.168.134.1/projeto-maze/web/rest/provatextos`)
+    console.log(result);
+    setProvaTexto(result.data);
+}
+    const{texto_id, prova_id} = provatexto;
+    const onInputChange = e =>{
+     setProvaTexto({...provatexto,[e.target.id]: e.target.value})
+    }
     const onSubmit = async e =>{
       e.preventDefault()
-      await axios.put(`http://192.168.134.1/projeto-maze/web/rest/provas/${id}`, provas);
-      history.push("/gerir-provas")
+        await axios.post("http://192.168.134.1/projeto-maze/web/rest/provatextos", provatexto);
+        history.push("/gerar-provas")
     };
-    
-    const loadProvas = async () =>{
-        const result = await axios.get(`http://192.168.134.1/projeto-maze/web/rest/provas/${id}`)
-        setProva(result.data);
-    }
-    return(  
+        return(  
         <div>
             <nav className="navbar navbar-expand-lg my-navbar">     
                         <div className="collapse navbar-collapse">
@@ -53,7 +50,7 @@ const EditarProvas = () => {
                             </ul>  
                         </div>
                     </nav>
-                    <form onSubmit={e =>onSubmit(e)} >
+        <form onSubmit={e =>onSubmit(e)} >
             <div className="card border-danger mb-3 my-card2">
                 <div className="card-header titulo">Informações para gerar prova:
                     <div className="card-body">
@@ -61,10 +58,9 @@ const EditarProvas = () => {
                       <div className="col-sm">
                           <br></br>
                         <div className="form-group row campo">
-                                <label>Titulo:</label>
+                                <label>Texto:</label>
                             <div className="col-sm-10">
-                                <input type="text" id="titulo" className="form-control " name="titulo"
-                                value={titulo}
+                                <input type="text" id="texto_id" className="form-control " name="texto"
                                 onChange={e => onInputChange(e)}required/>
                             </div>
                         </div>
@@ -72,38 +68,26 @@ const EditarProvas = () => {
                       <div className="col-sm">
                       <br></br>
                         <div className="form-group row campo">
-                                <label>Data:</label>
+                                <label>Prova:</label>
                             <div className="col-sm-7">
-                                <input type="date" className="form-control"  id="data_de_realizacao" name="data_de_realizacao"
-                                value={data_de_realizacao}
+                                <input type="text" className="form-control"  id="prova_id" name="prova"
                                 onChange={e => onInputChange(e)}required/>
                             </div>
                         </div>
                       </div>
                     </div>
-                    <div className="col-lg-6 ">
-                        <br></br>
-                        <div className="form-group row campo">
-                            <label>Turma:</label>
-                                <div className="col-sm-6" >
-                                    <input type="text" className="form-control" id="turma" name="turma"
-                                            value={turma}
-                                            onChange={e => onInputChange(e)}/> 
-                                </div>
-                            </div>
-                        </div>
                             <div>
-                                <button type="submit" className="btn botao2">Salvar</button>
+                              <button type="submit" className="btn botao2" replace>Gerar</button>
                             </div>  
+                        </div>
                     </div>
-                 </div>   
-                </div>
-        </form>  
+                </div> 
+            </form>   
         </div>
-       
+   
         )
     }
 
 
 
-export default EditarProvas;
+export default InserirTextoProva;

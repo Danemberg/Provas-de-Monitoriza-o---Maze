@@ -19,7 +19,7 @@ useEffect(() => {
 }, []);
 
 const loadExemplos = async () =>{
-    const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/exemplos`)
+    const result = await axios.get(`http://192.168.134.1/projeto-maze/web/rest/exemplos`)
     setExemplo(result.data);
 }
    
@@ -30,7 +30,7 @@ const loadExemplos = async () =>{
     const onSubmit = async e =>{
       e.preventDefault()
       try{
-        await axios.post("http://192.168.1.84/projeto-maze/web/rest/exemplos", exemplos);
+        await axios.post("http://192.168.134.1/projeto-maze/web/rest/exemplos", exemplos);
         alert("Exemplo criado com sucesso!!!")
         history.push("/gerir-exemplos")     
       }catch(error){
@@ -76,7 +76,7 @@ const loadExemplos = async () =>{
                                 <div className="form-group row campo">
                                         <label>Insira um exemplo:</label>
                                     <div className="col-lg-10">
-                                        <textarea className="form-control" rows="10" id="conteudo" name="conteudo"
+                                        <textarea className="form-control" rows="9" id="conteudo" name="conteudo"
                                         onChange={e => onInputChange(e)} required/>
                                     </div>
                                 </div>

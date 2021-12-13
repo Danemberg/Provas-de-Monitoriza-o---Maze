@@ -18,15 +18,15 @@ const VisualizarProva =() =>{
       }, []);
 
     const loadExemplos = async () =>{
-          const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/exemplos/${id}`);
+          const result = await axios.get(`http://192.168.134.1/projeto-maze/web/rest/exemplos/${id}`);
           setExemplo(result.data)
     }
     const loadTextos = async () =>{
-        const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/textos/${id}`);
+        const result = await axios.get(`http://192.168.134.1/projeto-maze/web/rest/textos/${id}`);
         setTexto(result.data)
   }
     const loadProvas = async () =>{
-        const result = await axios.get(`http://192.168.1.84/projeto-maze/web/rest/provas/${id}`);
+        const result = await axios.get(`http://192.168.134.1/projeto-maze/web/rest/provas/${id}`);
         setProva(result.data)
     }
         return(
